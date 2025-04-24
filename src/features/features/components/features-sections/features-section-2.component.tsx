@@ -25,7 +25,7 @@ const features = [
   },
 
   {
-    description: 'Jouez en toute confiance grâce à notre système de vérification des profils et d\'évaluation.',
+    description: "Jouez en toute confiance grâce à notre système de vérification des profils et d'évaluation.",
     icon: <Shield className="size-6" />,
     title: 'Profils vérifiés',
   },

@@ -4,25 +4,25 @@ import { Award, Heart, Target, TrendingUp, Users, Zap } from 'lucide-react';
 const values = [
   {
     description:
-      'Nous croyons que le sport doit être accessible à tous, quels que soient l\'âge, le niveau ou la situation géographique.',
+      "Nous croyons que le sport doit être accessible à tous, quels que soient l'âge, le niveau ou la situation géographique.",
     icon: Target,
     title: 'Accessibilité',
   },
   {
     description:
-      'Nous valorisons les liens qui se créent autour du sport. Ludora n\'est pas qu\'une application, c\'est une communauté de passionnés qui partagent des moments uniques et créent des amitiés durables.',
+      "Nous valorisons les liens qui se créent autour du sport. Ludora n'est pas qu'une application, c'est une communauté de passionnés qui partagent des moments uniques et créent des amitiés durables.",
     icon: Users,
     title: 'Communauté',
   },
   {
     description:
-      'Nous visons l\'excellence dans tout ce que nous faisons, de la conception de notre application à notre service client. Nous sommes constamment à l\'écoute de nos utilisateurs pour améliorer leur expérience.',
+      "Nous visons l'excellence dans tout ce que nous faisons, de la conception de notre application à notre service client. Nous sommes constamment à l'écoute de nos utilisateurs pour améliorer leur expérience.",
     icon: Award,
     title: 'Excellence',
   },
   {
     description:
-      'Nous repoussons constamment les limites de la technologie pour offrir des solutions innovantes qui répondent aux besoins réels des sportifs. Nous n\'avons pas peur d\'explorer de nouvelles idées.',
+      "Nous repoussons constamment les limites de la technologie pour offrir des solutions innovantes qui répondent aux besoins réels des sportifs. Nous n'avons pas peur d'explorer de nouvelles idées.",
     icon: Zap,
     title: 'Innovation',
   },
@@ -34,7 +34,7 @@ const values = [
   },
   {
     description:
-      'Nous mesurons notre succès par l\'impact positif que nous avons sur la vie de nos utilisateurs. Chaque match organisé, chaque nouvelle amitié créée est une victoire pour nous.',
+      "Nous mesurons notre succès par l'impact positif que nous avons sur la vie de nos utilisateurs. Chaque match organisé, chaque nouvelle amitié créée est une victoire pour nous.",
     icon: TrendingUp,
     title: 'Impact',
   },

@@ -15,7 +15,7 @@ const links = [
   },
   {
     href: '/telecharger',
-    label: 'Télécharger l\'application',
+    label: "Télécharger l'application",
   },
   {
     href: '/fonctionnalites',
@@ -30,7 +30,7 @@ const links = [
 const legalLinks = [
   {
     href: ROUTES.TERMS_OF_SERVICE,
-    label: 'Conditions d\'utilisation',
+    label: "Conditions d'utilisation",
   },
   {
     href: ROUTES.PRIVACY_POLICY,
