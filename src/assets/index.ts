@@ -1,0 +1,9 @@
+export { default as basketballStadium } from './images/basketball-stadium.webp';
+export { default as card2Image } from './images/card-2-image.webp';
+export { default as homeSection1 } from './images/home-section-1.png';
+export { default as homeSection2Card1 } from './images/home-section-2-card-1.png';
+export { default as homeSection2Card2 } from './images/home-section-2-card-2.png';
+export { default as homeSection3Carousel2 } from './images/home-section-3-carousel-2.png';
+export { default as homeSection3Carousel3 } from './images/home-section-3-carousel-3.png';
+export { default as homeSection3Carousel4 } from './images/home-section-3-carousel-4.png';
+export { default as homeSection3Carousel5 } from './images/home-section-3-carousel-5.png';

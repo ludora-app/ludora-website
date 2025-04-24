@@ -4,10 +4,9 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "4050:4050"
+      - '4050:4050'
     volumes:
       - .:/src
-      - /src/node_modules
     environment:
       - NODE_ENV=development
-    command: pnpm run dev
+    command: sh -c "pnpm install && pnpm run dev"

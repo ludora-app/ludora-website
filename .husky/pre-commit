@@ -1,0 +1,4 @@
+pnpm lint
+pnpm ts:check
+pnpm format
+
