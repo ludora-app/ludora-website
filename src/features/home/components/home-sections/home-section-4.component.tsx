@@ -15,7 +15,7 @@ export default function HomeSection4() {
         <Card>
           <CardHeader>
             <div className="bg-primary w-fit rounded-lg p-2">
-              <Icon name="basketball-solid" color={'#FFF'} />
+              <Icon name="location-dot-solid" color={'#FFF'} />
             </div>
             <Heading as="h4" variant="title-4">
               Localisation optimisée
@@ -26,7 +26,7 @@ export default function HomeSection4() {
         <Card>
           <CardHeader>
             <div className="bg-primary w-fit rounded-lg p-2">
-              <Icon name="basketball-solid" color={'#FFF'} />
+              <Icon name="circle-notch-solid" color={'#FFF'} />
             </div>
             <Heading as="h4" variant="title-4">
               Matching par niveau
@@ -39,7 +39,7 @@ export default function HomeSection4() {
         <Card>
           <CardHeader>
             <div className="bg-primary w-fit rounded-lg p-2">
-              <Icon name="basketball-solid" color={'#FFF'} />
+              <Icon name="cursor-solid" color={'#FFF'} />
             </div>
             <Heading as="h4" variant="title-4">
               Préférences sportives
@@ -52,7 +52,7 @@ export default function HomeSection4() {
         <Card>
           <CardHeader>
             <div className="bg-primary w-fit rounded-lg p-2">
-              <Icon name="basketball-solid" color={'#FFF'} />
+              <Icon name="envelope-solid" color={'#FFF'} />
             </div>
             <Heading as="h4" variant="title-4">
               MAJ en temps réel

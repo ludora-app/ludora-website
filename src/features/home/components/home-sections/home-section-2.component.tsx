@@ -1,4 +1,4 @@
-import { homeSection2Card1, homeSection2Card2 } from '@/assets';
+import { HomeScreenAppImg, MatchScreenAppImg } from '@/assets';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, Heading } from '@chillUi';
 import Image from 'next/image';
 
@@ -8,9 +8,9 @@ export default function HomeSection2() {
       <Heading as="h2" variant="title-5" className="font-bold" color="primary">
         POURQUOI CETTE APPICATION ?
       </Heading>
-      <div className="my-5">
+      <div className="my-3">
         <Heading as="h3" variant="title-3">
-          Marre de jouer seul ? Trouve tes Partenaires de jeu facilement !
+          Trouve tes Partenaires de jeu facilement !
         </Heading>
       </div>
       {/* cards */}
@@ -25,7 +25,7 @@ export default function HomeSection2() {
               </CardDescription>
             </CardHeader>
             <CardContent className="flex justify-center">
-              <Image src={homeSection2Card1} alt="Find players" width={300} />
+              <Image src={HomeScreenAppImg} alt="Find players" width={300} />
             </CardContent>
           </Card>
         </div>
@@ -40,7 +40,7 @@ export default function HomeSection2() {
               </CardDescription>
             </CardHeader>
             <CardContent className="flex flex-1 justify-center">
-              <Image src={homeSection2Card2} alt="Organize matches" width={250} />
+              <Image src={MatchScreenAppImg} alt="Organize matches" width={250} />
             </CardContent>
           </Card>
           <Card className="bg-gradient flex flex-grow justify-center">

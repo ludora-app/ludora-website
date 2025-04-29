@@ -15,7 +15,9 @@ export default function Header() {
 
   return (
     <header className="border-primary shadow-accent relative z-50 flex w-full items-center bg-white px-2 py-4 shadow-sm sm:px-10">
-      <Image src={logo} alt="logo Ludora" width={130} />
+      <Link href="/">
+        <Image src={logo} alt="logo Ludora" width={130} />
+      </Link>
       <div className="ml-5 flex flex-1 items-center gap-6">
         {menuItems.map(item => (
           <Link

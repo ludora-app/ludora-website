@@ -1,11 +1,12 @@
 'use client';
 
 import {
-  homeSection2Card1,
-  homeSection3Carousel2,
-  homeSection3Carousel3,
-  homeSection3Carousel4,
-  homeSection3Carousel5,
+  HomeScreenAppImg,
+  MatchScreenAppImg,
+  MessageScreenAppImg,
+  ProfileScreenAppImg,
+  SessionCreateScreenImg,
+  SessionScreenAppImg,
 } from '@/assets';
 import {
   Badge,
@@ -17,27 +18,31 @@ import {
   Heading,
   Typography,
 } from '@chillUi';
+import Autoplay from 'embla-carousel-autoplay';
 import Image from 'next/image';
-
 const carouselItems = [
   {
-    image: homeSection2Card1,
+    image: HomeScreenAppImg,
     title: 'Recherche de sessions',
   },
   {
-    image: homeSection3Carousel2,
-    title: 'Organisation de matchs',
+    image: SessionCreateScreenImg,
+    title: 'Filtres de recherche',
   },
   {
-    image: homeSection3Carousel3,
-    title: 'Gestion des équipes',
+    image: SessionScreenAppImg,
+    title: 'Détail de la session',
   },
   {
-    image: homeSection3Carousel4,
+    image: MatchScreenAppImg,
+    title: 'Rejoindre une session',
+  },
+  {
+    image: ProfileScreenAppImg,
     title: 'Profil personnalisé',
   },
   {
-    image: homeSection3Carousel5,
+    image: MessageScreenAppImg,
     title: 'Chat intégré',
   },
 ];
@@ -59,7 +64,13 @@ export default function HomeSection3() {
           </Typography>
         </div>
 
-        <Carousel>
+        {/* desactivate scroll on web */}
+        <Carousel
+          plugins={[Autoplay({ delay: 2000 })]}
+          opts={{
+            loop: true,
+          }}
+        >
           <CarouselContent className="-ml-1">
             {carouselItems.map((item, index) => (
               <CarouselItem key={index} className="pl-1 md:basis-1/2 lg:basis-1/5">
@@ -70,12 +81,19 @@ export default function HomeSection3() {
                   <Heading variant="title-5" as="h5">
                     {item.title}
                   </Heading>
+                  <div className="flex items-center justify-center">
+                    <div className="flex size-10 items-center justify-center rounded-full bg-gradient-to-r from-orange-500 to-rose-500">
+                      <Typography variant="body-1" color="light" className="font-bold">
+                        {index + 1}
+                      </Typography>
+                    </div>
+                  </div>
                 </div>
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
+          <CarouselNext className="hidden lg:flex" />
+          <CarouselPrevious className="hidden lg:flex" />
         </Carousel>
       </div>
     </section>

@@ -1,3 +1,4 @@
+import { ModifyProfilScreenImg, NoteScreenAppImg, SessionCreateScreenImg } from '@/assets';
 import { Badge, Heading, Typography } from '@chillUi';
 import Image from 'next/image';
 
@@ -34,10 +35,10 @@ export default function FeaturesSection4() {
             <div className="relative order-1 md:order-2">
               <div className="absolute top-1/2 left-1/2 -z-10 size-80 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-orange-200/50 to-rose-200/50 blur-3xl"></div>
               <Image
-                src="/placeholder.svg?height=400&width=400"
+                src={ModifyProfilScreenImg}
                 alt="Création de profil"
-                width={400}
-                height={400}
+                width={300}
+                height={300}
                 className="rounded-2xl shadow-lg"
               />
             </div>
@@ -47,10 +48,10 @@ export default function FeaturesSection4() {
             <div className="relative">
               <div className="absolute top-1/2 left-1/2 -z-10 size-80 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-orange-200/50 to-rose-200/50 blur-3xl"></div>
               <Image
-                src="/placeholder.svg?height=400&width=400"
+                src={SessionCreateScreenImg}
                 alt="Recherche de matchs"
-                width={400}
-                height={400}
+                width={300}
+                height={300}
                 className="rounded-2xl shadow-lg"
               />
             </div>
@@ -84,10 +85,10 @@ export default function FeaturesSection4() {
             <div className="relative order-1 md:order-2">
               <div className="absolute top-1/2 left-1/2 -z-10 size-80 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-orange-200/50 to-rose-200/50 blur-3xl"></div>
               <Image
-                src="/placeholder.svg?height=400&width=400"
+                src={NoteScreenAppImg}
                 alt="Évaluation après match"
-                width={400}
-                height={400}
+                width={300}
+                height={300}
                 className="rounded-2xl shadow-lg"
               />
             </div>

@@ -1,4 +1,4 @@
-import { homeSection2Card1, homeSection3Carousel2 } from '@/assets';
+import { HomeScreenAppImg, SessionCreateScreenImg, SessionScreenAppImg } from '@/assets';
 import { Heading, Tabs, TabsContent, TabsList, TabsTrigger, Typography } from '@chillUi';
 import { CheckCircle } from 'lucide-react';
 import Image from 'next/image';
@@ -51,7 +51,7 @@ export default function FeaturesSection3() {
               </div>
               <div className="relative">
                 <div className="flex justify-center md:justify-end">
-                  <Image src={homeSection2Card1} alt="Recherche de joueurs" width={250} />
+                  <Image src={HomeScreenAppImg} alt="Recherche de joueurs" width={250} />
                 </div>
               </div>
             </div>
@@ -87,7 +87,7 @@ export default function FeaturesSection3() {
                 <div className="absolute top-1/2 left-1/2 -z-10 size-80 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-orange-200/50 to-rose-200/50 blur-3xl"></div>
                 <div className="relative ml-auto w-max">
                   <Image
-                    src="/placeholder.svg?height=600&width=300"
+                    src={SessionCreateScreenImg}
                     alt="Organisation de matchs"
                     width={300}
                     height={600}
@@ -127,7 +127,7 @@ export default function FeaturesSection3() {
               <div className="relative">
                 <div className="absolute top-1/2 left-1/2 -z-10 size-80 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-orange-200/50 to-rose-200/50 blur-3xl"></div>
                 <div className="relative ml-auto w-max">
-                  <Image src={homeSection3Carousel2} alt="Création d'équipes" width={250} />
+                  <Image src={SessionScreenAppImg} alt="Création d'équipes" width={250} />
                 </div>
               </div>
             </div>

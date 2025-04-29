@@ -1,3 +1,4 @@
+import { LandingPageAndroidImg, LandingPageIosImg } from '@/assets';
 import { ComingSoonModal } from '@/components/ui/comming-soon.modal';
 import { Badge, Button, Heading, Icon, Typography } from '@chillUi';
 import { Download, Globe, Shield } from 'lucide-react';
@@ -79,18 +80,18 @@ export default function DownloadAppSection3() {
             <div className="absolute top-1/2 left-1/2 -z-10 size-80 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-orange-200/50 to-rose-200/50 blur-3xl"></div>
             <div className="grid grid-cols-2 gap-4">
               <Image
-                src="/placeholder.svg?height=400&width=200"
+                src={LandingPageIosImg}
                 alt="iPhone avec Ludora"
                 width={200}
                 height={400}
-                className="justify-self-end rounded-2xl border-4 border-white shadow-lg"
+                className="justify-self-end"
               />
               <Image
-                src="/placeholder.svg?height=400&width=200"
+                src={LandingPageAndroidImg}
                 alt="Android avec Ludora"
                 width={200}
                 height={400}
-                className="mt-8 justify-self-start rounded-2xl border-4 border-white shadow-lg"
+                className="mt-8 justify-self-start"
               />
             </div>
           </div>

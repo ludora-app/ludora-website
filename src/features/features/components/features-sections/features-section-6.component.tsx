@@ -1,5 +1,6 @@
 import { ComingSoonModal } from '@/components/ui/comming-soon.modal';
-import { Button, Heading, Typography } from '@chillUi';
+import { COLORS } from '@/constants/COLORS';
+import { Button, Heading, Icon, Typography } from '@chillUi';
 
 export default function FeaturesSection6() {
   return (
@@ -14,11 +15,13 @@ export default function FeaturesSection6() {
         <div className="flex flex-col justify-center gap-4 sm:flex-row">
           <ComingSoonModal>
             <Button size="lg" variant="light">
+              <Icon name="app-store-solid" color={COLORS.PRIMARY} />
               Télécharger sur l&apos;App Store
             </Button>
           </ComingSoonModal>
           <ComingSoonModal>
             <Button size="lg" variant="light">
+              <Icon name="google-play-solid" color={COLORS.PRIMARY} />
               Télécharger sur Google Play
             </Button>
           </ComingSoonModal>

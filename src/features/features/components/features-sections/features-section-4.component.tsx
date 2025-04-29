@@ -1,21 +1,21 @@
-import { homeSection3Carousel4 } from '@/assets';
+import { CarteInteractiveAppImg, MatchScreenAppImg, ProfileScreenAppImg } from '@/assets';
 import { Badge, Heading, Typography } from '@chillUi';
 import Image from 'next/image';
 
 const featuresSection4 = [
   {
     description: 'Créez votre profil sportif détaillé avec vos sports favoris, votre niveau et vos disponibilités.',
-    image: homeSection3Carousel4,
+    image: ProfileScreenAppImg,
     title: 'Profil personnalisé',
   },
   {
     description: 'Visualisez vos prochains matchs, vos statistiques et les recommandations personnalisées.',
-    image: '/placeholder.svg?height=600&width=300',
+    image: MatchScreenAppImg,
     title: 'Tableau de bord',
   },
   {
     description: 'Découvrez les terrains et les matchs à proximité grâce à notre carte interactive détaillée.',
-    image: '/placeholder.svg?height=600&width=300',
+    image: CarteInteractiveAppImg,
     title: 'Carte interactive',
   },
 ];
