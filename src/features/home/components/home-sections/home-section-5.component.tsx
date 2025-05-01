@@ -1,7 +1,6 @@
 'use client';
 
 import { Button } from '@chillUi';
-import Link from 'next/link';
 
 export default function HomeSection5() {
   return (
@@ -12,10 +11,8 @@ export default function HomeSection5() {
           Inscris-toi dès maintenant à la newsletter pour recevoir les dernières informations sur l&apos;application
           Ludora.
         </p>
-        <Button size="lg" variant="light">
-          <Link href="/#newsletter" scroll={true}>
-            Je m&apos;inscris maintenant
-          </Link>
+        <Button size="lg" variant="light" redirect="/#newsletter">
+          Je m&apos;inscris maintenant
         </Button>
       </div>
     </section>

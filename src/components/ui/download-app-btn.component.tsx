@@ -1,0 +1,48 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+
+import { Button, cn, Icon } from '../chill-ui';
+import { ComingSoonModal } from './comming-soon.modal';
+
+export default function DownloadAppBtn({ className }: { className?: string }) {
+  const [platform, setPlatform] = useState<'iOS' | 'Android' | 'Autre'>('Autre');
+
+  useEffect(() => {
+    const ua = navigator.userAgent;
+    if (/android/i.test(ua)) {
+      setPlatform('Android');
+    } else if (/iPad|iPhone|iPod/.test(ua)) {
+      setPlatform('iOS');
+    } else {
+      setPlatform('Autre');
+    }
+  }, []);
+
+  return (
+    <>
+      {(platform === 'iOS' || platform === 'Autre') && (
+        <ComingSoonModal>
+          <Button
+            size="lg"
+            className={cn('flex items-center gap-2 border-0 bg-black text-white hover:bg-gray-800', className)}
+          >
+            <Icon name="app-store-solid" className="size-4" color="#fff" />
+            App Store
+          </Button>
+        </ComingSoonModal>
+      )}
+      {(platform === 'Android' || platform === 'Autre') && (
+        <ComingSoonModal>
+          <Button
+            size="lg"
+            className={cn('flex items-center gap-2 border-0 bg-black text-white hover:bg-gray-800', className)}
+          >
+            <Icon name="google-play-solid" className="size-4" color="#fff" />
+            Google Play
+          </Button>
+        </ComingSoonModal>
+      )}
+    </>
+  );
+}

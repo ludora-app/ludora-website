@@ -1,6 +1,5 @@
 import { CarteInteractiveAppImg, MatchScreenAppImg, ProfileScreenAppImg } from '@/assets';
-import { Badge, Heading, Typography } from '@chillUi';
-import Image from 'next/image';
+import { Badge, Heading, Image, Typography } from '@chillUi';
 
 const featuresSection4 = [
   {
@@ -29,7 +28,7 @@ export default function FeaturesSection4() {
             Interface intuitive
           </Badge>
           <Heading as="h2" variant="title-2" className="mb-4">
-            Une application conçue pour les sportifs
+            Une application conçue pour les <span className="text-gradient">sportifs</span>
           </Heading>
           <Typography variant="body-1" color="gray">
             Découvrez l&apos;interface intuitive de Ludora, conçue pour vous offrir une expérience fluide et agréable.
@@ -40,13 +39,7 @@ export default function FeaturesSection4() {
           {featuresSection4.map((screen, index) => (
             <div key={index} className="text-center">
               <div className="relative mx-auto mb-6 w-max">
-                <Image
-                  src={screen.image || '/placeholder.svg'}
-                  alt={screen.title}
-                  width={240}
-                  height={480}
-                  className="rounded-3xl border-4 border-white shadow-lg"
-                />
+                <Image src={screen.image} alt={screen.title} />
               </div>
               <Heading as="h3" variant="title-4" className="mb-2">
                 {screen.title}

@@ -18,7 +18,7 @@ import {
   Typography,
 } from '@chillUi';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Clock, Mail, MapPin, Phone } from 'lucide-react';
+import { Mail } from 'lucide-react';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
@@ -30,21 +30,21 @@ const contactInfo = [
     label: 'Email',
     value: 'contact@ludora.fr',
   },
-  {
-    icon: Phone,
-    label: 'Téléphone',
-    value: '+33 1 23 45 67 89',
-  },
-  {
-    icon: MapPin,
-    label: 'Adresse',
-    value: '123 Avenue des Sports, 75000 Paris, France',
-  },
-  {
-    icon: Clock,
-    label: "Heures d'ouverture",
-    value: 'Lun - Ven: 9h00 - 18h00',
-  },
+  // {
+  //   icon: Phone,
+  //   label: 'Téléphone',
+  //   value: '+33 1 23 45 67 89',
+  // },
+  // {
+  //   icon: MapPin,
+  //   label: 'Adresse',
+  //   value: '123 Avenue des Sports, 75000 Paris, France',
+  // },
+  // {
+  //   icon: Clock,
+  //   label: "Heures d'ouverture",
+  //   value: 'Lun - Ven: 9h00 - 18h00',
+  // },
 ];
 
 const formSchema = z.object({
@@ -100,12 +100,12 @@ export default function ContactSection2() {
 
   return (
     <section className="container mx-auto px-4 py-12 md:py-20">
-      <div className="grid gap-12 md:grid-cols-2">
+      <div className="mx-auto flex max-w-screen-lg flex-col gap-3.5">
         {/* Contact Form */}
         <Card>
           <CardHeader>
             <CardTitle variant="title-4" color="dark">
-              Envoyez-nous un message
+              Envoyez-nous un <span className="text-gradient">message</span>
             </CardTitle>
           </CardHeader>
           <CardContent className="flex flex-grow flex-col">
@@ -151,11 +151,12 @@ export default function ContactSection2() {
                     )}
                   />
                 </div>
+
                 <Button
                   type="submit"
                   variant="gradient"
                   size="lg"
-                  className="w-full"
+                  className="mt-4 w-full self-center md:w-1/2"
                   disabled={isSendingEmail}
                   isLoading={isSendingEmail}
                 >
@@ -166,49 +167,48 @@ export default function ContactSection2() {
           </CardContent>
         </Card>
         {/* Contact Info */}
-        <div className="space-y-8">
-          <Card>
-            <CardHeader>
-              <CardTitle variant="title-4" color="dark">
-                Informations de contact
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              {contactInfo.map(info => (
-                <div className="flex items-center gap-4" key={info.label}>
-                  <Badge variant="outline" color="primary" className="rounded-md p-2 text-orange-500">
-                    <info.icon className="size-5" />
-                  </Badge>
-                  <div>
-                    <Heading variant="title-7" color="dark" as="h3">
-                      {info.label}
-                    </Heading>
-                    <Typography variant="body-1" color="gray">
-                      {info.value}
-                    </Typography>
-                  </div>
-                </div>
-              ))}
-            </CardContent>
-          </Card>
 
-          <Card>
-            <CardHeader>
-              <CardTitle variant="title-4" color="dark">
-                Suivez-nous
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="flex items-center gap-4">
-              {socialLinks.map(link => (
-                <Link href={link.href} key={link.icon}>
-                  <Badge variant="outline" color="primary" className="bg-gradient rounded-full p-3">
-                    <Icon name={link.icon as TIcons} className="size-5" color={COLORS.PRIMARY} />
-                  </Badge>
-                </Link>
-              ))}
-            </CardContent>
-          </Card>
-        </div>
+        <Card>
+          <CardContent>
+            <div className="flex flex-col md:flex-row">
+              <div className="flex flex-1 flex-col items-center justify-center gap-4">
+                <Heading as="h3" variant="title-5" color="dark">
+                  Informations de <span className="text-gradient">contact</span>
+                </Heading>
+                {contactInfo.map(info => (
+                  <div className="flex items-center gap-4" key={info.label}>
+                    <Badge variant="outline" color="primary" className="rounded-md p-2 text-orange-500">
+                      <info.icon className="size-5" />
+                    </Badge>
+                    <div>
+                      <Heading variant="title-7" color="dark" as="h3">
+                        {info.label}
+                      </Heading>
+                      <Typography variant="body-1" color="gray">
+                        {info.value}
+                      </Typography>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="bg-ring my-5 h-[0.5px] w-full md:my-0 md:h-30 md:w-[0.5px]" />
+              <div className="flex flex-1 flex-col items-center justify-center gap-4">
+                <Heading as="h3" variant="title-5" color="dark">
+                  Suivez-<span className="text-gradient">nous</span>
+                </Heading>
+                <div className="flex items-center gap-2">
+                  {socialLinks.map(link => (
+                    <Link href={link.href} key={link.icon}>
+                      <Badge variant="outline" color="primary" className="bg-gradient rounded-full p-3">
+                        <Icon name={link.icon as TIcons} className="size-5" color={COLORS.PRIMARY} />
+                      </Badge>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </section>
   );

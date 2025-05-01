@@ -1,7 +1,6 @@
 import { HomeScreenAppImg, SessionCreateScreenImg, SessionScreenAppImg } from '@/assets';
-import { Heading, Tabs, TabsContent, TabsList, TabsTrigger, Typography } from '@chillUi';
+import { Heading, Image, Tabs, TabsContent, TabsList, TabsTrigger, Typography } from '@chillUi';
 import { CheckCircle } from 'lucide-react';
-import Image from 'next/image';
 
 export default function FeaturesSection3() {
   return (
@@ -9,7 +8,7 @@ export default function FeaturesSection3() {
       <div className="container mx-auto px-4">
         <div className="mx-auto mb-12 max-w-3xl text-center">
           <Heading as="h2" variant="title-2" className="mb-4">
-            Explorez nos fonctionnalités en détail
+            Explorez nos <span className="text-gradient">fonctionnalités</span> en détail
           </Heading>
           <Typography variant="body-1" color="gray">
             Découvrez comment chaque fonctionnalité de Ludora a été conçue pour améliorer votre expérience sportive.
@@ -51,7 +50,7 @@ export default function FeaturesSection3() {
               </div>
               <div className="relative">
                 <div className="flex justify-center md:justify-end">
-                  <Image src={HomeScreenAppImg} alt="Recherche de joueurs" width={250} />
+                  <Image src={HomeScreenAppImg} alt="Recherche de joueurs" />
                 </div>
               </div>
             </div>
@@ -83,17 +82,8 @@ export default function FeaturesSection3() {
                   ))}
                 </ul>
               </div>
-              <div className="relative">
-                <div className="absolute top-1/2 left-1/2 -z-10 size-80 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-orange-200/50 to-rose-200/50 blur-3xl"></div>
-                <div className="relative ml-auto w-max">
-                  <Image
-                    src={SessionCreateScreenImg}
-                    alt="Organisation de matchs"
-                    width={300}
-                    height={600}
-                    className="rounded-3xl border-8 border-white shadow-2xl"
-                  />
-                </div>
+              <div className="flex justify-center md:justify-end">
+                <Image src={SessionCreateScreenImg} alt="Organisation de matchs" />
               </div>
             </div>
           </TabsContent>
@@ -124,11 +114,9 @@ export default function FeaturesSection3() {
                   ))}
                 </ul>
               </div>
-              <div className="relative">
-                <div className="absolute top-1/2 left-1/2 -z-10 size-80 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-orange-200/50 to-rose-200/50 blur-3xl"></div>
-                <div className="relative ml-auto w-max">
-                  <Image src={SessionScreenAppImg} alt="Création d'équipes" width={250} />
-                </div>
+
+              <div className="flex justify-center md:justify-end">
+                <Image src={SessionScreenAppImg} alt="Création d'équipes" />
               </div>
             </div>
           </TabsContent>

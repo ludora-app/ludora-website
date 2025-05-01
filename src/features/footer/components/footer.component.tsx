@@ -48,7 +48,9 @@ export default function Footer() {
       <div className="container mx-auto px-4">
         <div className="flex flex-col justify-between gap-8 lg:flex-row">
           <div className="flex flex-col gap-4">
-            <Logo size="md" />
+            <Link href="/">
+              <Logo size="md" />
+            </Link>
             <Typography variant="body-2" color="gray">
               Connecte-toi à des passionnés de sports collectifs près de chez toi.
             </Typography>
@@ -91,7 +93,7 @@ export default function Footer() {
           </Typography>
           <div className="flex items-center gap-4">
             {socialItems.map(item => (
-              <Link key={item.id} href={item.href}>
+              <Link key={item.id} href={item.href} aria-label={item.label}>
                 <Icon name={item.icon} colorOnHover={COLORS.PRIMARY} />
               </Link>
             ))}

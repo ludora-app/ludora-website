@@ -36,13 +36,13 @@ export default function Header() {
 
       <div className="hidden items-center gap-5 lg:flex">
         {socialItems.map(item => (
-          <Link key={item.id} href={item.href}>
+          <Link key={item.id} href={item.href} aria-label={item.label}>
             <Icon name={item.icon} colorOnHover={COLORS.PRIMARY} />
           </Link>
         ))}
       </div>
       <div className="lg:hidden">
-        <HeaderDrawer />
+        <HeaderDrawer pathname={pathname} />
       </div>
     </header>
   );

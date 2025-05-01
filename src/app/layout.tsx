@@ -2,9 +2,10 @@ import type { Metadata } from 'next';
 
 import { Footer, Header } from '@/features';
 import MainProvider from '@/providers/main.provider';
-import { Poppins } from 'next/font/google';
 
 import './globals.css';
+
+import { Poppins } from 'next/font/google';
 
 const poppins = Poppins({
   display: 'swap',
@@ -14,8 +15,9 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  description: 'Ludora',
-  title: 'Ludora',
+  description:
+    'Ludora est l’appli qui te connecte instantanément à des partenaires pour jouer au foot, basket, padel et plus. Crée ou rejoins un match, réserve un terrain, et joue sans prise de tête. Le sport collectif devient enfin simple, local et spontané.',
+  title: 'Ludora – Trouve des partenaires de sport collectif près de toi',
 };
 
 export default function RootLayout({
@@ -24,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr">
+    <html lang="fr" className="scroll-smooth">
       <body className={`${poppins.variable} antialiased`}>
         <MainProvider>
           <Header />

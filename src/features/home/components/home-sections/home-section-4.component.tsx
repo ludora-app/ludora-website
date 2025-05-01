@@ -9,7 +9,7 @@ export default function HomeSection4() {
         MATCHMAKING
       </Typography>
       <Heading as="h2" variant="title-3">
-        Laisse notre algorithme faire le reste.
+        Laisse notre <span className="text-gradient">algorithme</span> faire le reste.
       </Heading>
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-4">
         <Card>
@@ -17,7 +17,7 @@ export default function HomeSection4() {
             <div className="bg-primary w-fit rounded-lg p-2">
               <Icon name="location-dot-solid" color={'#FFF'} />
             </div>
-            <Heading as="h4" variant="title-4">
+            <Heading as="h3" variant="title-4">
               Localisation optimisée
             </Heading>
           </CardHeader>

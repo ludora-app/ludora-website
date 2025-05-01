@@ -1,6 +1,7 @@
 'use client';
 
 import {
+  cn,
   DialogTitle,
   Drawer,
   DrawerClose,
@@ -18,12 +19,12 @@ import { useState } from 'react';
 import { menuItems } from '../utils/menu-items';
 import { socialItems } from '../utils/social-items';
 
-export default function HeaderDrawer() {
+export default function HeaderDrawer({ pathname }: { pathname: string }) {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   return (
     <Drawer direction="right" open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
-      <DrawerTrigger>
-        <Hamburger toggled={isDrawerOpen} toggle={setIsDrawerOpen} />
+      <DrawerTrigger aria-label="Ouvrir le menu">
+        <Hamburger toggled={isDrawerOpen} toggle={setIsDrawerOpen} aria-label="Ouvrir le menu" />
       </DrawerTrigger>
       <DrawerContent className="flex w-screen flex-col items-center">
         <DialogTitle className="hidden">Header Drawer</DialogTitle>
@@ -37,14 +38,19 @@ export default function HeaderDrawer() {
         </DrawerHeader>
         <div className="flex flex-grow flex-col items-center justify-center gap-10 text-xl font-bold">
           {menuItems.map(item => (
-            <Link key={item.id} href={item.href}>
+            <Link
+              key={item.id}
+              href={item.href}
+              onClick={() => setIsDrawerOpen(false)}
+              className={cn(pathname === item.href && 'text-primary')}
+            >
               {item.label}
             </Link>
           ))}
         </div>
-        <DrawerFooter className="flex flex-row gap-5 rounded-t-lg bg-amber-200">
+        <DrawerFooter className="bg-primary flex flex-row gap-5 rounded-t-lg">
           {socialItems.map(item => (
-            <Link key={item.id} href={item.href}>
+            <Link key={item.id} href={item.href} aria-label={item.label}>
               <Icon name={item.icon} />
             </Link>
           ))}

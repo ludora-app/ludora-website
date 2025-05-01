@@ -32,7 +32,7 @@ export default function DownloadAppSection2() {
             Simple et rapide
           </Badge>
           <Heading as="h2" variant="title-2" className="mb-2">
-            Comment télécharger l&apos;application
+            Comment <span className="text-gradient">télécharger</span> l&apos;application
           </Heading>
           <Typography variant="body-1" color="gray">
             Suivez ces étapes simples pour commencer votre expérience Ludora dès aujourd&apos;hui.

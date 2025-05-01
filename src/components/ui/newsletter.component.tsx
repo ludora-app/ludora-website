@@ -7,9 +7,9 @@ import {
   Button,
   Card,
   CardContent,
-  CardFooter,
   CardHeader,
   CardTitle,
+  Checkbox,
   Form,
   FormField,
   FormInput,
@@ -25,6 +25,9 @@ import { toast } from 'sonner';
 import { z } from 'zod';
 
 const formSchema = z.object({
+  acceptedPrivacyPolicy: z.literal(true, {
+    errorMap: () => ({ message: 'Vous devez accepter la politique de confidentialité.' }),
+  }),
   email: z.string().email(),
   name: z.string().min(1),
 });
@@ -33,6 +36,7 @@ export default function NewsletterComponent() {
   const [isLoading, setIsLoading] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
     defaultValues: {
+      acceptedPrivacyPolicy: true,
       email: '',
       name: '',
     },
@@ -40,10 +44,13 @@ export default function NewsletterComponent() {
   });
   const { control, handleSubmit } = form;
 
+  const acceptedPrivacyPolicy = form.watch('acceptedPrivacyPolicy');
+
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     setIsLoading(true);
     try {
       await addDoc(collection(db, 'emails'), {
+        acceptedPrivacyPolicy: data.acceptedPrivacyPolicy,
         createdAt: serverTimestamp(),
         email: data.email,
         name: data.name,
@@ -68,7 +75,7 @@ export default function NewsletterComponent() {
                 Restez informé
               </Badge>
               <Heading as="h2" variant="title-3" className="mb-4">
-                Abonnez-vous à notre newsletter
+                Abonnez-vous à notre <span className="text-gradient">newsletter</span>
               </Heading>
               <Typography variant="body-1" color="gray" className="mb-6">
                 Recevez nos dernières actualités, conseils sportifs et informations sur les événements à venir
@@ -117,12 +124,32 @@ export default function NewsletterComponent() {
                       name="email"
                       render={({ field }) => <FormInput label="Email" placeholder="Votre email" {...field} />}
                     />
+                    <FormField
+                      control={control}
+                      name="acceptedPrivacyPolicy"
+                      render={({ field }) => (
+                        <div className="flex items-start gap-2">
+                          <Checkbox
+                            className="mt-0.5"
+                            checked={field.value}
+                            onCheckedChange={field.onChange}
+                            aria-label="Accepter la politique de confidentialité"
+                          />
+                          <Typography variant="body-2" color="gray">
+                            En vous inscrivant, vous acceptez notre{' '}
+                            <Link href={ROUTES.PRIVACY_POLICY} className="text-orange-500 hover:underline">
+                              politique de confidentialité
+                            </Link>
+                          </Typography>
+                        </div>
+                      )}
+                    />
                     <div className="w-full">
                       <Button
                         type="submit"
                         variant="gradient"
                         className="h-10 w-full"
-                        disabled={isLoading}
+                        disabled={isLoading || !acceptedPrivacyPolicy}
                         isLoading={isLoading}
                       >
                         S&apos;abonner à la newsletter
@@ -131,14 +158,6 @@ export default function NewsletterComponent() {
                   </form>
                 </Form>
               </CardContent>
-              <CardFooter>
-                <Typography variant="body-2" color="gray">
-                  En vous inscrivant, vous acceptez notre{' '}
-                  <Link href={ROUTES.PRIVACY_POLICY} className="text-orange-500 hover:underline">
-                    politique de confidentialité
-                  </Link>
-                </Typography>
-              </CardFooter>
             </Card>
           </div>
         </div>

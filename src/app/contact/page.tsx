@@ -1,5 +1,3 @@
 import { ContactScreen } from '@/features';
 
-export default function Contact() {
-  return <ContactScreen />;
-}
+export default ContactScreen;

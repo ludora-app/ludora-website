@@ -1,6 +1,5 @@
-import { ComingSoonModal } from '@/components/ui/comming-soon.modal';
-import { COLORS } from '@/constants/COLORS';
-import { Button, Heading, Icon, Typography } from '@chillUi';
+import DownloadAppBtnV2 from '@/components/ui/download-app-btn.V2.component';
+import { Heading, Typography } from '@chillUi';
 
 export default function FeaturesSection6() {
   return (
@@ -13,18 +12,7 @@ export default function FeaturesSection6() {
           Téléchargez l&apos;application dès maintenant et commencez à jouer avec des passionnés près de chez vous.
         </Typography>
         <div className="flex flex-col justify-center gap-4 sm:flex-row">
-          <ComingSoonModal>
-            <Button size="lg" variant="light">
-              <Icon name="app-store-solid" color={COLORS.PRIMARY} />
-              Télécharger sur l&apos;App Store
-            </Button>
-          </ComingSoonModal>
-          <ComingSoonModal>
-            <Button size="lg" variant="light">
-              <Icon name="google-play-solid" color={COLORS.PRIMARY} />
-              Télécharger sur Google Play
-            </Button>
-          </ComingSoonModal>
+          <DownloadAppBtnV2 />
         </div>
       </div>
     </section>

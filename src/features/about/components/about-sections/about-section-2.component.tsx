@@ -1,3 +1,4 @@
+import { ConnectSportImg } from '@/assets';
 import { Badge, Heading, Typography } from '@chillUi';
 import Image from 'next/image';
 
@@ -25,13 +26,7 @@ export default function AboutSection2() {
         </Typography>
       </div>
       <div className="relative order-1 md:order-2">
-        <Image
-          src="/placeholder.svg?height=400&width=600"
-          alt="Équipe sportive"
-          width={600}
-          height={400}
-          className="rounded-2xl object-cover shadow-lg"
-        />
+        <Image src={ConnectSportImg} alt="Équipe sportive" className="rounded-2xl object-cover shadow-lg" />
       </div>
     </section>
   );

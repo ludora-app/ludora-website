@@ -5,7 +5,6 @@ import AboutSection2 from './about-sections/about-section-2.component';
 import AboutSection3 from './about-sections/about-section-3.component';
 import AboutSection4 from './about-sections/about-section-4.component';
 import AboutSection5 from './about-sections/about-section-5.component';
-import AboutSection6 from './about-sections/about-section-6.component';
 export default function AboutScreen() {
   return (
     <div className="flex flex-col">
@@ -22,7 +21,7 @@ export default function AboutScreen() {
       {/* Team Section */}
       <AboutSection5 />
       {/* Stats Section */}
-      <AboutSection6 />
+      {/* <AboutSection6 /> */}
       {/* Testimonials Section */}
       {/* <AboutSection7 /> */}
       {/* Vision Section */}

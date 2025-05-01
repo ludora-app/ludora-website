@@ -1,6 +1,7 @@
 import { cn } from '@chillUi';
 import { Slot } from '@radix-ui/react-slot';
 import { Loader2 } from 'lucide-react';
+import Link from 'next/link';
 import { tv } from 'tailwind-variants';
 
 import { ButtonProps } from '../utils/types';
@@ -42,9 +43,16 @@ const loadingIconVariants = tv({
   },
 });
 
-function Button({ asChild = false, className, isLoading = false, size, variant, ...props }: ButtonProps) {
+function Button({ asChild = false, className, isLoading = false, redirect, size, variant, ...props }: ButtonProps) {
   const Comp = asChild ? Slot : 'button';
-  return (
+  return redirect ? (
+    <Link href={redirect}>
+      <Comp data-slot="button" className={cn(buttonVariants({ className, size, variant }))} {...props}>
+        {isLoading && <Loader2 className={cn(loadingIconVariants({ size }))} />}
+        {props.children}
+      </Comp>
+    </Link>
+  ) : (
     <Comp data-slot="button" className={cn(buttonVariants({ className, size, variant }))} {...props}>
       {isLoading && <Loader2 className={cn(loadingIconVariants({ size }))} />}
       {props.children}

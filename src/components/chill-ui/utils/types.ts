@@ -1,3 +1,4 @@
+import { ImageProps } from 'next/image';
 import { ButtonHTMLAttributes } from 'react';
 import { VariantProps } from 'tailwind-variants';
 
@@ -46,4 +47,10 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   size?: VariantProps<typeof buttonVariants>['size'];
   asChild?: boolean;
   isLoading?: boolean;
+  redirect?: string;
 };
+
+export interface ChillImageProps extends ImageProps {
+  responsive?: boolean;
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+}

@@ -1,8 +1,7 @@
 import { LandingPageAndroidImg, LandingPageIosImg } from '@/assets';
-import { ComingSoonModal } from '@/components/ui/comming-soon.modal';
-import { Badge, Button, Heading, Icon, Typography } from '@chillUi';
+import DownloadAppBtn from '@/components/ui/download-app-btn.component';
+import { Badge, Heading, Image, Typography } from '@chillUi';
 import { Download, Globe, Shield } from 'lucide-react';
-import Image from 'next/image';
 
 const compatibility = [
   {
@@ -37,7 +36,7 @@ export default function DownloadAppSection3() {
               Compatibilité
             </Badge>
             <Heading as="h2" variant="title-2" className="mb-2">
-              Compatible avec tous vos appareils
+              Compatible avec tous vos <span className="text-gradient">appareils</span>
             </Heading>
             <Typography variant="body-1" color="gray" className="mb-8">
               L&apos;application Ludora est disponible sur iOS et Android, et s&apos;adapte parfaitement à tous les
@@ -61,38 +60,15 @@ export default function DownloadAppSection3() {
             </ul>
 
             <div className="flex flex-col gap-4 sm:flex-row">
-              <ComingSoonModal>
-                <Button size="lg" className="flex items-center gap-2 border-0 bg-black text-white hover:bg-gray-800">
-                  <Icon name="app-store-solid" color="#fff" />
-                  App Store
-                </Button>
-              </ComingSoonModal>
-              <ComingSoonModal>
-                <Button size="lg" className="flex items-center gap-2 border-0 bg-black text-white hover:bg-gray-800">
-                  <Icon name="google-play-solid" color="#fff" />
-                  Google Play
-                </Button>
-              </ComingSoonModal>
+              <DownloadAppBtn />
             </div>
           </div>
 
           <div className="relative">
             <div className="absolute top-1/2 left-1/2 -z-10 size-80 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-orange-200/50 to-rose-200/50 blur-3xl"></div>
             <div className="grid grid-cols-2 gap-4">
-              <Image
-                src={LandingPageIosImg}
-                alt="iPhone avec Ludora"
-                width={200}
-                height={400}
-                className="justify-self-end"
-              />
-              <Image
-                src={LandingPageAndroidImg}
-                alt="Android avec Ludora"
-                width={200}
-                height={400}
-                className="mt-8 justify-self-start"
-              />
+              <Image src={LandingPageIosImg} alt="iPhone avec Ludora" className="justify-self-end" />
+              <Image src={LandingPageAndroidImg} alt="Android avec Ludora" className="mt-8 justify-self-start" />
             </div>
           </div>
         </div>

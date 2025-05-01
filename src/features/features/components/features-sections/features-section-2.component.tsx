@@ -45,7 +45,7 @@ export default function FeaturesSection2() {
             Tout ce dont vous avez besoin
           </Badge>
           <Heading variant="title-2" as="h2" className="mb-4">
-            Une application complète pour les sportifs
+            Une application complète pour les <span className="text-gradient">sportifs</span>
           </Heading>
           <Typography variant="body-1" color="gray">
             Ludora offre toutes les fonctionnalités nécessaires pour trouver des partenaires, organiser des matchs et

@@ -48,7 +48,7 @@ export default function AboutSection4() {
           <span className="text-sm font-medium">Nos valeurs</span>
         </Badge>
         <Heading variant="title-2" as="h2" className="mb-4">
-          Ce qui nous anime au quotidien
+          Ce qui nous <span className="text-gradient">anime</span> au quotidien
         </Heading>
         <Typography variant="body-1" color="gray">
           Nos valeurs guident chacune de nos décisions et façonnent la culture de notre entreprise.

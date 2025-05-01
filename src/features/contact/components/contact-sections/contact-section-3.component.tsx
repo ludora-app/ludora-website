@@ -6,7 +6,7 @@ export default function ContactSection3() {
       <div className="container mx-auto">
         <div className="mx-auto mb-12 flex max-w-3xl flex-col gap-2 text-center">
           <Heading variant="title-3" as="h3" color="dark">
-            Questions fréquentes
+            Questions <span className="text-gradient">fréquentes</span>
           </Heading>
           <Typography variant="body-1" color="gray">
             Vous avez des questions ? Consultez notre FAQ pour trouver rapidement des réponses.

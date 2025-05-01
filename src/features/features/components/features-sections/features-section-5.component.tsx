@@ -1,6 +1,5 @@
 import { ModifyProfilScreenImg, NoteScreenAppImg, SessionCreateScreenImg } from '@/assets';
-import { Badge, Heading, Typography } from '@chillUi';
-import Image from 'next/image';
+import { Badge, Heading, Image, Typography } from '@chillUi';
 
 export default function FeaturesSection4() {
   return (
@@ -11,7 +10,7 @@ export default function FeaturesSection4() {
             Comment ça marche
           </Badge>
           <Heading as="h2" variant="title-2" className="mb-4">
-            Commencez en quelques étapes simples
+            Commencez en quelques <span className="text-gradient">étapes</span> simples
           </Heading>
           <Typography variant="body-1" color="gray">
             Découvrez comment utiliser Ludora pour transformer votre expérience sportive en quelques clics.
@@ -33,27 +32,13 @@ export default function FeaturesSection4() {
               </Typography>
             </div>
             <div className="relative order-1 md:order-2">
-              <div className="absolute top-1/2 left-1/2 -z-10 size-80 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-orange-200/50 to-rose-200/50 blur-3xl"></div>
-              <Image
-                src={ModifyProfilScreenImg}
-                alt="Création de profil"
-                width={300}
-                height={300}
-                className="rounded-2xl shadow-lg"
-              />
+              <Image src={ModifyProfilScreenImg} alt="Création de profil" className="mx-auto" />
             </div>
           </div>
 
           <div className="mb-16 grid items-center gap-12 md:grid-cols-2">
             <div className="relative">
-              <div className="absolute top-1/2 left-1/2 -z-10 size-80 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-orange-200/50 to-rose-200/50 blur-3xl"></div>
-              <Image
-                src={SessionCreateScreenImg}
-                alt="Recherche de matchs"
-                width={300}
-                height={300}
-                className="rounded-2xl shadow-lg"
-              />
+              <Image src={SessionCreateScreenImg} alt="Recherche de matchs" className="mx-auto" />
             </div>
             <div>
               <Badge className="mb-1 p-1" variant="light">
@@ -83,14 +68,7 @@ export default function FeaturesSection4() {
               </Typography>
             </div>
             <div className="relative order-1 md:order-2">
-              <div className="absolute top-1/2 left-1/2 -z-10 size-80 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-orange-200/50 to-rose-200/50 blur-3xl"></div>
-              <Image
-                src={NoteScreenAppImg}
-                alt="Évaluation après match"
-                width={300}
-                height={300}
-                className="rounded-2xl shadow-lg"
-              />
+              <Image src={NoteScreenAppImg} alt="Évaluation après match" className="mx-auto" />
             </div>
           </div>
         </div>

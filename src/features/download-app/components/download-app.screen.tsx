@@ -8,21 +8,19 @@ import DownloadAppSection3 from './download-app-sections/download-app-section-3'
 export default function DownloadAppScreen() {
   return (
     <div className="flex min-h-screen flex-col">
-      <main>
-        {/* Hero Section */}
-        <DownloadAppSection1 />
+      {/* Hero Section */}
+      <DownloadAppSection1 />
 
-        {/* Download Steps */}
-        <DownloadAppSection2 />
+      {/* Download Steps */}
+      <DownloadAppSection2 />
 
-        {/* Compatibility */}
-        <DownloadAppSection3 />
-        {/* CTA Section */}
-        <FeaturesSection6 />
+      {/* Compatibility */}
+      <DownloadAppSection3 />
+      {/* CTA Section */}
+      <FeaturesSection6 />
 
-        {/* FAQ */}
-        <ContactSection3 />
-      </main>
+      {/* FAQ */}
+      <ContactSection3 />
     </div>
   );
 }

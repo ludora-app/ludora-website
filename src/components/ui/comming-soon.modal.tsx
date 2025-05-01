@@ -3,8 +3,10 @@
 import type React from 'react';
 
 import { db } from '@/configs/firebase';
+import { ROUTES } from '@/constants/ROUTES';
 import {
   Button,
+  Checkbox,
   Dialog,
   DialogContent,
   DialogDescription,
@@ -16,10 +18,12 @@ import {
   FormInput,
   Heading,
   Icon,
+  Typography,
 } from '@chillUi';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import { Bell, CalendarClock } from 'lucide-react';
+import Link from 'next/link';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
@@ -31,6 +35,9 @@ interface ComingSoonModalProps {
 }
 
 const formSchema = z.object({
+  acceptedPrivacyPolicy: z.literal(true, {
+    errorMap: () => ({ message: 'Vous devez accepter la politique de confidentialité.' }),
+  }),
   email: z.string().email(),
 });
 
@@ -40,16 +47,19 @@ export function ComingSoonModal({ children, isOpen }: ComingSoonModalProps) {
 
   const form = useForm<z.infer<typeof formSchema>>({
     defaultValues: {
+      acceptedPrivacyPolicy: true,
       email: '',
     },
     resolver: zodResolver(formSchema),
   });
   const { control, handleSubmit } = form;
+  const acceptedPrivacyPolicy = form.watch('acceptedPrivacyPolicy');
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     setIsLoading(true);
     try {
       await addDoc(collection(db, 'emails'), {
+        acceptedPrivacyPolicy: data.acceptedPrivacyPolicy,
         createdAt: serverTimestamp(),
         email: data.email,
       });
@@ -68,7 +78,9 @@ export function ComingSoonModal({ children, isOpen }: ComingSoonModalProps) {
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle className="text-center text-2xl font-bold">Prochainement disponible</DialogTitle>
+          <DialogTitle className="text-center text-2xl font-bold">
+            <span className="text-gradient">Prochainement</span> disponible
+          </DialogTitle>
           <DialogDescription className="text-center">
             L&apos;application Ludora est actuellement en développement
           </DialogDescription>
@@ -103,25 +115,47 @@ export function ComingSoonModal({ children, isOpen }: ComingSoonModalProps) {
             </Heading>
 
             <Form {...form}>
-              <form onSubmit={handleSubmit(onSubmit)} className="flex gap-2">
-                <div className="flex-2">
-                  <FormField
-                    control={control}
-                    name="email"
-                    render={({ field }) => <FormInput type="email" placeholder="Votre email" required {...field} />}
-                  />
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-2">
+                <div className="flex gap-2">
+                  <div className="flex-2">
+                    <FormField
+                      control={control}
+                      name="email"
+                      render={({ field }) => <FormInput type="email" placeholder="Votre email" required {...field} />}
+                    />
+                  </div>
+                  <div className="flex-1">
+                    <Button
+                      type="submit"
+                      variant="gradient"
+                      className="h-full w-full"
+                      isLoading={isLoading}
+                      disabled={isLoading || !acceptedPrivacyPolicy}
+                    >
+                      M&apos;alerter
+                    </Button>
+                  </div>
                 </div>
-                <div className="flex-1">
-                  <Button
-                    type="submit"
-                    variant="gradient"
-                    className="h-full w-full"
-                    isLoading={isLoading}
-                    disabled={isLoading}
-                  >
-                    M&apos;alerter
-                  </Button>
-                </div>
+                <FormField
+                  control={control}
+                  name="acceptedPrivacyPolicy"
+                  render={({ field }) => (
+                    <div className="flex items-start gap-2">
+                      <Checkbox
+                        className="mt-0.5"
+                        checked={field.value}
+                        onCheckedChange={field.onChange}
+                        aria-label="Accepter la politique de confidentialité"
+                      />
+                      <Typography variant="body-2" color="gray">
+                        En vous inscrivant, vous acceptez notre{' '}
+                        <Link href={ROUTES.PRIVACY_POLICY} className="text-orange-500 hover:underline">
+                          politique de confidentialité
+                        </Link>
+                      </Typography>
+                    </div>
+                  )}
+                />
               </form>
             </Form>
           </div>

@@ -49,14 +49,14 @@ const carouselItems = [
 
 export default function HomeSection3() {
   return (
-    <section className="bg-gradient-to-br from-orange-50 to-rose-50 py-20">
+    <section className="bg-gradient py-12 md:py-20">
       <div className="container mx-auto px-4">
         <div className="mx-auto mb-16 max-w-3xl text-center">
           <Badge variant="light" size="md" className="mb-4">
             <span>Interface intuitive</span>
           </Badge>
           <Heading variant="title-2" as="h2" className="mb-4">
-            Une application conçue pour vous
+            Une application <span className="text-gradient">conçue pour vous</span>
           </Heading>
           <Typography variant="body-1" color="gray">
             Découvrez l&apos;interface élégante et intuitive de Ludora, conçue pour vous offrir la meilleure expérience
@@ -78,7 +78,7 @@ export default function HomeSection3() {
                   <div className="relative mx-auto mb-4 w-max">
                     <Image src={item.image} alt={item.title} width={250} height={500} />
                   </div>
-                  <Heading variant="title-5" as="h5">
+                  <Heading variant="title-5" as="h3">
                     {item.title}
                   </Heading>
                   <div className="flex items-center justify-center">

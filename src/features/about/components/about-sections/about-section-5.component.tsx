@@ -1,35 +1,36 @@
-import { Badge, Card, CardContent, CardDescription, CardHeader, CardTitle, Heading, Typography } from '@chillUi';
+import { AmirImg, GanaImg, KenzaImg, MarionImg, MaximeImg } from '@/assets';
+import { Badge, Card, CardContent, CardDescription, CardHeader, CardTitle, Heading, Image, Typography } from '@chillUi';
 
 const teamMembers = [
   {
-    bio: "Ancien joueur semi-professionnel de basketball, Thomas a créé Ludora pour résoudre un problème qu'il a lui-même rencontré.",
-    name: 'Thomas Durand',
+    bio: 'Passionné de basketball, Amir a eu l’idée de Ludora après avoir galéré à trouver des partenaires de jeu dans une nouvelle ville.',
+    image: AmirImg,
+    name: 'Amir Meberbeche',
     role: 'Fondateur & CEO',
   },
   {
-    bio: "Développeuse full-stack avec 10 ans d'expérience, Marie est passionnée de volleyball et d'innovation technologique.",
-    name: 'Marie Lefort',
-    role: 'CTO',
+    bio: 'Développeur engagé, Gana a rejoint Amir dès le début de l’aventure pour transformer l’idée en prototype fonctionnel.',
+    image: GanaImg,
+    name: 'Gana Fall',
+    role: 'CTO & Développeur Full-Stack',
   },
   {
-    bio: "Designer UX/UI et footballeur amateur, Lucas s'assure que l'application soit aussi intuitive qu'efficace.",
-    name: 'Lucas Martin',
-    role: 'Directeur Design',
-  },
-  {
-    bio: 'Ancienne athlète olympique, Sophie met son expertise au service du développement de la communauté Ludora.',
-    name: 'Sophie Moreau',
+    bio: 'Spécialiste marketing, Marion a structuré la stratégie de lancement de Ludora et porté la vision communautaire du projet.',
+    image: MarionImg,
+    name: 'Marion Dupont',
     role: 'Responsable Marketing',
   },
   {
-    bio: "Passionné de rugby et de code, Alexandre travaille sur l'optimisation de l'application mobile.",
-    name: 'Alexandre Petit',
-    role: 'Développeur Mobile',
+    bio: 'Maxime, designer passionné, a co-construit les premières maquettes de Ludora pour offrir une expérience claire et intuitive.',
+    image: MaximeImg,
+    name: 'Maxime Dupont',
+    role: 'Designer UX/UI',
   },
   {
-    bio: 'Joueuse de handball, Camille anime la communauté Ludora et organise des événements sportifs.',
-    name: 'Camille Dubois',
-    role: 'Community Manager',
+    bio: 'Entrepreneuse engagée, Kenza a apporté son énergie et son expérience pour faire grandir Ludora et son impact social.',
+    image: KenzaImg,
+    name: 'Alexandre Petit',
+    role: 'Développeur Mobile',
   },
 ];
 
@@ -42,7 +43,7 @@ export default function AboutSection5() {
             Notre équipe
           </Badge>
           <Heading variant="title-2" as="h2" className="mb-4">
-            Les visages derrière Ludora
+            Les <span className="text-gradient">visages</span> derrière Ludora
           </Heading>
           <Typography variant="body-1" color="gray">
             Une équipe passionnée de sportifs et d&apos;experts en technologie qui travaillent ensemble pour
@@ -53,8 +54,13 @@ export default function AboutSection5() {
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {teamMembers.map((member, index) => (
             <Card key={index}>
-              <CardHeader>
-                <CardTitle>{member.name}</CardTitle>
+              <CardHeader className="flex flex-col items-center justify-center gap-4">
+                <div className="bg-gradient size-40 overflow-hidden rounded-full">
+                  <Image src={member.image} alt={member.name} />
+                </div>
+                <CardTitle color="dark" variant="title-5">
+                  {member.name}
+                </CardTitle>
                 <CardDescription>{member.role}</CardDescription>
               </CardHeader>
               <CardContent>
