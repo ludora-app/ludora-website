@@ -1,13 +1,18 @@
 'use client';
 
+import { useState } from 'react';
+
 import { COLORS } from '@/constants/COLORS';
 
 import { Button, Icon } from '../chill-ui';
 import { ComingSoonModal } from './comming-soon.modal';
 
 export default function DownloadAppBtnV2() {
-  const ua = navigator.userAgent;
-  const platform = /android/i.test(ua) ? 'Android' : /iPad|iPhone|iPod/.test(ua) ? 'iOS' : 'Autre';
+  const [platform] = useState(() => {
+    if (typeof window === 'undefined') return 'Autre';
+    const ua = navigator.userAgent;
+    return /android/i.test(ua) ? 'Android' : /iPad|iPhone|iPod/.test(ua) ? 'iOS' : 'Autre';
+  });
 
   return (
     <>
