@@ -1,14 +1,6 @@
 'use client';
 
 import {
-  HomeScreenAppImg,
-  MatchScreenAppImg,
-  MessageScreenAppImg,
-  ProfileScreenAppImg,
-  SessionCreateScreenImg,
-  SessionScreenAppImg,
-} from '@/assets';
-import {
   Badge,
   Carousel,
   CarouselContent,
@@ -20,6 +12,15 @@ import {
 } from '@chillUi';
 import Autoplay from 'embla-carousel-autoplay';
 import Image from 'next/image';
+
+import {
+  HomeScreenAppImg,
+  MatchScreenAppImg,
+  MessageScreenAppImg,
+  ProfileScreenAppImg,
+  SessionCreateScreenImg,
+  SessionScreenAppImg,
+} from '@/assets';
 const carouselItems = [
   {
     image: HomeScreenAppImg,

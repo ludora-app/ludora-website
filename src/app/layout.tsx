@@ -1,11 +1,12 @@
 import type { Metadata } from 'next';
 
+import { Poppins } from 'next/font/google';
+
 import { Footer, Header } from '@/features';
-import MainProvider from '@/providers/main.provider';
 
 import './globals.css';
 
-import { Poppins } from 'next/font/google';
+import MainProvider from '@/providers/main.provider';
 
 const poppins = Poppins({
   display: 'swap',

@@ -1,5 +1,6 @@
-import { HomeScreenAppImg, MatchScreenAppImg } from '@/assets';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, Image } from '@chillUi';
+
+import { HomeScreenAppImg, MatchScreenAppImg } from '@/assets';
 
 export default function HomeSection2() {
   return (

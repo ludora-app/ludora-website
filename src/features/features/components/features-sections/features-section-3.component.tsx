@@ -1,6 +1,7 @@
-import { HomeScreenAppImg, SessionCreateScreenImg, SessionScreenAppImg } from '@/assets';
 import { Heading, Image, Tabs, TabsContent, TabsList, TabsTrigger, Typography } from '@chillUi';
 import { CheckCircle } from 'lucide-react';
+
+import { HomeScreenAppImg, SessionCreateScreenImg, SessionScreenAppImg } from '@/assets';
 
 export default function FeaturesSection3() {
   return (

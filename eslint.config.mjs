@@ -1,4 +1,6 @@
 import { FlatCompat } from '@eslint/eslintrc';
+import nextCoreWebVitals from 'eslint-config-next/core-web-vitals';
+import nextTypescript from 'eslint-config-next/typescript';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -11,13 +13,18 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
+  ...nextCoreWebVitals,
+  ...nextTypescript,
   ...compat.config({
-    extends: ['next/core-web-vitals', 'next/typescript', 'prettier'],
+    extends: ['prettier'],
+
     ignorePatterns: [
       'src/components/chill-ui/email-template/EmailTemplate.tsx',
       'src/components/chill-ui/email-template/Team-emailTemplate.tsx',
     ],
+
     plugins: ['perfectionist'],
+
     rules: {
       // Perfectionist
       'perfectionist/sort-imports': 'error',
@@ -27,6 +34,9 @@ const eslintConfig = [
       'semi': 'error',
     },
   }),
+  {
+    ignores: ['node_modules/**', '.next/**', 'out/**', 'build/**', 'next-env.d.ts'],
+  },
 ];
 
 export default eslintConfig;

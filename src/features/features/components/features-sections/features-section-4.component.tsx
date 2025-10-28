@@ -1,5 +1,6 @@
-import { CarteInteractiveAppImg, MatchScreenAppImg, ProfileScreenAppImg } from '@/assets';
 import { Badge, Heading, Image, Typography } from '@chillUi';
+
+import { CarteInteractiveAppImg, MatchScreenAppImg, ProfileScreenAppImg } from '@/assets';
 
 const featuresSection4 = [
   {

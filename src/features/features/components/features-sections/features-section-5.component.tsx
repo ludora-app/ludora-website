@@ -1,5 +1,6 @@
-import { ModifyProfilScreenImg, NoteScreenAppImg, SessionCreateScreenImg } from '@/assets';
 import { Badge, Heading, Image, Typography } from '@chillUi';
+
+import { ModifyProfilScreenImg, NoteScreenAppImg, SessionCreateScreenImg } from '@/assets';
 
 export default function FeaturesSection4() {
   return (

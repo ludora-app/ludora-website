@@ -1,5 +1,6 @@
-import DownloadAppBtn from '@/components/ui/download-app-btn.component';
 import { Heading, Typography } from '@chillUi';
+
+import DownloadAppBtn from '@/components/ui/download-app-btn.component';
 export default function DownloadAppSection1() {
   return (
     <section className="bg-gradient relative py-16 md:py-24">

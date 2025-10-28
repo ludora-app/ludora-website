@@ -1,7 +1,8 @@
-import { ROUTES } from '@/constants/ROUTES';
 import { Button } from '@chillUi';
 import { ChevronRight } from 'lucide-react';
 import Link from 'next/link';
+
+import { ROUTES } from '@/constants/ROUTES';
 
 export default function LegalNoticeScreen() {
   const lastUpdated = '15 avril 2024';
