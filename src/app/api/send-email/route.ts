@@ -1,6 +1,7 @@
-import { EmailTemplate, TeamEmailTemplate } from '@/components/chill-ui';
 import * as React from 'react';
 import { Resend } from 'resend';
+
+import { EmailTemplate, TeamEmailTemplate } from '@/components/chill-ui';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 

@@ -1,10 +1,11 @@
 'use client';
-import { COLORS } from '@/constants/COLORS';
 import { cn, Icon } from '@chillUi';
 import { logo } from '@public/index';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+
+import { COLORS } from '@/constants/COLORS';
 
 import { menuItems } from '../utils/menu-items';
 import { socialItems } from '../utils/social-items';

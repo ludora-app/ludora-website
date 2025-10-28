@@ -1,8 +1,9 @@
+import { Heading, Icon, Logo, Typography } from '@chillUi';
+import Link from 'next/link';
+
 import { COLORS } from '@/constants/COLORS';
 import { ROUTES } from '@/constants/ROUTES';
 import { socialItems } from '@/features/header/utils/social-items';
-import { Heading, Icon, Logo, Typography } from '@chillUi';
-import Link from 'next/link';
 
 const links = [
   {

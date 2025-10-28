@@ -2,8 +2,6 @@
 
 import type React from 'react';
 
-import { db } from '@/configs/firebase';
-import { ROUTES } from '@/constants/ROUTES';
 import {
   Button,
   Checkbox,
@@ -29,6 +27,9 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
 
+import { db } from '@/configs/firebase';
+import { ROUTES } from '@/constants/ROUTES';
+
 interface ComingSoonModalProps {
   children: React.ReactNode;
   isOpen?: boolean;
@@ -36,9 +37,9 @@ interface ComingSoonModalProps {
 
 const formSchema = z.object({
   acceptedPrivacyPolicy: z.literal(true, {
-    errorMap: () => ({ message: 'Vous devez accepter la politique de confidentialité.' }),
+    error: () => 'Vous devez accepter la politique de confidentialité.',
   }),
-  email: z.string().email(),
+  email: z.email(),
 });
 
 export function ComingSoonModal({ children, isOpen }: ComingSoonModalProps) {

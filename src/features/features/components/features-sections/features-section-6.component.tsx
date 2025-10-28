@@ -1,9 +1,10 @@
-import DownloadAppBtnV2 from '@/components/ui/download-app-btn.V2.component';
 import { Heading, Typography } from '@chillUi';
+
+import DownloadAppBtnV2 from '@/components/ui/download-app-btn.V2.component';
 
 export default function FeaturesSection6() {
   return (
-    <section className="bg-gradient-to-br from-orange-500 to-rose-500 py-16 text-white">
+    <section className="bg-linear-to-br from-orange-500 to-rose-500 py-16 text-white">
       <div className="container mx-auto px-4 text-center">
         <Heading as="h2" variant="title-2" className="mb-6">
           Prêt à transformer votre expérience sportive ?

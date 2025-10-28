@@ -1,7 +1,5 @@
 'use client';
 
-import { db } from '@/configs/firebase';
-import { ROUTES } from '@/constants/ROUTES';
 import {
   Badge,
   Button,
@@ -24,11 +22,14 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
 
+import { db } from '@/configs/firebase';
+import { ROUTES } from '@/constants/ROUTES';
+
 const formSchema = z.object({
   acceptedPrivacyPolicy: z.literal(true, {
-    errorMap: () => ({ message: 'Vous devez accepter la politique de confidentialité.' }),
+    error: () => 'Vous devez accepter la politique de confidentialité.',
   }),
-  email: z.string().email(),
+  email: z.email(),
   name: z.string().min(1),
 });
 

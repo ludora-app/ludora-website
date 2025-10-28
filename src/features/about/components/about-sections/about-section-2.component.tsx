@@ -1,6 +1,7 @@
-import { ConnectSportImg } from '@/assets';
 import { Badge, Heading, Typography } from '@chillUi';
 import Image from 'next/image';
+
+import { ConnectSportImg } from '@/assets';
 
 export default function AboutSection2() {
   return (

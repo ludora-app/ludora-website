@@ -1,5 +1,6 @@
-import { AmirImg, GanaImg, KenzaImg, MarionImg, MaximeImg } from '@/assets';
 import { Badge, Card, CardContent, CardDescription, CardHeader, CardTitle, Heading, Image, Typography } from '@chillUi';
+
+import { AmirImg, GanaImg, KenzaImg, MarionImg, MaximeImg } from '@/assets';
 
 const teamMembers = [
   {

@@ -1,8 +1,9 @@
 'use client';
 
-import { ICONS, TIcons } from '@/constants/ICONS';
 import { cn } from '@chillUi';
 import { useMemo, useState } from 'react';
+
+import { ICONS, TIcons } from '@/constants/ICONS';
 
 type IconProps = {
   name: TIcons;

@@ -1,6 +1,6 @@
-var fs = require('fs');
-const path = require('path');
-const jsdom = require('jsdom');
+import fs from 'fs';
+import jsdom from 'jsdom';
+import path from 'path';
 const rootPath = process.cwd();
 fs.readdir(path.resolve(rootPath, 'tools/svg-2-obj/svg'), function (err, files) {
   const icons = {};

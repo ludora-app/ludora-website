@@ -1,8 +1,5 @@
 'use client';
 
-import { useSendEmail } from '@/api/hooks/send-email.hook';
-import { COLORS } from '@/constants/COLORS';
-import { TIcons } from '@/constants/ICONS';
 import {
   Badge,
   Button,
@@ -23,6 +20,10 @@ import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
+
+import { useSendEmail } from '@/api/hooks/send-email.hook';
+import { COLORS } from '@/constants/COLORS';
+import { TIcons } from '@/constants/ICONS';
 
 const contactInfo = [
   {
@@ -48,7 +49,7 @@ const contactInfo = [
 ];
 
 const formSchema = z.object({
-  email: z.string().email("L'email est invalide"),
+  email: z.email("L'email est invalide"),
   message: z.string().min(1, 'Le message est requis').max(300),
   name: z.string().min(1, 'Le nom est requis').max(30),
   subject: z.string().min(1, 'Le sujet est requis').max(30),
@@ -70,7 +71,7 @@ const socialLinks = [
 ];
 
 export default function ContactSection2() {
-  const { isLoading: isSendingEmail, mutateAsync: sendEmail } = useSendEmail();
+  const { isPending: isSendingEmail, mutateAsync: sendEmail } = useSendEmail();
   const form = useForm<z.infer<typeof formSchema>>({
     defaultValues: {
       email: '',
