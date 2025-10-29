@@ -2,10 +2,8 @@ pre-commit:
   parallel: true
   commands:
     format:
-      run: pnpm format --log-level warn && git add -u
-      glob: '**/*'
+      run: pnpm format && git add -u
     lint:
-      run: pnpm lint:fix .
-      glob: '**/*.{ts,tsx}'
+      run: pnpm lint:fix
     typecheck:
       run: pnpm ts:check --noEmit
