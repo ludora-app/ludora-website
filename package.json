@@ -11,7 +11,8 @@
     "lint:fix": "eslint --fix .",
     "format": "prettier --write .",
     "ts:check": "tsc --noEmit",
-    "prepare": "husky"
+    "prepare": "husky",
+    "load:translations": "cross-env DOPPLER_TOKEN=$(grep DOPPLER_TOKEN .env.local | cut -d '=' -f2) doppler run -- node tools/tolgee-translation/index.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
@@ -23,6 +24,8 @@
     "@radix-ui/react-tabs": "^1.1.13",
     "@tanstack/react-query": "^5.90.5",
     "@tanstack/react-query-devtools": "^5.90.2",
+    "@tolgee/react": "^6.2.7",
+    "@tolgee/web": "^6.2.7",
     "@vis.gl/react-google-maps": "^1.6.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
