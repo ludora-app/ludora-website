@@ -43,7 +43,7 @@ jobs:
       - run: pnpm load:translations
 
       - name: Commit translations
-        if: contains('refs/heads/main', github.ref)
+        if: contains('refs/heads/main refs/heads/staging refs/heads/develop', github.ref)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
