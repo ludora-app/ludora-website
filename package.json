@@ -4,14 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "cross-env DOPPLER_TOKEN=$(grep DOPPLER_TOKEN .env.local | cut -d '=' -f2) doppler run -- next dev --turbopack --port 4050",
-    "build": "next build",
+    "build": "cross-env DOPPLER_TOKEN=$(grep DOPPLER_TOKEN .env.local | cut -d '=' -f2) doppler run -- next build",
     "start": "next start",
     "generate:icons": "node tools/svg-2-obj/index.js",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "format": "prettier --write .",
     "ts:check": "tsc --noEmit",
-    "prepare": "husky",
     "load:translations": "cross-env DOPPLER_TOKEN=$(grep DOPPLER_TOKEN .env.local | cut -d '=' -f2) doppler run -- node tools/tolgee-translation/index.mjs"
   },
   "dependencies": {
@@ -60,8 +59,8 @@
     "eslint-plugin-perfectionist": "^4.15.1",
     "eslint-plugin-prettier": "^5.5.4",
     "eslint-plugin-tailwindcss": "^3.18.2",
-    "husky": "^9.1.7",
     "jsdom": "^27.0.1",
+    "lefthook": "^2.0.2",
     "prettier": "^3.6.2",
     "prettier-plugin-tailwindcss": "^0.7.1",
     "tailwindcss": "^4.1.16",
