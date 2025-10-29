@@ -11,7 +11,6 @@
     "lint:fix": "eslint --fix .",
     "format": "prettier --write .",
     "ts:check": "tsc --noEmit",
-    "prepare": "husky",
     "load:translations": "cross-env DOPPLER_TOKEN=$(grep DOPPLER_TOKEN .env.local | cut -d '=' -f2) doppler run -- node tools/tolgee-translation/index.mjs"
   },
   "dependencies": {
