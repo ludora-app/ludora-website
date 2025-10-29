@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "cross-env DOPPLER_TOKEN=$(grep DOPPLER_TOKEN .env.local | cut -d '=' -f2) doppler run -- next dev --turbopack --port 4050",
-    "build": "next build",
+    "build": "cross-env DOPPLER_TOKEN=$(grep DOPPLER_TOKEN .env.local | cut -d '=' -f2) doppler run -- next build",
     "start": "next start",
     "generate:icons": "node tools/svg-2-obj/index.js",
     "lint": "eslint .",

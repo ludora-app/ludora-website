@@ -11,9 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 8
+      - name: Install Doppler CLI
+        run: curl -Ls https://cli.doppler.com/install.sh | sh
       - run: pnpm install
 
       - name: Typecheck
@@ -30,7 +29,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
+      - name: Install Doppler CLI
+        run: curl -Ls https://cli.doppler.com/install.sh | sh
       - run: pnpm install
       - run: pnpm build
 
