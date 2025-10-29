@@ -49,6 +49,6 @@ jobs:
         run: |
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --global user.name "GitHub Actions"
-          git add public/locales/
+          git add locales/
           git commit -m "chore(i18n): Auto-update translations [skip ci]" || echo "Aucun changement"
           git push origin HEAD:${GITHUB_REF#refs/heads/}
