@@ -48,6 +48,9 @@ jobs:
         run: doppler setup --token ${{ secrets.DOPPLER_TOKEN }}
       - run: pnpm install
       - run: pnpm build
+        env:
+          NEXT_PUBLIC_APP_ENV: production
+          NODE_ENV: production
 
   translations:
     needs: build
