@@ -5,7 +5,7 @@ pre-commit:
       run: pnpm format --log-level warn && git add -u
       glob: 'src/**/*.{ts,tsx,js,json,md,css}'
     lint:
-      run: pnpm lint:fix {staged_files}
+      run: pnpm lint:fix .
       glob: 'src/**/*.{ts,tsx}'
     typecheck:
       run: pnpm ts:check --noEmit
