@@ -1,0 +1,11 @@
+pre-commit:
+  parallel: true
+  commands:
+    format:
+      run: pnpm format && git add -u
+      glob: '*.{ts,tsx,js,json,md,css}'
+    lint:
+      run: pnpm lint:fix --files {staged_files} && git add -u
+      glob: '*.{ts,tsx}'
+    typecheck:
+      run: pnpm ts:check --noEmit
