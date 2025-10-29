@@ -3,9 +3,9 @@ pre-commit:
   commands:
     format:
       run: pnpm format && git add -u
-      glob: './src/**/*.{ts,tsx,js,json,md,css}'
+      glob: 'src/**/*.{ts,tsx,js,json,md,css}'
     lint:
-      run: pnpm lint:fix --files {staged_files} && git add -u
-      glob: './src/**/*.{ts,tsx}'
+      run: pnpm lint:fix {staged_files}
+      glob: 'src/**/*.{ts,tsx}'
     typecheck:
       run: pnpm ts:check --noEmit

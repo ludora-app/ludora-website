@@ -10,29 +10,29 @@ jobs:
   checks:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: pnpm/action-setup@v2
-      with:
-        version: 8
-    - run: pnpm install
-      
-    - name: Typecheck
-      run: pnpm ts:check --noEmit
-      
-    - name: Lint
-      run: pnpm lint
-      
-    - name: Format
-      run: pnpm format:check
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - run: pnpm install
+
+      - name: Typecheck
+        run: pnpm ts:check --noEmit
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Format
+        run: pnpm format:check
 
   build:
     needs: checks
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: pnpm/action-setup@v2
-    - run: pnpm install
-    - run: pnpm build
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+      - run: pnpm install
+      - run: pnpm build
 
   translations:
     needs: build
@@ -40,18 +40,18 @@ jobs:
     permissions:
       contents: write
     steps:
-    - uses: actions/checkout@v3
-    - uses: pnpm/action-setup@v2
-    - run: pnpm install
-    - run: pnpm load:translations
-    
-    - name: Commit translations
-      if: contains('refs/heads/main', github.ref)
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-        git config --global user.name "GitHub Actions"
-        git add public/locales/
-        git commit -m "chore(i18n): Auto-update translations [skip ci]" || echo "Aucun changement"
-        git push origin HEAD:${GITHUB_REF#refs/heads/}
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+      - run: pnpm install
+      - run: pnpm load:translations
+
+      - name: Commit translations
+        if: contains('refs/heads/main', github.ref)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "GitHub Actions"
+          git add public/locales/
+          git commit -m "chore(i18n): Auto-update translations [skip ci]" || echo "Aucun changement"
+          git push origin HEAD:${GITHUB_REF#refs/heads/}
