@@ -7,7 +7,6 @@ import { getTranslate } from '@/tolgee/server';
 
 export default async function HomeSection1() {
   const t = await getTranslate();
-
   return (
     <section className="bg-gradient py-16 md:py-24">
       <div className="container mx-auto grid items-center gap-12 px-4 md:grid-cols-2">
