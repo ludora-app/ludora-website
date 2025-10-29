@@ -14,13 +14,6 @@ jobs:
       - uses: pnpm/action-setup@v2
         with:
           version: 8
-      - name: Install Doppler CLI
-        run: |
-          mkdir -p ~/.local/bin
-          curl -Ls https://cli.doppler.com/install.sh | sh -s -- --install-path ~/.local/bin
-          echo "$HOME/.local/bin" >> $GITHUB_PATH
-      - name: Configure Doppler
-        run: doppler setup --token ${{ secrets.DOPPLER_TOKEN }}
       - run: pnpm install
       - name: Typecheck
         run: pnpm ts:check --noEmit
@@ -31,30 +24,7 @@ jobs:
       - name: Format
         run: pnpm format
 
-  build:
-    needs: checks
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 8
-      - name: Install Doppler CLI
-        run: |
-          mkdir -p ~/.local/bin
-          curl -Ls https://cli.doppler.com/install.sh | sh -s -- --install-path ~/.local/bin
-          echo "$HOME/.local/bin" >> $GITHUB_PATH
-      - name: Configure Doppler
-        run: doppler setup --token ${{ secrets.DOPPLER_TOKEN }}
-      - run: pnpm install
-      - run: pnpm build
-        env:
-          NEXT_PUBLIC_APP_ENV: production
-          NODE_ENV: production
-          NEXT_TELEMETRY_DISABLED: 1
-
   translations:
-    needs: build
     runs-on: ubuntu-latest
     permissions:
       contents: write
