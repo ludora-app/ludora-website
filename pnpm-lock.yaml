@@ -38,6 +38,12 @@ importers:
       '@tanstack/react-query-devtools':
         specifier: ^5.90.2
         version: 5.90.2(@tanstack/react-query@5.90.5(react@19.2.0))(react@19.2.0)
+      '@tolgee/react':
+        specifier: ^6.2.7
+        version: 6.2.7(react@19.2.0)
+      '@tolgee/web':
+        specifier: ^6.2.7
+        version: 6.2.7
       '@vis.gl/react-google-maps':
         specifier: ^1.6.1
         version: 1.6.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
@@ -1428,6 +1434,20 @@ packages:
       { integrity: sha512-pN+8UWpxZkEJ/Rnnj2v2Sxpx1WFlaa9L6a4UO89p6tTQbeo+m0MS8oYDjbggrR8QcTyjKoYWKS3xJQGr3ExT8Q== }
     peerDependencies:
       react: ^18 || ^19
+
+  '@tolgee/core@6.2.7':
+    resolution:
+      { integrity: sha512-0Au+m9R23/gmeaLJY0X6lKcR2LSy9dW7hEFrpFvPdJoGvxc8XCNZpKlgnm1N534CwmtIBJ4rzOK6vOrSKbl45w== }
+
+  '@tolgee/react@6.2.7':
+    resolution:
+      { integrity: sha512-acZ2bThetoFp/VIWxStrza4RtXX+M7Bfy/f3uMBu2h+fXj3u+BxTR/3YAX67umbhF5RNoOTBPt74EOD+bDtcpQ== }
+    peerDependencies:
+      react: ^16.14.0 || ^17.0.1 || ^18.1.0 || ^19
+
+  '@tolgee/web@6.2.7':
+    resolution:
+      { integrity: sha512-MAgHGkL5RYREwAjUansJt98fCuQFV4uDfP11NLOCHan2Hx9rpuszv88eXX7enq9CE8eS/Ed2pELiSwb5rlYiKg== }
 
   '@tybys/wasm-util@0.10.1':
     resolution:
@@ -4975,6 +4995,17 @@ snapshots:
     dependencies:
       '@tanstack/query-core': 5.90.5
       react: 19.2.0
+
+  '@tolgee/core@6.2.7': {}
+
+  '@tolgee/react@6.2.7(react@19.2.0)':
+    dependencies:
+      '@tolgee/web': 6.2.7
+      react: 19.2.0
+
+  '@tolgee/web@6.2.7':
+    dependencies:
+      '@tolgee/core': 6.2.7
 
   '@tybys/wasm-util@0.10.1':
     dependencies:
