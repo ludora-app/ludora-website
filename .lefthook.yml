@@ -2,7 +2,7 @@ pre-commit:
   parallel: true
   commands:
     format:
-      run: pnpm format && git add -u
+      run: pnpm format --log-level warn && git add -u
     lint:
       run: pnpm lint:fix
     typecheck:
