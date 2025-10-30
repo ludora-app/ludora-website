@@ -30,7 +30,7 @@ jobs:
         run: pnpm lint
 
       - name: Format Check
-        run: pnpm format:check # ou pnpm format si vous voulez auto-fix
+        run: pnpm format
 
   translations:
     if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/staging' || github.ref == 'refs/heads/develop')
