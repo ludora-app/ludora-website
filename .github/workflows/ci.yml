@@ -51,4 +51,5 @@ jobs:
           git config --global user.name "GitHub Actions"
           git add locales/
           git commit -m "chore(i18n): Auto-update translations [skip ci]" || echo "Aucun changement"
-          git push
+          git pull --rebase
+          git push --force-with-lease
