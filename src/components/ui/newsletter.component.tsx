@@ -12,29 +12,30 @@ import {
   FormField,
   FormInput,
   Heading,
+  Label,
   Typography,
 } from '@chillUi';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
+import { useTranslate } from '@tolgee/react';
 import Link from 'next/link';
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { isArray } from 'radash';
+import { useForm, useWatch } from 'react-hook-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
 
-import { db } from '@/configs/firebase';
+import { useAddCrmPerson } from '@/api/hooks/twenty-crm.hook';
 import { ROUTES } from '@/constants/ROUTES';
 
 const formSchema = z.object({
   acceptedPrivacyPolicy: z.literal(true, {
     error: () => 'Vous devez accepter la politique de confidentialité.',
   }),
-  email: z.email(),
-  name: z.string().min(1),
+  email: z.email("L'email est invalide"),
+  name: z.string().min(1, 'Le nom est requis'),
 });
 
 export default function NewsletterComponent() {
-  const [isLoading, setIsLoading] = useState(false);
+  const { t } = useTranslate();
   const form = useForm<z.infer<typeof formSchema>>({
     defaultValues: {
       acceptedPrivacyPolicy: true,
@@ -45,24 +46,32 @@ export default function NewsletterComponent() {
   });
   const { control, handleSubmit } = form;
 
-  const acceptedPrivacyPolicy = form.watch('acceptedPrivacyPolicy');
+  const acceptedPrivacyPolicy = useWatch({
+    control,
+    name: 'acceptedPrivacyPolicy',
+  });
+  const { isPending: isCreatePersonPensing, mutateAsync: addCrmPerson } = useAddCrmPerson();
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
-    setIsLoading(true);
     try {
-      await addDoc(collection(db, 'emails'), {
-        acceptedPrivacyPolicy: data.acceptedPrivacyPolicy,
-        createdAt: serverTimestamp(),
+      await addCrmPerson({
         email: data.email,
         name: data.name,
       });
-      toast.success('Vous êtes abonné à la newsletter');
+      toast.success(t('newsletter_success_message'));
       form.reset();
     } catch (error) {
-      console.error(error);
-      toast.error("Une erreur est survenue lors de l'inscription à la newsletter");
-    } finally {
-      setIsLoading(false);
+      if (
+        error &&
+        typeof error === 'object' &&
+        'messages' in error &&
+        isArray(error?.messages) &&
+        error?.messages?.[0] === `Duplicate Emails with value ${data.email}. Please set a unique one.`
+      ) {
+        toast.error(t('newsletter_error_email_already_exists'));
+        return;
+      }
+      toast.error(t('newsletter_common_error'));
     }
   };
 
@@ -118,12 +127,16 @@ export default function NewsletterComponent() {
                     <FormField
                       control={control}
                       name="name"
-                      render={({ field }) => <FormInput label="Nom" placeholder="Votre nom" {...field} />}
+                      render={({ field }) => (
+                        <FormInput showError isRequired label="Nom" placeholder="Votre nom" {...field} />
+                      )}
                     />
                     <FormField
                       control={control}
                       name="email"
-                      render={({ field }) => <FormInput label="Email" placeholder="Votre email" {...field} />}
+                      render={({ field }) => (
+                        <FormInput isRequired showError label="Email" placeholder="Votre email" {...field} />
+                      )}
                     />
                     <FormField
                       control={control}
@@ -131,17 +144,20 @@ export default function NewsletterComponent() {
                       render={({ field }) => (
                         <div className="flex items-start gap-2">
                           <Checkbox
+                            id="acceptedPrivacyPolicy"
                             className="mt-0.5"
                             checked={field.value}
                             onCheckedChange={field.onChange}
                             aria-label="Accepter la politique de confidentialité"
                           />
-                          <Typography variant="body-2" color="gray">
-                            En vous inscrivant, vous acceptez notre{' '}
-                            <Link href={ROUTES.PRIVACY_POLICY} className="text-orange-500 hover:underline">
-                              politique de confidentialité
-                            </Link>
-                          </Typography>
+                          <Label htmlFor="acceptedPrivacyPolicy">
+                            <Typography variant="body-2" color="gray">
+                              En vous inscrivant, vous acceptez notre{' '}
+                              <Link href={ROUTES.PRIVACY_POLICY} className="text-orange-500 hover:underline">
+                                politique de confidentialité
+                              </Link>
+                            </Typography>
+                          </Label>
                         </div>
                       )}
                     />
@@ -150,8 +166,8 @@ export default function NewsletterComponent() {
                         type="submit"
                         variant="gradient"
                         className="h-10 w-full"
-                        disabled={isLoading || !acceptedPrivacyPolicy}
-                        isLoading={isLoading}
+                        disabled={isCreatePersonPensing || !acceptedPrivacyPolicy}
+                        isLoading={isCreatePersonPensing}
                       >
                         S&apos;abonner à la newsletter
                       </Button>
