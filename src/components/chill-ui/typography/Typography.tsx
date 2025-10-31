@@ -23,8 +23,12 @@ export const typographyStyles = tv({
   },
 });
 
-function Typography({ children, className, color, content, variant }: TypographyProps) {
-  return <p className={cn(typographyStyles({ color, variant }), className)}>{content ? content : children}</p>;
+function Typography({ children, className, color, content, onClick, variant }: TypographyProps) {
+  return (
+    <p className={cn(typographyStyles({ color, variant }), className)} onClick={onClick}>
+      {content ? content : children}
+    </p>
+  );
 }
 
 export { Typography };

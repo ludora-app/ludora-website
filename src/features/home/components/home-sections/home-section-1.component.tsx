@@ -3,10 +3,8 @@ import Image from 'next/image';
 
 import { homeSection1Img } from '@/assets';
 import DownloadAppBtn from '@/components/ui/download-app-btn.component';
-import { getTranslate } from '@/tolgee/server';
 
 export default async function HomeSection1() {
-  const t = await getTranslate();
   return (
     <section className="bg-gradient py-16 md:py-24">
       <div className="container mx-auto grid items-center gap-12 px-4 md:grid-cols-2">
@@ -19,7 +17,6 @@ export default async function HomeSection1() {
           <Heading variant="title-xl" as="h1" className="leading-16">
             Rejoins le jeu. <br />
             <span className="text-gradient">Trouve ton équipe.</span>
-            {t('title_bloc_1')}
           </Heading>
 
           <Typography variant="body-1" className="text-xl" color="gray">

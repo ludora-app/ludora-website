@@ -1,3 +1,4 @@
+import { FormatIcu } from '@tolgee/format-icu';
 import { BackendFetch, DevTools, FormatSimple, Tolgee } from '@tolgee/web';
 
 const apiKey = process.env.NEXT_PUBLIC_TOLGEE_API_KEY || '';
@@ -10,7 +11,7 @@ export const DEFAULT_LANGUAGE = 'fr-FR';
 export function TolgeeBase() {
   const tolgee = Tolgee()
     .use(FormatSimple())
-    // replace with .use(FormatIcu()) for rendering plurals, foramatted numbers, etc.
+    .use(FormatIcu())
     .updateDefaults({
       availableLanguages: ALL_LANGUAGES,
       defaultLanguage: DEFAULT_LANGUAGE,

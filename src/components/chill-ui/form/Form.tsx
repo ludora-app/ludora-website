@@ -138,6 +138,7 @@ function FormMessage({ className, ...props }: React.ComponentProps<'p'>) {
 function FormInput({
   className,
   containerClassName,
+  isRequired,
   label,
   placeholder,
   resizable = false,
@@ -147,7 +148,12 @@ function FormInput({
 }: FormInputProps) {
   return (
     <FormItem className={cn(containerClassName, 'group')}>
-      {label && <FormLabel className={cn('group-focus-within:text-primary')}>{label}</FormLabel>}
+      {label && (
+        <FormLabel className={'group-focus-within:text-primary'}>
+          {label}
+          {isRequired && <span className="text-destructive -ml-2">*</span>}
+        </FormLabel>
+      )}
 
       <FormControl>
         {textArea ? (
