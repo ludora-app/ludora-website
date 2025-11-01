@@ -24,6 +24,7 @@ export type TypographyProps = {
   className?: string;
   content?: string;
   color?: VariantProps<typeof typographyStyles>['color'];
+  onClick?: () => void;
 };
 
 export type BadgeProps = React.ComponentProps<'span'> & VariantProps<typeof badgeVariants> & { asChild?: boolean };
@@ -40,6 +41,7 @@ export type FormInputProps = {
   showError?: boolean;
   textArea?: boolean;
   resizable?: boolean;
+  isRequired?: boolean;
 } & (React.ComponentProps<typeof Input> | React.ComponentProps<typeof Textarea>);
 
 export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {

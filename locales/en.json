@@ -1,0 +1,21 @@
+{
+  "contact_follow_title": "Follow <span>us</span>",
+  "contact_form_input_email_label": "Email",
+  "contact_form_input_email_placeholder": "your@email.com",
+  "contact_form_input_message_label": "Message",
+  "contact_form_input_message_placeholder": "Your message...",
+  "contact_form_input_name_placeholder": "Your name",
+  "contact_form_input_subject_label": "Subject",
+  "contact_form_input_subject_placeholder": "Subject of your message",
+  "contact_form_submit_button": "Send the message",
+  "contact_form_title": "Send us a <span>message</span>",
+  "contact_from_input_name_label": "Full name",
+  "contact_info_title": "<span>Contact</span> informations",
+  "contact_sended_error_message": "An error occurred while sending the message. Please try again later.",
+  "contact_sended_success_message": "Thank you for your message. We will get back to you as soon as possible.",
+  "email": "Email",
+  "ludora_email": "contact@ludora.fr",
+  "newsletter_common_error": "An error occurred while subscribing to the newsletter",
+  "newsletter_error_email_already_exists": "You are already subscribed to the newsletter.",
+  "newsletter_success_message": "Welcome to the adventure! You are now subscribed to our newsletter."
+}

@@ -1,7 +1,8 @@
-import { LandingPageAndroidImg, LandingPageIosImg } from '@/assets';
-import DownloadAppBtn from '@/components/ui/download-app-btn.component';
 import { Badge, Heading, Image, Typography } from '@chillUi';
 import { Download, Globe, Shield } from 'lucide-react';
+
+import { LandingPageAndroidImg, LandingPageIosImg } from '@/assets';
+import DownloadAppBtn from '@/components/ui/download-app-btn.component';
 
 const compatibility = [
   {

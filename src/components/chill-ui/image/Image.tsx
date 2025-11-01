@@ -1,8 +1,9 @@
 'use client';
 
-import useIsMobile from '@/hooks/useIsMobile';
 import NextImage from 'next/image';
 import { useMemo } from 'react';
+
+import useIsMobile from '@/hooks/useIsMobile';
 
 import { ChillImageProps } from '../utils/types';
 
