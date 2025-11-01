@@ -86,6 +86,7 @@ jobs:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_LUDORA_DEV_PROJECT_ID }}
+          vercel-args: '--prod'
 
   deploy-staging:
     needs: [checks, translations]
@@ -101,6 +102,7 @@ jobs:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_LUDORA_STAGING_PROJECT_ID }}
+          vercel-args: '--prod'
 
   deploy-production:
     needs: [checks, translations]
