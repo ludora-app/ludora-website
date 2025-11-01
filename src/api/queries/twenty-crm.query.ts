@@ -30,7 +30,6 @@ export const createPerson = async (params: CreatePersonParams) => {
 };
 
 export const sendContactMessage = async (params: SendContactMessageParams) => {
-  console.log(params);
   try {
     const response = await ky
       .post(`${NEXT_TWENTY_CRM_URL}/contact`, {

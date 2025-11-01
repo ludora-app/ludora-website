@@ -3,7 +3,7 @@ import { BackendFetch, DevTools, FormatSimple, Tolgee } from '@tolgee/web';
 
 const apiKey = process.env.NEXT_PUBLIC_TOLGEE_API_KEY || '';
 const apiUrl = process.env.NEXT_PUBLIC_TOLGEE_API_URL || '';
-const isDev = process.env.NODE_ENV === 'development';
+const NEXT_PUBLIC_TOLGEE_DEVTOOL_ENABLED = process.env.NEXT_PUBLIC_TOLGEE_DEVTOOL_ENABLED;
 export const ALL_LANGUAGES = ['en', 'fr-FR'];
 
 export const DEFAULT_LANGUAGE = 'fr-FR';
@@ -22,7 +22,7 @@ export function TolgeeBase() {
       },
     });
 
-  if (isDev) {
+  if (NEXT_PUBLIC_TOLGEE_DEVTOOL_ENABLED === 'true') {
     tolgee.use(DevTools()).use(BackendFetch()).updateDefaults({
       apiKey,
       apiUrl,
