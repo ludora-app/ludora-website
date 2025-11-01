@@ -7,10 +7,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 // Configuration
-const API_KEY = process.env.NEXT_PUBLIC_TOLGEE_API_KEY;
-const API_URL = process.env.NEXT_PUBLIC_TOLGEE_API_URL;
-if (!API_KEY) {
-  console.error('Error: NEXT_PUBLIC_TOLGEE_API_KEY is not set');
+const API_KEY = process.env.TOLGEE_API_KEY;
+const API_URL = process.env.TOLGEE_API_URL;
+if (!API_KEY || !API_URL) {
+  console.error('Error: TOLGEE_API_KEY or TOLGEE_API_URL is not set');
   process.exit(1);
 }
 
