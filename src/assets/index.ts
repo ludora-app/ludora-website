@@ -14,6 +14,7 @@ export { default as SessionCreateScreenImg } from './images/session-create-scree
 export { default as SessionScreenAppImg } from './images/session-screen-app.png';
 export { default as AmirImg } from './team/amir-img.png';
 export { default as GanaImg } from './team/gana-img.png';
+export { default as KaylineImg } from './team/kayline-img.jpeg';
 export { default as KenzaImg } from './team/kenza-img.png';
 export { default as MarionImg } from './team/marion-img.png';
 export { default as MaximeImg } from './team/maxime-img.png';

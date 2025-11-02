@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 const TWENTY_CRM_URL = process.env.TWENTY_CRM_URL;
 const TWENTY_CRM_API_KEY = process.env.TWENTY_API_KEY;
 
-type createPersonBody = {
+type createContactBody = {
   email: { additionalEmails: string[]; primaryEmail: string };
   name: string;
   message: string;
@@ -18,7 +18,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Email, message, name and subject are required' }, { status: 400 });
   }
 
-  const twentyCrmBody: createPersonBody = {
+  const twentyCrmBody: createContactBody = {
     email: { additionalEmails: [], primaryEmail: email },
     message,
     name,

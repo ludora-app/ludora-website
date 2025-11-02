@@ -1,72 +1,80 @@
 import { Badge, Card, CardContent, CardDescription, CardHeader, CardTitle, Heading, Image, Typography } from '@chillUi';
 
-import { AmirImg, GanaImg, KenzaImg, MarionImg, MaximeImg } from '@/assets';
+import { AmirImg, GanaImg, KaylineImg, KenzaImg, MarionImg, MaximeImg } from '@/assets';
+import { getTranslate, T } from '@/tolgee/server';
 
 const teamMembers = [
   {
-    bio: 'Passionné de basketball, Amir a eu l’idée de Ludora après avoir galéré à trouver des partenaires de jeu dans une nouvelle ville.',
+    bio: 'amir_bio',
     image: AmirImg,
-    name: 'Amir Meberbeche',
-    role: 'Fondateur & CEO',
+    name: 'amir_fullname',
+    role: 'amir_role',
   },
   {
-    bio: 'Développeur engagé, Gana a rejoint Amir dès le début de l’aventure pour transformer l’idée en prototype fonctionnel.',
+    bio: 'gana_bio',
     image: GanaImg,
-    name: 'Gana Fall',
-    role: 'CTO & Développeur Full-Stack',
+    name: 'gana_fullname',
+    role: 'gana_role',
   },
   {
-    bio: 'Spécialiste marketing, Marion a structuré la stratégie de lancement de Ludora et porté la vision communautaire du projet.',
+    bio: 'marion_bio',
     image: MarionImg,
-    name: 'Marion Dupont',
-    role: 'Responsable Marketing',
+    name: 'marion_fullname',
+    role: 'marion_role',
   },
   {
-    bio: 'Maxime, designer passionné, a co-construit les premières maquettes de Ludora pour offrir une expérience claire et intuitive.',
+    bio: 'maxime_bio',
     image: MaximeImg,
-    name: 'Maxime Dupont',
-    role: 'Designer UX/UI',
+    name: 'maxime_fullname',
+    role: 'maxime_role',
   },
   {
-    bio: 'Entrepreneuse engagée, Kenza a apporté son énergie et son expérience pour faire grandir Ludora et son impact social.',
+    bio: 'kenza_bio',
     image: KenzaImg,
-    name: 'Alexandre Petit',
-    role: 'Développeur Mobile',
+    name: 'kenza_fullname',
+    role: 'kenza_role',
+  },
+  {
+    bio: 'kaylin_bio',
+    image: KaylineImg,
+    name: 'kaylin_fullname',
+    role: 'kaylin_role',
   },
 ];
 
-export default function AboutSection5() {
+export default async function AboutSection5() {
+  const t = await getTranslate();
+
   return (
     <section className="bg-gradient px-4 py-12 md:py-20">
       <div className="container mx-auto">
         <div className="mx-auto mb-16 max-w-3xl text-center">
           <Badge variant="light" size="md" className="mb-4">
-            Notre équipe
+            {t('about_team_badge')}
           </Badge>
           <Heading variant="title-2" as="h2" className="mb-4">
-            Les <span className="text-gradient">visages</span> derrière Ludora
+            <T keyName="about_team_title" params={{ span: <span className="text-gradient" /> }} />
           </Heading>
           <Typography variant="body-1" color="gray">
-            Une équipe passionnée de sportifs et d&apos;experts en technologie qui travaillent ensemble pour
-            révolutionner la pratique du sport amateur.
+            {t('about_team_description')}
           </Typography>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="flex flex-wrap items-center justify-center gap-8">
           {teamMembers.map((member, index) => (
-            <Card key={index}>
+            <Card key={index} className="w-full lg:w-md">
               <CardHeader className="flex flex-col items-center justify-center gap-4">
                 <div className="bg-gradient size-40 overflow-hidden rounded-full">
                   <Image src={member.image} alt={member.name} />
                 </div>
                 <CardTitle color="dark" variant="title-5">
-                  {member.name}
+                  {t(member.name)}
                 </CardTitle>
-                <CardDescription>{member.role}</CardDescription>
+                <CardDescription>{t(member.role)}</CardDescription>
               </CardHeader>
               <CardContent>
                 <Typography variant="body-1" color="gray">
-                  {member.bio}
+                  {t(member.bio)}
                 </Typography>
               </CardContent>
             </Card>

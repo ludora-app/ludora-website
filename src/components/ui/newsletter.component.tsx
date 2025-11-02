@@ -16,7 +16,7 @@ import {
   Typography,
 } from '@chillUi';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useTranslate } from '@tolgee/react';
+import { TolgeeInstance, useTranslate } from '@tolgee/react';
 import Link from 'next/link';
 import { isArray } from 'radash';
 import { useForm, useWatch } from 'react-hook-form';
@@ -26,16 +26,21 @@ import { z } from 'zod';
 import { useAddCrmPerson } from '@/api/hooks/twenty-crm.hook';
 import { ROUTES } from '@/constants/ROUTES';
 
-const formSchema = z.object({
-  acceptedPrivacyPolicy: z.literal(true, {
-    error: () => 'Vous devez accepter la politique de confidentialité.',
-  }),
-  email: z.email("L'email est invalide"),
-  name: z.string().min(1, 'Le nom est requis'),
-});
+const formSchemaImpl = (t: TolgeeInstance['t']) =>
+  z.object({
+    acceptedPrivacyPolicy: z.literal(true, {
+      error: () => 'Vous devez accepter la politique de confidentialité.',
+    }),
+    email: z.email(t('newsletter_form_input_email_invalid')),
+    name: z
+      .string()
+      .min(1, t('newsletter_form_input_name_required'))
+      .max(80, t('newsletter_form_input_name_max_length', { limit: 80 })),
+  });
 
 export default function NewsletterComponent() {
   const { t } = useTranslate();
+  const formSchema = formSchemaImpl(t);
   const form = useForm<z.infer<typeof formSchema>>({
     defaultValues: {
       acceptedPrivacyPolicy: true,

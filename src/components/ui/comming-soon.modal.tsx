@@ -20,7 +20,7 @@ import {
   Typography,
 } from '@chillUi';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useTranslate } from '@tolgee/react';
+import { TolgeeInstance, useTranslate } from '@tolgee/react';
 import { Bell, CalendarClock } from 'lucide-react';
 import Link from 'next/link';
 import { isArray } from 'radash';
@@ -37,17 +37,19 @@ interface ComingSoonModalProps {
   isOpen?: boolean;
 }
 
-const formSchema = z.object({
-  acceptedPrivacyPolicy: z.literal(true, {
-    error: () => 'Vous devez accepter la politique de confidentialité.',
-  }),
-  email: z.email(),
-});
+const formSchemaImpl = (t: TolgeeInstance['t']) =>
+  z.object({
+    acceptedPrivacyPolicy: z.literal(true, {
+      error: () => 'Vous devez accepter la politique de confidentialité.',
+    }),
+    email: z.email(t('newsletter_form_input_email_invalid')),
+  });
 
 export function ComingSoonModal({ children, isOpen }: ComingSoonModalProps) {
   const [isDialogOpen, setIsDialogOpen] = useState(isOpen);
   const { isPending: isAddCrmPersonPending, mutateAsync: addCrmPerson } = useAddCrmPerson();
   const { t } = useTranslate();
+  const formSchema = formSchemaImpl(t);
 
   const form = useForm<z.infer<typeof formSchema>>({
     defaultValues: {
@@ -117,7 +119,6 @@ export function ComingSoonModal({ children, isOpen }: ComingSoonModalProps) {
               <span className="text-sm">Google Play</span>
             </div>
           </div>
-          -
           <div className="w-full">
             <Heading variant="title-5" as="h3" color="dark" className="mb-3 flex items-center gap-2">
               <Bell className="size-4" /> Soyez informé du lancement
@@ -130,7 +131,7 @@ export function ComingSoonModal({ children, isOpen }: ComingSoonModalProps) {
                     <FormField
                       control={control}
                       name="email"
-                      render={({ field }) => <FormInput type="email" placeholder="Votre email" required {...field} />}
+                      render={({ field }) => <FormInput type="email" required placeholder="Votre email" {...field} />}
                     />
                   </div>
                   <div className="flex-1">

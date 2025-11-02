@@ -15,7 +15,7 @@ import {
   Typography,
 } from '@chillUi';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { T, useTranslate } from '@tolgee/react';
+import { T, TolgeeInstance, useTranslate } from '@tolgee/react';
 import { Mail } from 'lucide-react';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -51,24 +51,30 @@ const contactInfo = [
   // },
 ];
 
-const formSchema = z.object({
-  email: z.email("L'email est invalide"),
-  message: z.string().min(1, 'Le message est requis').max(300),
-  name: z.string().min(1, 'Le nom est requis').max(50, 'maximum 50 caractères'),
-  subject: z.string().min(1, 'Le sujet est requis').max(50, 'maximum 50 caractères'),
-});
+const formSchemaImpl = (t: TolgeeInstance['t']) =>
+  z.object({
+    email: z.email(t('contact_form_input_email_invalid')),
+    message: z
+      .string()
+      .min(1, t('contact_form_input_message_required'))
+      .max(1000, t('contact_form_input_message_max_length', { limit: 1000 })),
+    name: z
+      .string()
+      .min(1, t('contact_form_input_name_required'))
+      .max(80, t('contact_form_input_name_max_length', { limit: 80 })),
+    subject: z
+      .string()
+      .min(1, t('contact_form_input_subject_required'))
+      .max(100, t('contact_form_input_subject_max_length', { limit: 100 })),
+  });
 
 const socialLinks = [
   {
-    href: 'https://www.facebook.com/ludora',
-    icon: 'facebook-solid',
-  },
-  {
-    href: 'https://www.instagram.com/ludora.app',
+    href: 'https://www.instagram.com/ludora.fr',
     icon: 'instagram-solid',
   },
   {
-    href: 'https://www.tiktok.com/@ludora.app',
+    href: 'https://www.tiktok.com/@ludora.fr',
     icon: 'tiktok-solid',
   },
 ];
@@ -78,6 +84,7 @@ export default function ContactSection2() {
   const [isMessageContactPending, setIsMessageContactPending] = useState(false);
   const { mutateAsync: sendEmail } = useSendEmail();
   const { mutateAsync: sendCrmContactMessage } = useSendCrmContactMessage();
+  const formSchema = formSchemaImpl(t);
   const form = useForm<z.infer<typeof formSchema>>({
     defaultValues: {
       email: '',
@@ -136,6 +143,7 @@ export default function ContactSection2() {
                         label={t('contact_from_input_name_label')}
                         placeholder={t('contact_form_input_name_placeholder')}
                         showError
+                        isRequired
                         {...field}
                       />
                     )}
@@ -148,6 +156,7 @@ export default function ContactSection2() {
                         label={t('contact_form_input_email_label')}
                         placeholder={t('contact_form_input_email_placeholder')}
                         showError
+                        isRequired
                         {...field}
                       />
                     )}
@@ -161,6 +170,7 @@ export default function ContactSection2() {
                       label={t('contact_form_input_subject_label')}
                       placeholder={t('contact_form_input_subject_placeholder')}
                       showError
+                      isRequired
                       {...field}
                     />
                   )}
@@ -177,6 +187,7 @@ export default function ContactSection2() {
                         containerClassName="h-full flex flex-col"
                         className="h-32 lg:h-full"
                         showError
+                        isRequired
                         {...field}
                       />
                     )}
