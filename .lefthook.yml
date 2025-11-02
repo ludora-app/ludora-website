@@ -7,3 +7,8 @@ pre-commit:
       run: pnpm lint:fix
     typecheck:
       run: pnpm ts:check --noEmit
+
+commit-msg:
+  commands:
+    lint-commit:
+      run: pnpm commitlint --edit "$1"
