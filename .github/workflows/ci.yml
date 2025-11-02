@@ -319,12 +319,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.ADMIN_PAT }}
 
-      - name: Get version
-        id: version
+      - name: Get package version
+        id: package-version
         run: |
           VERSION=$(node -p "require('./package.json').version")
           echo "VERSION=${VERSION}" >> $GITHUB_OUTPUT
-          echo "📦 Version: ${VERSION}"
+          echo "📦 Package version: ${VERSION}"
 
       - name: Create GitHub Release
         if: steps.changesets.outputs.hasChangesets == 'false'
@@ -332,8 +332,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.ADMIN_PAT }}
         with:
-          tag_name: v${{ steps.version.outputs.VERSION }}
-          release_name: v${{ steps.version.outputs.VERSION }}
+          tag_name: v${{ steps.package-version.outputs.VERSION }}
+          release_name: v${{ steps.package-version.outputs.VERSION }}
           body: |
             ## What's Changed
             See [CHANGELOG.md](https://github.com/${{ github.repository }}/blob/main/CHANGELOG.md) for details.
