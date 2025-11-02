@@ -15,7 +15,7 @@ const fontClassName = `${poppins.variable} antialiased`;
 
 export default function HtmlBodyProvider({ children, language }: HtmlBodyProviderProps) {
   return (
-    <html lang={language} className="scroll-smooth">
+    <html lang={language}>
       <body className={fontClassName}>{children}</body>
     </html>
   );

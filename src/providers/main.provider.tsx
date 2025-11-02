@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import { Toaster } from 'sonner';
 
 import { getLanguage } from '../tolgee/language';
-import HtmlBodyProvider from './HtmlBody.provider';
+import HtmlBodyProvider from './html-body.provider';
 import { MatomoProvider } from './matomo-provider';
 import QueryClientProvider from './query-client.provider';
 import TolgeeProvider from './tolgee.provider';

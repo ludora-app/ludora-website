@@ -5,6 +5,8 @@ import { COLORS } from '@/constants/COLORS';
 import { ROUTES } from '@/constants/ROUTES';
 import { socialItems } from '@/features/header/utils/social-items';
 
+import FooterVersionBadge from './footer-version-badge.component';
+
 const links = [
   {
     href: '/',
@@ -89,9 +91,12 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t pt-6 md:flex-row">
-          <Typography variant="body-2" color="gray">
-            © {new Date().getFullYear()} Ludora. Tous droits réservés.
-          </Typography>
+          <div>
+            <Typography variant="body-2" color="gray">
+              © {new Date().getFullYear()} Ludora. Tous droits réservés.
+            </Typography>
+            <FooterVersionBadge />
+          </div>
           <div className="flex items-center gap-4">
             {socialItems.map(item => (
               <Link key={item.id} href={item.href} aria-label={item.label}>
