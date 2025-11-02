@@ -9,19 +9,13 @@ type SocialLink = {
 
 export const socialItems: SocialLink[] = [
   {
-    href: 'https://www.facebook.com/ludora',
-    icon: 'facebook-solid',
-    id: 'facebook',
-    label: 'Facebook',
-  },
-  {
-    href: 'https://www.instagram.com/ludora.app',
+    href: 'https://www.instagram.com/ludora.fr',
     icon: 'instagram-solid',
     id: 'instagram',
     label: 'Instagram',
   },
   {
-    href: 'https://www.tiktok.com/@ludora.app',
+    href: 'https://www.tiktok.com/@ludora.fr',
     icon: 'tiktok-solid',
     id: 'tiktok',
     label: 'TikTok',
