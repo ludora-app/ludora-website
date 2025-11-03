@@ -43,7 +43,15 @@ const loadingIconVariants = tv({
   },
 });
 
-function Button({ asChild = false, className, isLoading = false, redirect, size, variant, ...props }: ButtonProps) {
+function Button({
+  asChild = false,
+  className,
+  isLoading = false,
+  redirect,
+  size = 'md',
+  variant = 'primary',
+  ...props
+}: ButtonProps) {
   const Comp = asChild ? Slot : 'button';
   return redirect ? (
     <Link href={redirect}>
