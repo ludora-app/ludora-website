@@ -67,15 +67,16 @@ export default function HomeSection3() {
 
         {/* desactivate scroll on web */}
         <Carousel
-          plugins={[Autoplay({ delay: 2000 })]}
+          plugins={[Autoplay({ delay: 3000 })]}
           opts={{
+            align: 'start',
             loop: true,
           }}
         >
-          <CarouselContent className="-ml-1">
+          <CarouselContent>
             {carouselItems.map((item, index) => (
-              <CarouselItem key={index} className="pl-1 md:basis-1/2 lg:basis-1/5">
-                <div key={index} className="flex-shrink-0 text-center">
+              <CarouselItem key={index} className="basis-1/1 sm:basis-1/2 lg:basis-1/4">
+                <div key={index} className="shrink-0 text-center">
                   <div className="relative mx-auto mb-4 w-max">
                     <Image src={item.image} alt={item.title} width={250} height={500} />
                   </div>
@@ -83,7 +84,7 @@ export default function HomeSection3() {
                     {item.title}
                   </Heading>
                   <div className="flex items-center justify-center">
-                    <div className="flex size-10 items-center justify-center rounded-full bg-gradient-to-r from-orange-500 to-rose-500">
+                    <div className="flex size-10 items-center justify-center rounded-full bg-linear-to-r from-orange-500 to-rose-500">
                       <Typography variant="body-1" color="light" className="font-bold">
                         {index + 1}
                       </Typography>
@@ -93,8 +94,8 @@ export default function HomeSection3() {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselNext className="hidden lg:flex" />
-          <CarouselPrevious className="hidden lg:flex" />
+          <CarouselNext />
+          <CarouselPrevious />
         </Carousel>
       </div>
     </section>
