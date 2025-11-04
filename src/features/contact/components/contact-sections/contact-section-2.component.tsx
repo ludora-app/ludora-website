@@ -23,7 +23,7 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
 
-import { useSendEmail } from '@/api/hooks/send-email.hook';
+import { useSendContactEmail } from '@/api/hooks/send-email.hook';
 import { useSendCrmContactMessage } from '@/api/hooks/twenty-crm.hook';
 import { COLORS } from '@/constants/COLORS';
 import { TIcons } from '@/constants/ICONS';
@@ -82,7 +82,7 @@ const socialLinks = [
 export default function ContactSection2() {
   const { t } = useTranslate();
   const [isMessageContactPending, setIsMessageContactPending] = useState(false);
-  const { mutateAsync: sendEmail } = useSendEmail();
+  const { mutateAsync: sendEmail } = useSendContactEmail();
   const { mutateAsync: sendCrmContactMessage } = useSendCrmContactMessage();
   const formSchema = formSchemaImpl(t);
   const form = useForm<z.infer<typeof formSchema>>({

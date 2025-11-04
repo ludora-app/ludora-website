@@ -140,6 +140,14 @@ export const TeamEmailTemplate: React.FC<TeamEmailTemplateProps> = ({ email, mes
 
           <div className="footer">
             <p>
+              <a
+                href="https://twenty.ludora.fr/objects/contactMessages?viewId=cc21feb1-49bc-48ed-b0b0-512c8b76ef83"
+                style={{ color: '#f97316', textDecoration: 'none' }}
+              >
+                Voir dans le CRM
+              </a>
+            </p>
+            <p>
               Ce message a été envoyé via le formulaire de contact du site Ludora le{' '}
               {new Date().toLocaleDateString('fr-FR', {
                 day: 'numeric',
