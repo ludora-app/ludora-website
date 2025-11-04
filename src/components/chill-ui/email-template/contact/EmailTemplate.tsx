@@ -1,13 +1,12 @@
 import * as React from 'react';
 interface EmailTemplateProps {
-  message: string;
   name: string;
-  subject: string;
 }
 
-export const EmailTemplate: React.FC<EmailTemplateProps> = ({ message, name, subject }) => {
+export const EmailTemplate: React.FC<EmailTemplateProps> = ({ name }) => {
   return (
     <html>
+      {/* eslint-disable-next-line */}
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />

@@ -13,7 +13,6 @@ export const NewPartnershipRequestEmail: React.FC<NewPartnershipRequestEmailProp
   email,
   name,
   phoneNumber,
-  submissionDate,
 }) => {
   return (
     <div
