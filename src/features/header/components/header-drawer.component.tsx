@@ -17,6 +17,8 @@ import { useTranslate } from '@tolgee/react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+import { ROUTES } from '@/constants/ROUTES';
+
 import { menuItems } from '../utils/menu-items';
 import { socialItems } from '../utils/social-items';
 
@@ -50,7 +52,7 @@ export default function HeaderDrawer() {
             </DrawerClose>
           ))}
           <DrawerClose asChild>
-            <Button>{t('header_button_become_partner')}</Button>
+            <Button redirect={ROUTES.PARTNERS}>{t('header_button_become_partner')}</Button>
           </DrawerClose>
         </div>
         <DrawerFooter className="bg-primary flex flex-row gap-5 rounded-t-lg">

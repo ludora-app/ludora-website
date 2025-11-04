@@ -23,7 +23,7 @@ export const typographyStyles = tv({
   },
 });
 
-function Typography({ children, className, color, content, onClick, variant }: TypographyProps) {
+function Typography({ children, className, color, content, onClick, variant = 'body-1' }: TypographyProps) {
   return (
     <p className={cn(typographyStyles({ color, variant }), className)} onClick={onClick}>
       {content ? content : children}

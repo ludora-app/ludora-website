@@ -5,6 +5,7 @@ export const ROUTES = {
   FEATURES: '/fonctionnalites',
   HOME: '/',
   LEGAL_NOTICE: '/mentions-legales',
+  PARTNERS: '/partenaires',
   PRIVACY_POLICY: '/politique-de-confidentialite',
   TERMS_OF_SERVICE: '/conditions-utilisation',
 } as const;

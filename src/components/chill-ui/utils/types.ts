@@ -19,7 +19,7 @@ export type HeadingProps = {
 };
 
 export type TypographyProps = {
-  variant: VariantProps<typeof typographyStyles>['variant'];
+  variant?: VariantProps<typeof typographyStyles>['variant'];
   children?: React.ReactNode;
   className?: string;
   content?: string;

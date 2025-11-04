@@ -13,20 +13,24 @@ const links = [
     label: 'Accueil',
   },
   {
-    href: '/a-propos',
+    href: ROUTES.ABOUT,
     label: 'À propos',
   },
   {
-    href: '/telecharger',
+    href: ROUTES.DOWNLOAD,
     label: "Télécharger l'application",
   },
   {
-    href: '/fonctionnalites',
+    href: ROUTES.FEATURES,
     label: 'Fonctionnalités',
   },
   {
-    href: '/contact',
+    href: ROUTES.CONTACT,
     label: 'Nous contacter',
+  },
+  {
+    href: ROUTES.PARTNERS,
+    label: 'Devenir partenaire',
   },
 ];
 

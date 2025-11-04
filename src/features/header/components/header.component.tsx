@@ -6,6 +6,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+import { ROUTES } from '@/constants/ROUTES';
+
 import { menuItems } from '../utils/menu-items';
 import HeaderDrawer from './header-drawer.component';
 
@@ -33,7 +35,9 @@ export default function Header() {
           </Link>
         ))}
       </div>
-      <Button className="hidden lg:block">{t('header_button_become_partner')}</Button>
+      <Button className="hidden lg:block" redirect={ROUTES.PARTNERS}>
+        {t('header_button_become_partner')}
+      </Button>
 
       <div className="lg:hidden">
         <HeaderDrawer />
