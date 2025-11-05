@@ -49,7 +49,7 @@ export default function TermsOfServiceScreen() {
           </div>
 
           {/* Table of Contents */}
-          <div className="mb-12 rounded-xl bg-gradient-to-br from-orange-50 to-rose-50 p-6">
+          <div className="mb-12 rounded-xl bg-linear-to-br from-orange-50 to-rose-50 p-6">
             <h2 className="mb-4 text-xl font-bold">Sommaire</h2>
             <ul className="space-y-2">
               {[
@@ -61,6 +61,7 @@ export default function TermsOfServiceScreen() {
                 'Limitation de responsabilité',
                 'Résiliation',
                 'Modifications des conditions',
+                'Données personnelles',
                 'Dispositions générales',
               ].map((item, index) => (
                 <li key={index}>
@@ -336,6 +337,29 @@ export default function TermsOfServiceScreen() {
                 </p>
               </div>
             </section>
+            {/* Section 9 */}
+            <section id="section-9">
+              <h2 className="mb-4 text-2xl font-bold">9. Données personnelles</h2>
+              <div className="prose prose-lg max-w-none">
+                <p>
+                  Dans le cadre de l’utilisation de nos Services, nous pouvons être amenés à collecter et traiter
+                  certaines données personnelles vous concernant (telles que votre nom, votre adresse e-mail, vos
+                  préférences sportives ou vos messages).
+                </p>
+                <p>
+                  Ces traitements sont effectués conformément à notre{' '}
+                  <Link href={ROUTES.PRIVACY_POLICY} className="text-orange-500 hover:underline">
+                    Politique de confidentialité
+                  </Link>
+                  , qui précise la nature des données collectées, leurs finalités, leur durée de conservation et vos
+                  droits (accès, rectification, suppression, opposition).
+                </p>
+                <p>
+                  En utilisant nos Services, vous reconnaissez avoir pris connaissance de cette Politique de
+                  confidentialité et en accepter les termes.
+                </p>
+              </div>
+            </section>
 
             {/* Section 9 */}
             <section id="section-9">
@@ -381,15 +405,15 @@ export default function TermsOfServiceScreen() {
           </div>
 
           {/* Footer CTA */}
-          <div className="mt-16 rounded-xl border border-orange-100 bg-gradient-to-br from-orange-50 to-rose-50 p-8">
+          <div className="mt-16 rounded-xl border border-orange-100 bg-linear-to-br from-orange-50 to-rose-50 p-8">
             <h2 className="mb-4 text-xl font-bold">Vous avez d&apos;autres questions ?</h2>
             <p className="mb-6">
               Si vous avez des questions spécifiques concernant nos conditions d&apos;utilisation, n&apos;hésitez pas à
               nous contacter.
             </p>
             <div className="flex flex-col gap-4 sm:flex-row">
-              <Button variant="gradient" className="px-8 py-4">
-                <Link href={ROUTES.CONTACT}>Nous contacter</Link>
+              <Button variant="gradient" className="px-8 py-4" redirect={ROUTES.CONTACT}>
+                Nous contacter
               </Button>
             </div>
           </div>
