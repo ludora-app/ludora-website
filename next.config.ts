@@ -8,9 +8,11 @@ const nextConfig: NextConfig = {
   output: 'standalone',
 };
 
+const PLAUSIBLE_CUSTOM_DOMAIN = process.env.NEXT_PUBLIC_PLAUSIBLE_CUSTOM_DOMAIN;
+
 export default withSentryConfig(
   withPlausibleProxy({
-    customDomain: 'https://eye-of-all.ludora.fr',
+    customDomain: PLAUSIBLE_CUSTOM_DOMAIN,
   })(nextConfig),
   {
     // For all available options, see:
