@@ -29,6 +29,8 @@
   "contact_info_title": "<span>Contact</span> informations",
   "contact_sended_error_message": "An error occurred while sending the message. Please try again later.",
   "contact_sended_success_message": "Thank you for your message. We will get back to you as soon as possible.",
+  "download_app_btn_android": "Google Play",
+  "download_app_btn_ios": "App Store",
   "email": "Email",
   "form_input_message_max_length": "Oops, your message exceeds the limit of {limit} characters. Try shortening it a little.",
   "gana_bio": "A committed developer, Gana joined Amir at the beginning of the adventure to transform the idea into a working prototype.",
