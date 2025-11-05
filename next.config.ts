@@ -1,13 +1,14 @@
 import type { NextConfig } from 'next';
 
 import { withSentryConfig } from '@sentry/nextjs';
+import { withPlausibleProxy } from 'next-plausible';
 
 const nextConfig: NextConfig = {
   /* config options here */
   output: 'standalone',
 };
 
-export default withSentryConfig(nextConfig, {
+export default withSentryConfig(withPlausibleProxy()(nextConfig), {
   // For all available options, see:
   // https://www.npmjs.com/package/@sentry/webpack-plugin#options
 
