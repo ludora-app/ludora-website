@@ -27,6 +27,8 @@
   "contact_form_title": "Envoyez-nous un <span>message</span>",
   "contact_from_input_name_label": "Nom complet",
   "contact_info_title": "Informations de <span>contact</span>",
+  "contact_section_1_description": "Une question, une suggestion ou besoin d'aide ? Notre équipe est là pour vous répondre.",
+  "contact_section_1_title": "Contactez-nous",
   "contact_sended_error_message": "Une erreur est survenue lors de l'envoi du message, veuillez réessayer plus tard.",
   "contact_sended_success_message": "Merci pour votre message, nous reviendrons vers vous dans les plus brefs délais.",
   "download_app_btn_android": "Google Play",

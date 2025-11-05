@@ -194,7 +194,7 @@ export default function ContactSection2() {
                         textArea
                         placeholder={t('contact_form_input_message_placeholder')}
                         containerClassName="h-full flex flex-col"
-                        className="h-32 lg:h-full"
+                        className="max-h-32 min-h-32 md:max-h-52 md:min-h-24"
                         showError
                         isRequired
                         {...field}
