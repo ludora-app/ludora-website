@@ -3,7 +3,7 @@ import { Toaster } from 'sonner';
 
 import { getLanguage } from '../tolgee/language';
 import HtmlBodyProvider from './html-body.provider';
-import { PlausibleProvider } from './plausible-provider';
+import { PlausibleProvider } from './plausible.provider';
 import QueryClientProvider from './query-client.provider';
 import TolgeeProvider from './tolgee.provider';
 

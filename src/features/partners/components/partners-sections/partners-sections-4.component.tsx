@@ -21,6 +21,7 @@ import { z } from 'zod';
 
 import { useSendPartnershipEmail } from '@/api/hooks/send-email.hook';
 import { useAddCrmOpportunity } from '@/api/hooks/twenty-crm.hook';
+import { useEventTracking } from '@/hooks/usePlausible';
 
 const formSchemaImpl = (t: TolgeeInstance['t']) =>
   z.object({
@@ -44,6 +45,7 @@ const formSchemaImpl = (t: TolgeeInstance['t']) =>
 
 export default function PartnersSection4() {
   const { t } = useTranslate();
+  const { trackEvent } = useEventTracking();
   const formSchema = formSchemaImpl(t);
   const { mutateAsync: addCrmOpportunity } = useAddCrmOpportunity();
   const { mutateAsync: sendPartnershipEmail } = useSendPartnershipEmail();
@@ -72,6 +74,13 @@ export default function PartnersSection4() {
       };
       await sendPartnershipEmail(opportunityData);
       await addCrmOpportunity(opportunityData);
+      trackEvent({
+        action: 'form-submit',
+        buttonId: 'partnership-form',
+        category: 'partnership',
+        eventName: 'partnershipFormSubmit',
+        source: 'partners-section-form',
+      });
       toast.success(t('contact_sended_success_message'));
       form.reset();
     } catch {
@@ -96,7 +105,7 @@ export default function PartnersSection4() {
             </CardHeader>
             <CardContent>
               <Form {...form}>
-                <form className="space-y-1" onSubmit={handleSubmit(onSubmit)}>
+                <form id="partnership-form" className="space-y-1" onSubmit={handleSubmit(onSubmit)}>
                   <FormField
                     name="name"
                     control={control}

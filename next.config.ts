@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
   output: 'standalone',
 };
 
-const PLAUSIBLE_CUSTOM_DOMAIN = process.env.NEXT_PUBLIC_PLAUSIBLE_CUSTOM_DOMAIN;
+const PLAUSIBLE_CUSTOM_DOMAIN = process.env.PLAUSIBLE_CUSTOM_DOMAIN;
 
 export default withSentryConfig(
   withPlausibleProxy({

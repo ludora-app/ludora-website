@@ -2,7 +2,7 @@ import { usePlausible as usePlausibleNative } from 'next-plausible';
 
 type EventActions = 'form-submit' | 'click' | 'scroll' | 'view' | 'download' | 'purchase';
 
-type EventCategories = 'newsletter' | 'contact';
+type EventCategories = 'newsletter' | 'contact' | 'download-app' | 'partnership';
 
 type EventProps = {
   action: EventActions;
@@ -15,6 +15,10 @@ type EventProps = {
 
 type MyEvents = {
   newsletterSubscription: EventProps;
+  downloadAppBtnIos: EventProps;
+  downloadAppBtnAndroid: EventProps;
+  contactFormSubmit: EventProps;
+  partnershipFormSubmit: EventProps;
 };
 
 type TrackEventProps = EventProps & {
