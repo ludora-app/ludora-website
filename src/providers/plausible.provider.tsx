@@ -12,7 +12,6 @@ export function PlausibleProvider({ children }: { children: React.ReactNode }) {
       trackOutboundLinks
       taggedEvents
       hash
-      trackLocalhost
     >
       {children}
     </PlausibleProviderNative>
