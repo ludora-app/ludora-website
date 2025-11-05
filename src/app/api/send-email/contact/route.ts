@@ -16,7 +16,7 @@ export async function POST(request: Request) {
   try {
     const { data: dataUserEmail, error: errorUserEmail } = await resend.emails.send({
       from: 'Ludora <contact@ludora.fr>',
-      react: React.createElement(EmailTemplate, { message, name, subject }),
+      react: React.createElement(EmailTemplate, { name }),
       subject: `Merci pour votre message : ${subject}`,
       to: [email],
     });

@@ -31,6 +31,7 @@ import { z } from 'zod';
 
 import { useAddCrmPerson } from '@/api/hooks/twenty-crm.hook';
 import { ROUTES } from '@/constants/ROUTES';
+import { useEventTracking } from '@/hooks/usePlausible';
 
 interface ComingSoonModalProps {
   children: React.ReactNode;
@@ -46,9 +47,11 @@ const formSchemaImpl = (t: TolgeeInstance['t']) =>
   });
 
 export function ComingSoonModal({ children, isOpen }: ComingSoonModalProps) {
+  const { t } = useTranslate();
+  const { trackEvent } = useEventTracking();
   const [isDialogOpen, setIsDialogOpen] = useState(isOpen);
   const { isPending: isAddCrmPersonPending, mutateAsync: addCrmPerson } = useAddCrmPerson();
-  const { t } = useTranslate();
+
   const formSchema = formSchemaImpl(t);
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -65,6 +68,13 @@ export function ComingSoonModal({ children, isOpen }: ComingSoonModalProps) {
     try {
       await addCrmPerson({
         email: data.email,
+      });
+      trackEvent({
+        action: 'form-submit',
+        buttonId: 'newsletter-form',
+        category: 'newsletter',
+        eventName: 'newsletterSubscription',
+        source: 'coming-soon-modal',
       });
       toast.success(t('newsletter_success_message'));
       form.reset();
@@ -125,7 +135,7 @@ export function ComingSoonModal({ children, isOpen }: ComingSoonModalProps) {
             </Heading>
 
             <Form {...form}>
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-2">
+              <form id="newsletter-form" onSubmit={handleSubmit(onSubmit)} className="space-y-2">
                 <div className="flex gap-2">
                   <div className="flex-2">
                     <FormField

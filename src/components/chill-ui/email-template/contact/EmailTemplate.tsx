@@ -1,13 +1,12 @@
 import * as React from 'react';
 interface EmailTemplateProps {
-  message: string;
   name: string;
-  subject: string;
 }
 
-export const EmailTemplate: React.FC<EmailTemplateProps> = ({ message, name, subject }) => {
+export const EmailTemplate: React.FC<EmailTemplateProps> = ({ name }) => {
   return (
     <html>
+      {/* eslint-disable-next-line */}
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -158,33 +157,31 @@ export const EmailTemplate: React.FC<EmailTemplateProps> = ({ message, name, sub
       <body>
         <div className="email-wrapper">
           <div className="email-content">
-            {/* <div className="email-header">
-              <img src="./favicon.png" alt="Ludora" width={100} height={100} />
-            </div> */}
             <div className="email-body">
               <div>
                 <h1 className="text-#6b7280">Merci pour votre message, {name} !</h1>
                 <p className="text-#6b7280">
                   Nous avons bien reçu votre message et nous vous remercions de nous avoir contactés. Notre équipe va
-                  l'examiner et vous répondra dans les plus brefs délais.
+                  l&rsquo;examiner et vous répondra dans les plus brefs délais.
                 </p>
 
-                <div className="message-box">
-                  <div className="info-row">
-                    <span className="info-label">Sujet :</span> {subject}
-                  </div>
-                  <div style={{ marginTop: '12px' }} className="text-#6b7280">
-                    {message}
-                  </div>
-                </div>
-
                 <p className="text-#6b7280">
-                  En attendant, n'hésitez pas à explorer notre application pour découvrir toutes les fonctionnalités qui
-                  vous permettront de trouver des partenaires de jeu et d'organiser des matchs facilement.
+                  En attendant, n&rsquo;hésitez pas à explorer notre application pour découvrir toutes les
+                  fonctionnalités qui vous permettront de trouver des partenaires de jeu et d&rsquo;organiser des matchs
+                  facilement.
                 </p>
 
                 <div style={{ textAlign: 'center' }}>
-                  <a href="https://ludora.fr/fonctionnalites" className="button" style={{ color: '#fff' }}>
+                  <a
+                    href="https://www.ludora.fr/fonctionnalites"
+                    style={{
+                      backgroundColor: '#f97316',
+                      borderRadius: '8px',
+                      color: '#fff',
+                      fontWeight: 'bold',
+                      padding: '12px 24px',
+                    }}
+                  >
                     Découvrir nos fonctionnalités
                   </a>
                 </div>
@@ -192,25 +189,21 @@ export const EmailTemplate: React.FC<EmailTemplateProps> = ({ message, name, sub
             </div>
 
             <div className="email-footer">
-              <p>
-                © {new Date().getFullYear()} Ludora. Tous droits réservés.
-                <br />
-                123 Avenue des Sports, 75000 Paris, France
-              </p>
+              <p>© {new Date().getFullYear()} Ludora. Tous droits réservés.</p>
 
               <p>
                 <a
-                  href="https://ludora.fr/politique-de-confidentialite"
+                  href="https://www.ludora.fr/mentions-legales"
                   style={{ color: '#6b7280', textDecoration: 'underline' }}
                 >
-                  Politique de confidentialité
+                  Mentions légales
                 </a>
                 {' | '}
                 <a
-                  href="https://ludora.fr/conditions-utilisation"
+                  href="https://www.ludora.fr/politique-de-confidentialite"
                   style={{ color: '#6b7280', textDecoration: 'underline' }}
                 >
-                  Conditions d'utilisation
+                  Politique de confidentialité
                 </a>
               </p>
             </div>

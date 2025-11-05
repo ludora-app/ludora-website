@@ -23,10 +23,11 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
 
-import { useSendEmail } from '@/api/hooks/send-email.hook';
+import { useSendContactEmail } from '@/api/hooks/send-email.hook';
 import { useSendCrmContactMessage } from '@/api/hooks/twenty-crm.hook';
 import { COLORS } from '@/constants/COLORS';
 import { TIcons } from '@/constants/ICONS';
+import { useEventTracking } from '@/hooks/usePlausible';
 
 const contactInfo = [
   {
@@ -81,8 +82,9 @@ const socialLinks = [
 
 export default function ContactSection2() {
   const { t } = useTranslate();
+  const { trackEvent } = useEventTracking();
   const [isMessageContactPending, setIsMessageContactPending] = useState(false);
-  const { mutateAsync: sendEmail } = useSendEmail();
+  const { mutateAsync: sendEmail } = useSendContactEmail();
   const { mutateAsync: sendCrmContactMessage } = useSendCrmContactMessage();
   const formSchema = formSchemaImpl(t);
   const form = useForm<z.infer<typeof formSchema>>({
@@ -112,6 +114,13 @@ export default function ContactSection2() {
         name: data.name,
         subject: data.subject,
       });
+      trackEvent({
+        action: 'form-submit',
+        buttonId: 'contact-form',
+        category: 'contact',
+        eventName: 'contactFormSubmit',
+        source: 'contact-section-form',
+      });
       toast.success(t('contact_sended_success_message'));
       form.reset();
     } catch {
@@ -133,7 +142,7 @@ export default function ContactSection2() {
           </CardHeader>
           <CardContent className="flex grow flex-col">
             <Form {...form}>
-              <form className="flex grow flex-col gap-2" onSubmit={handleSubmit(onSubmit)}>
+              <form id="contact-form" className="flex grow flex-col gap-2" onSubmit={handleSubmit(onSubmit)}>
                 <div className="grid gap-2 lg:grid-cols-2 lg:gap-4">
                   <FormField
                     name="name"
@@ -185,7 +194,7 @@ export default function ContactSection2() {
                         textArea
                         placeholder={t('contact_form_input_message_placeholder')}
                         containerClassName="h-full flex flex-col"
-                        className="h-32 lg:h-full"
+                        className="max-h-32 min-h-32 md:max-h-52 md:min-h-24"
                         showError
                         isRequired
                         {...field}
