@@ -112,9 +112,9 @@
 
 @layer utilities {
   .bg-gradient {
-    @apply bg-gradient-to-br from-orange-50 to-rose-50;
+    @apply bg-linear-to-br from-orange-50 to-rose-50;
   }
   .text-gradient {
-    @apply bg-gradient-to-r from-orange-500 to-rose-500 bg-clip-text text-transparent;
+    @apply bg-linear-to-r from-orange-500 to-rose-500 bg-clip-text text-transparent;
   }
 }

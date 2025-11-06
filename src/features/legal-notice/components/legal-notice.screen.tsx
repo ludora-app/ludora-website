@@ -1,7 +1,8 @@
-import { ROUTES } from '@/constants/ROUTES';
 import { Button } from '@chillUi';
 import { ChevronRight } from 'lucide-react';
 import Link from 'next/link';
+
+import { ROUTES } from '@/constants/ROUTES';
 
 export default function LegalNoticeScreen() {
   const lastUpdated = '15 avril 2024';
@@ -125,7 +126,7 @@ export default function LegalNoticeScreen() {
                 <p>
                   Pour exercer ces droits ou pour toute question sur le traitement de vos données, vous pouvez contacter
                   notre Délégué à la Protection des Données à l&apos;adresse suivante :{' '}
-                  <a href="mailto:privacy@ludora.fr" className="text-orange-500 hover:underline">
+                  <a href="mailto:contact@ludora.fr" className="text-orange-500 hover:underline">
                     privacy@ludora.fr
                   </a>
                   .
@@ -145,18 +146,15 @@ export default function LegalNoticeScreen() {
               <h2 className="mb-4 text-2xl font-bold">5. Cookies</h2>
               <div className="prose prose-lg max-w-none">
                 <p>
-                  Le site www.ludora.fr et l&apos;application mobile Ludora utilisent des cookies pour améliorer
-                  l&apos;expérience utilisateur. Les cookies sont de petits fichiers texte stockés sur votre appareil
-                  qui nous permettent d&apos;analyser l&apos;utilisation de nos services.
+                  Le site www.ludora.fr utilise <strong>Plausible Analytics</strong>, un outil d’analyse web respectueux
+                  de la vie privée. Plausible ne dépose <strong>aucun cookie</strong> et ne collecte{' '}
+                  <strong>aucune donnée personnelle</strong>. Les statistiques générées sont entièrement anonymes et
+                  servent uniquement à mesurer l’audience du site et à améliorer son contenu.
                 </p>
                 <p>
-                  Vous pouvez configurer votre navigateur pour refuser tous les cookies ou pour être informé
-                  lorsqu&apos;un cookie est envoyé. Cependant, certaines fonctionnalités du site ou de
-                  l&apos;application peuvent ne pas fonctionner correctement si vous refusez les cookies.
-                </p>
-                <p>
-                  Pour plus d&apos;informations sur notre utilisation des cookies, veuillez consulter notre{' '}
-                  <Link href="/politique-de-confidentialite" className="text-orange-500 hover:underline">
+                  En conséquence, aucune bannière de consentement aux cookies n’est affichée sur notre site,
+                  conformément aux directives de la CNIL. Pour plus d’informations, consultez notre{' '}
+                  <Link href={ROUTES.PRIVACY_POLICY} className="text-orange-500 hover:underline">
                     Politique de confidentialité
                   </Link>
                   .
@@ -258,15 +256,15 @@ export default function LegalNoticeScreen() {
           </div>
 
           {/* Footer CTA */}
-          <div className="mt-16 rounded-xl border border-orange-100 bg-gradient-to-br from-orange-50 to-rose-50 p-8">
+          <div className="mt-16 rounded-xl border border-orange-100 bg-linear-to-br from-orange-50 to-rose-50 p-8">
             <h2 className="mb-4 text-xl font-bold">Vous avez d&apos;autres questions ?</h2>
             <p className="mb-6">
               Si vous avez des questions spécifiques concernant nos mentions légales, n&apos;hésitez pas à nous
               contacter.
             </p>
             <div className="flex flex-col gap-4 sm:flex-row">
-              <Button variant="gradient" className="px-8 py-4">
-                <Link href={ROUTES.CONTACT}>Nous contacter</Link>
+              <Button variant="gradient" className="px-8 py-4" redirect={ROUTES.CONTACT}>
+                Nous contacter
               </Button>
             </div>
           </div>

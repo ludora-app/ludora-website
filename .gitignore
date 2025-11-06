@@ -10,6 +10,7 @@
 !.yarn/releases
 !.yarn/versions
 .pnpm-store
+.husky
 
 # testing
 /coverage
@@ -40,3 +41,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Ignorer le dossier locales
+/locales/*
+
+# Sentry Config File
+.env.sentry-build-plugin

@@ -1,8 +1,5 @@
 'use client';
 
-import { useSendEmail } from '@/api/hooks/send-email.hook';
-import { COLORS } from '@/constants/COLORS';
-import { TIcons } from '@/constants/ICONS';
 import {
   Badge,
   Button,
@@ -18,17 +15,25 @@ import {
   Typography,
 } from '@chillUi';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { T, TolgeeInstance, useTranslate } from '@tolgee/react';
 import { Mail } from 'lucide-react';
 import Link from 'next/link';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
 
+import { useSendContactEmail } from '@/api/hooks/send-email.hook';
+import { useSendCrmContactMessage } from '@/api/hooks/twenty-crm.hook';
+import { COLORS } from '@/constants/COLORS';
+import { TIcons } from '@/constants/ICONS';
+import { useEventTracking } from '@/hooks/usePlausible';
+
 const contactInfo = [
   {
     icon: Mail,
-    label: 'Email',
-    value: 'contact@ludora.fr',
+    label: 'email',
+    value: 'ludora_email',
   },
   // {
   //   icon: Phone,
@@ -47,30 +52,41 @@ const contactInfo = [
   // },
 ];
 
-const formSchema = z.object({
-  email: z.string().email("L'email est invalide"),
-  message: z.string().min(1, 'Le message est requis').max(300),
-  name: z.string().min(1, 'Le nom est requis').max(30),
-  subject: z.string().min(1, 'Le sujet est requis').max(30),
-});
+const formSchemaImpl = (t: TolgeeInstance['t']) =>
+  z.object({
+    email: z.email(t('contact_form_input_email_invalid')),
+    message: z
+      .string()
+      .min(1, t('contact_form_input_message_required'))
+      .max(1000, t('contact_form_input_message_max_length', { limit: 1000 })),
+    name: z
+      .string()
+      .min(1, t('contact_form_input_name_required'))
+      .max(80, t('contact_form_input_name_max_length', { limit: 80 })),
+    subject: z
+      .string()
+      .min(1, t('contact_form_input_subject_required'))
+      .max(100, t('contact_form_input_subject_max_length', { limit: 100 })),
+  });
 
 const socialLinks = [
   {
-    href: 'https://www.facebook.com/ludora',
-    icon: 'facebook-solid',
-  },
-  {
-    href: 'https://www.instagram.com/ludora.app',
+    href: 'https://www.instagram.com/ludora.fr',
     icon: 'instagram-solid',
   },
   {
-    href: 'https://www.tiktok.com/@ludora.app',
+    href: 'https://www.tiktok.com/@ludora.fr',
     icon: 'tiktok-solid',
   },
 ];
 
 export default function ContactSection2() {
-  const { isLoading: isSendingEmail, mutateAsync: sendEmail } = useSendEmail();
+  const { t } = useTranslate();
+  const { trackEvent } = useEventTracking();
+  const [isMessageContactPending, setIsMessageContactPending] = useState(false);
+  const { mutateAsync: sendEmail } = useSendContactEmail();
+  const { mutateAsync: sendCrmContactMessage } = useSendCrmContactMessage();
+  const formSchema = formSchemaImpl(t);
   const form = useForm<z.infer<typeof formSchema>>({
     defaultValues: {
       email: '',
@@ -85,45 +101,73 @@ export default function ContactSection2() {
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
+      setIsMessageContactPending(true);
+      await sendCrmContactMessage({
+        email: data.email,
+        message: data.message,
+        name: data.name,
+        subject: data.subject,
+      });
       await sendEmail({
         email: data.email,
         message: data.message,
         name: data.name,
         subject: data.subject,
       });
-      toast.success('Merci pour votre message, nous reviendrons vers vous dans les plus brefs délais.');
+      trackEvent({
+        action: 'form-submit',
+        buttonId: 'contact-form',
+        category: 'contact',
+        eventName: 'contactFormSubmit',
+        source: 'contact-section-form',
+      });
+      toast.success(t('contact_sended_success_message'));
       form.reset();
     } catch {
-      toast.error("Une erreur est survenue lors de l'envoi du message, veuillez réessayer plus tard.");
+      toast.error(t('contact_sended_error_message'));
+    } finally {
+      setIsMessageContactPending(false);
     }
   };
 
   return (
     <section className="container mx-auto px-4 py-12 md:py-20">
-      <div className="mx-auto flex max-w-screen-lg flex-col gap-3.5">
+      <div className="mx-auto flex max-w-5xl flex-col gap-3.5">
         {/* Contact Form */}
         <Card>
           <CardHeader>
             <CardTitle variant="title-4" color="dark">
-              Envoyez-nous un <span className="text-gradient">message</span>
+              <T keyName="contact_form_title" params={{ span: <span className="text-gradient" /> }} />
             </CardTitle>
           </CardHeader>
-          <CardContent className="flex flex-grow flex-col">
+          <CardContent className="flex grow flex-col">
             <Form {...form}>
-              <form className="flex flex-grow flex-col gap-2" onSubmit={handleSubmit(onSubmit)}>
+              <form id="contact-form" className="flex grow flex-col gap-2" onSubmit={handleSubmit(onSubmit)}>
                 <div className="grid gap-2 lg:grid-cols-2 lg:gap-4">
                   <FormField
                     name="name"
                     control={control}
                     render={({ field }) => (
-                      <FormInput label="Nom complet" placeholder="Votre nom" showError {...field} />
+                      <FormInput
+                        label={t('contact_from_input_name_label')}
+                        placeholder={t('contact_form_input_name_placeholder')}
+                        showError
+                        isRequired
+                        {...field}
+                      />
                     )}
                   />
                   <FormField
                     name="email"
                     control={control}
                     render={({ field }) => (
-                      <FormInput label="Email" placeholder="votre@email.com" showError {...field} />
+                      <FormInput
+                        label={t('contact_form_input_email_label')}
+                        placeholder={t('contact_form_input_email_placeholder')}
+                        showError
+                        isRequired
+                        {...field}
+                      />
                     )}
                   />
                 </div>
@@ -131,21 +175,28 @@ export default function ContactSection2() {
                   name="subject"
                   control={control}
                   render={({ field }) => (
-                    <FormInput label="Sujet" placeholder="Sujet de votre message" showError {...field} />
+                    <FormInput
+                      label={t('contact_form_input_subject_label')}
+                      placeholder={t('contact_form_input_subject_placeholder')}
+                      showError
+                      isRequired
+                      {...field}
+                    />
                   )}
                 />
-                <div className="flex-grow">
+                <div className="grow">
                   <FormField
                     name="message"
                     control={control}
                     render={({ field }) => (
                       <FormInput
-                        label="Message"
+                        label={t('contact_form_input_message_label')}
                         textArea
-                        placeholder="Votre message..."
+                        placeholder={t('contact_form_input_message_placeholder')}
                         containerClassName="h-full flex flex-col"
-                        className="h-32 lg:h-full"
+                        className="max-h-32 min-h-32 md:max-h-52 md:min-h-24"
                         showError
+                        isRequired
                         {...field}
                       />
                     )}
@@ -157,10 +208,10 @@ export default function ContactSection2() {
                   variant="gradient"
                   size="lg"
                   className="mt-4 w-full self-center md:w-1/2"
-                  disabled={isSendingEmail}
-                  isLoading={isSendingEmail}
+                  disabled={isMessageContactPending}
+                  isLoading={isMessageContactPending}
                 >
-                  Envoyer le message
+                  {t('contact_form_submit_button')}
                 </Button>
               </form>
             </Form>
@@ -173,7 +224,7 @@ export default function ContactSection2() {
             <div className="flex flex-col md:flex-row">
               <div className="flex flex-1 flex-col items-center justify-center gap-4">
                 <Heading as="h3" variant="title-5" color="dark">
-                  Informations de <span className="text-gradient">contact</span>
+                  <T keyName="contact_info_title" params={{ span: <span className="text-gradient" /> }} />
                 </Heading>
                 {contactInfo.map(info => (
                   <div className="flex items-center gap-4" key={info.label}>
@@ -182,11 +233,13 @@ export default function ContactSection2() {
                     </Badge>
                     <div>
                       <Heading variant="title-7" color="dark" as="h3">
-                        {info.label}
+                        {t(info.label)}
                       </Heading>
-                      <Typography variant="body-1" color="gray">
-                        {info.value}
-                      </Typography>
+                      <Link href={`mailto:${info.value}`}>
+                        <Typography variant="body-1" color="gray">
+                          {t(info.value)}
+                        </Typography>
+                      </Link>
                     </div>
                   </div>
                 ))}
@@ -194,7 +247,7 @@ export default function ContactSection2() {
               <div className="bg-ring my-5 h-[0.5px] w-full md:my-0 md:h-30 md:w-[0.5px]" />
               <div className="flex flex-1 flex-col items-center justify-center gap-4">
                 <Heading as="h3" variant="title-5" color="dark">
-                  Suivez-<span className="text-gradient">nous</span>
+                  <T keyName="contact_follow_title" params={{ span: <span className="text-gradient" /> }} />
                 </Heading>
                 <div className="flex items-center gap-2">
                   {socialLinks.map(link => (

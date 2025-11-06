@@ -1,6 +1,7 @@
-import { EmailTemplate, TeamEmailTemplate } from '@/components/chill-ui';
 import * as React from 'react';
 import { Resend } from 'resend';
+
+import { EmailTemplate, TeamEmailTemplate } from '@/components/chill-ui';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -15,7 +16,7 @@ export async function POST(request: Request) {
   try {
     const { data: dataUserEmail, error: errorUserEmail } = await resend.emails.send({
       from: 'Ludora <contact@ludora.fr>',
-      react: React.createElement(EmailTemplate, { message, name, subject }),
+      react: React.createElement(EmailTemplate, { name }),
       subject: `Merci pour votre message : ${subject}`,
       to: [email],
     });

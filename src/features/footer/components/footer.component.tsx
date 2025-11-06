@@ -1,8 +1,11 @@
+import { Heading, Icon, Logo, Typography } from '@chillUi';
+import Link from 'next/link';
+
 import { COLORS } from '@/constants/COLORS';
 import { ROUTES } from '@/constants/ROUTES';
 import { socialItems } from '@/features/header/utils/social-items';
-import { Heading, Icon, Logo, Typography } from '@chillUi';
-import Link from 'next/link';
+
+import FooterVersionBadge from './footer-version-badge.component';
 
 const links = [
   {
@@ -10,20 +13,24 @@ const links = [
     label: 'Accueil',
   },
   {
-    href: '/a-propos',
+    href: ROUTES.ABOUT,
     label: 'À propos',
   },
   {
-    href: '/telecharger',
+    href: ROUTES.DOWNLOAD,
     label: "Télécharger l'application",
   },
   {
-    href: '/fonctionnalites',
+    href: ROUTES.FEATURES,
     label: 'Fonctionnalités',
   },
   {
-    href: '/contact',
+    href: ROUTES.CONTACT,
     label: 'Nous contacter',
+  },
+  {
+    href: ROUTES.PARTNERS,
+    label: 'Devenir partenaire',
   },
 ];
 
@@ -88,9 +95,12 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t pt-6 md:flex-row">
-          <Typography variant="body-2" color="gray">
-            © {new Date().getFullYear()} Ludora. Tous droits réservés.
-          </Typography>
+          <div>
+            <Typography variant="body-2" color="gray">
+              © {new Date().getFullYear()} Ludora. Tous droits réservés.
+            </Typography>
+            <FooterVersionBadge />
+          </div>
           <div className="flex items-center gap-4">
             {socialItems.map(item => (
               <Link key={item.id} href={item.href} aria-label={item.label}>

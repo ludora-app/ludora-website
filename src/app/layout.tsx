@@ -1,18 +1,9 @@
 import type { Metadata } from 'next';
 
-import { Footer, Header } from '@/features';
-import MainProvider from '@/providers/main.provider';
-
 import './globals.css';
 
-import { Poppins } from 'next/font/google';
-
-const poppins = Poppins({
-  display: 'swap',
-  subsets: ['latin'],
-  variable: '--font-poppins',
-  weight: ['400', '500', '600', '700'],
-});
+import { Footer, Header } from '@/features';
+import MainProvider from '@/providers/main.provider';
 
 export const metadata: Metadata = {
   description:
@@ -29,14 +20,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className="scroll-smooth">
-      <body className={`${poppins.variable} antialiased`}>
-        <MainProvider>
-          <Header />
-          <main>{children}</main>
-          <Footer />
-        </MainProvider>
-      </body>
-    </html>
+    <MainProvider>
+      <Header />
+      <main>{children}</main>
+      <Footer />
+    </MainProvider>
   );
 }

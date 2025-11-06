@@ -1,7 +1,8 @@
-import { ROUTES } from '@/constants/ROUTES';
 import { Button } from '@chillUi';
 import { ChevronRight } from 'lucide-react';
 import Link from 'next/link';
+
+import { ROUTES } from '@/constants/ROUTES';
 
 export default function PrivacyPolicyScreen() {
   const lastUpdated = '15 avril 2024';
@@ -48,7 +49,7 @@ export default function PrivacyPolicyScreen() {
           </div>
 
           {/* Table of Contents */}
-          <div className="mb-12 rounded-xl bg-gradient-to-br from-orange-50 to-rose-50 p-6">
+          <div className="mb-12 rounded-xl bg-linear-to-br from-orange-50 to-rose-50 p-6">
             <h2 className="mb-4 text-xl font-bold">Sommaire</h2>
             <ul className="space-y-2">
               {[
@@ -60,6 +61,7 @@ export default function PrivacyPolicyScreen() {
                 'Sécurité des données',
                 'Modifications de cette politique',
                 'Nous contacter',
+                'Cookies et outils d’analyse',
               ].map((item, index) => (
                 <li key={index}>
                   <a
@@ -126,6 +128,18 @@ export default function PrivacyPolicyScreen() {
                   <li>
                     <strong>Partenaires :</strong> Nous pouvons recevoir des informations de nos partenaires
                     commerciaux, comme des informations sur les terrains de sport ou les événements.
+                  </li>
+                </ul>
+                <h3 className="mt-6 mb-3 text-xl font-semibold">1.4 Informations collectées via nos formulaires</h3>
+                <ul>
+                  <li>
+                    <strong>Formulaire de contact :</strong> Nous collectons votre nom, votre adresse e-mail et le
+                    contenu de votre message afin de répondre à votre demande.
+                  </li>
+                  <li>
+                    <strong>Newsletter :</strong> Lors de votre inscription, nous collectons uniquement votre adresse
+                    e-mail avec votre consentement explicite. Vous pouvez vous désabonner à tout moment via le lien
+                    présent dans chaque e-mail.
                   </li>
                 </ul>
               </div>
@@ -356,18 +370,34 @@ export default function PrivacyPolicyScreen() {
                 </p>
               </div>
             </section>
+            {/* Section 9 */}
+            <section id="section-9">
+              <h2 className="mb-4 text-2xl font-bold">9. Cookies et outils d’analyse</h2>
+              <div className="prose prose-lg max-w-none">
+                <p>
+                  Nous utilisons <strong>Plausible Analytics</strong> pour mesurer l’audience de notre site de manière
+                  anonyme et respectueuse de la vie privée. Plausible ne dépose <strong>aucun cookie</strong> et ne
+                  collecte aucune donnée personnelle. Les statistiques recueillies servent uniquement à améliorer notre
+                  site.
+                </p>
+                <p>
+                  Par conséquent, aucune bannière de consentement n’est requise. Les données collectées sont agrégées et
+                  anonymisées, exclusivement à des fins statistiques.
+                </p>
+              </div>
+            </section>
           </div>
 
           {/* Footer CTA */}
-          <div className="mt-16 rounded-xl border border-orange-100 bg-gradient-to-br from-orange-50 to-rose-50 p-8">
+          <div className="mt-16 rounded-xl border border-orange-100 bg-linear-to-br from-orange-50 to-rose-50 p-8">
             <h2 className="mb-4 text-xl font-bold">Vous avez d&apos;autres questions ?</h2>
             <p className="mb-6">
               Si vous avez des questions spécifiques concernant notre politique de confidentialité ou la façon dont nous
               traitons vos données, n&apos;hésitez pas à nous contacter.
             </p>
             <div className="flex flex-col gap-4 sm:flex-row">
-              <Button variant="gradient" className="px-8 py-4">
-                <Link href={ROUTES.CONTACT}>Nous contacter</Link>
+              <Button variant="gradient" className="px-8 py-4" redirect={ROUTES.CONTACT}>
+                Nous contacter
               </Button>
             </div>
           </div>

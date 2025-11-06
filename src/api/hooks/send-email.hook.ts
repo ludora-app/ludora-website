@@ -1,10 +1,17 @@
 import { useMutation } from '@tanstack/react-query';
 
-import { sendEmail } from '../queries/send-email.query';
+import { sendContactEmail, sendPartnershipEmail } from '../queries/send-email.query';
 
-export const useSendEmail = () => {
+export const useSendContactEmail = () => {
   return useMutation({
-    mutationFn: sendEmail,
-    mutationKey: ['sendEmail'],
+    mutationFn: sendContactEmail,
+    mutationKey: ['sendContactEmail'],
+  });
+};
+
+export const useSendPartnershipEmail = () => {
+  return useMutation({
+    mutationFn: sendPartnershipEmail,
+    mutationKey: ['sendPartnershipEmail'],
   });
 };

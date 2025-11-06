@@ -2,28 +2,23 @@ import { ROUTES } from '@/constants/ROUTES';
 
 export const menuItems = [
   {
-    href: ROUTES.HOME,
-    id: 'home',
-    label: 'Accueil',
-  },
-  {
     href: ROUTES.FEATURES,
     id: 'features',
-    label: 'Fonctionnalités',
+    label: 'header_menu_features',
   },
   {
     href: ROUTES.DOWNLOAD,
     id: 'download',
-    label: 'Télécharger l’app',
+    label: 'header_menu_download',
   },
   {
     href: ROUTES.ABOUT,
     id: 'about',
-    label: 'A propos',
+    label: 'header_menu_about',
   },
   {
     href: ROUTES.CONTACT,
     id: 'contact',
-    label: 'Contact',
+    label: 'header_menu_contact',
   },
 ];

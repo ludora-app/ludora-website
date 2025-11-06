@@ -1,6 +1,9 @@
-var fs = require('fs');
-const path = require('path');
+// eslint-disable-next-line
+const fs = require('fs');
+// eslint-disable-next-line
 const jsdom = require('jsdom');
+// eslint-disable-next-line
+const path = require('path');
 const rootPath = process.cwd();
 fs.readdir(path.resolve(rootPath, 'tools/svg-2-obj/svg'), function (err, files) {
   const icons = {};

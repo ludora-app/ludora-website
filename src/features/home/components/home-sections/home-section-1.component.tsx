@@ -1,7 +1,8 @@
-import { homeSection1Img } from '@/assets';
-import DownloadAppBtn from '@/components/ui/download-app-btn.component';
 import { Badge, Heading, Typography } from '@chillUi';
 import Image from 'next/image';
+
+import { homeSection1Img } from '@/assets';
+import DownloadAppBtn from '@/components/ui/download-app-btn.component';
 
 export default async function HomeSection1() {
   return (
