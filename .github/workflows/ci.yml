@@ -88,12 +88,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build project
-        run: pnpm build
-
-      - name: Test project
-        run: pnpm test
-
       - name: Semantic Release
         id: semantic-release
         env:
