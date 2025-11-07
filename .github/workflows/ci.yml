@@ -24,282 +24,282 @@ jobs:
       - run: pnpm lint
       - run: pnpm format --check
 
-  # translations:
-  #   if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/staging' || github.ref == 'refs/heads/develop')
-  #   runs-on: ubuntu-latest
-  #   permissions:
-  #     contents: write
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #       with:
-  #         token: ${{ secrets.ADMIN_PAT }}
-  #         fetch-depth: 0
+  translations:
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/staging' || github.ref == 'refs/heads/develop')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.ADMIN_PAT }}
+          fetch-depth: 0
 
-  #     - uses: pnpm/action-setup@v4
-  #     - uses: actions/setup-node@v4
-  #       with:
-  #         node-version: '20'
-  #         cache: 'pnpm'
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
 
-  #     - name: Install Doppler CLI
-  #       uses: dopplerhq/cli-action@v3
+      - name: Install Doppler CLI
+        uses: dopplerhq/cli-action@v3
 
-  #     - run: pnpm install --frozen-lockfile
+      - run: pnpm install --frozen-lockfile
 
-  #     - name: Load translations
-  #       run: doppler run -- pnpm load:translations
-  #       env:
-  #         DOPPLER_TOKEN: ${{ secrets.DOPPLER_TOKEN }}
+      - name: Load translations
+        run: doppler run -- pnpm load:translations
+        env:
+          DOPPLER_TOKEN: ${{ secrets.DOPPLER_TOKEN }}
 
-  #     - name: Commit and push translations
-  #       run: |
-  #         git config --global user.name "github-actions[bot]"
-  #         git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-  #         git add locales/
-  #         if git diff --staged --quiet; then
-  #           echo "✅ No translation changes to commit"
-  #           exit 0
-  #         fi
-  #         git commit -m "chore(i18n): auto-update translations [skip ci]"
-  #         git push
+      - name: Commit and push translations
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add locales/
+          if git diff --staged --quiet; then
+            echo "✅ No translation changes to commit"
+            exit 0
+          fi
+          git commit -m "chore(i18n): auto-update translations [skip ci]"
+          git push
 
-  # release:
-  #   name: Release
-  #   needs: [checks, translations]
-  #   runs-on: ubuntu-latest
-  #   if: github.ref == 'refs/heads/main'
-  #   permissions:
-  #     contents: write
-  #     pull-requests: write
-  #   outputs:
-  #     version: ${{ steps.semantic-release.outputs.released_version }}
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #       with:
-  #         fetch-depth: 0
-  #         token: ${{ secrets.ADMIN_PAT }}
+  release:
+    name: Release
+    needs: [checks, translations]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    permissions:
+      contents: write
+      pull-requests: write
+    outputs:
+      version: ${{ steps.semantic-release.outputs.released_version }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.ADMIN_PAT }}
 
-  #     - uses: pnpm/action-setup@v4
-  #     - uses: actions/setup-node@v4
-  #       with:
-  #         node-version: '20'
-  #         cache: 'pnpm'
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
 
-  #     - name: Install dependencies
-  #       run: pnpm install --frozen-lockfile
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
-  #     - name: Build project
-  #       run: pnpm build
+      - name: Build project
+        run: pnpm build
 
-  #     - name: Test project
-  #       run: pnpm test
+      - name: Test project
+        run: pnpm test
 
-  #     - name: Semantic Release
-  #       id: semantic-release
-  #       env:
-  #         GITHUB_TOKEN: ${{ secrets.ADMIN_PAT }}
-  #         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-  #       run: npx semantic-release
+      - name: Semantic Release
+        id: semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.ADMIN_PAT }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npx semantic-release
 
-  # version-develop:
-  #   needs: [checks, translations]
-  #   runs-on: ubuntu-latest
-  #   if: github.ref == 'refs/heads/develop'
-  #   permissions:
-  #     contents: write
-  #   outputs:
-  #     version: ${{ steps.version.outputs.VERSION }}
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #       with:
-  #         fetch-depth: 0
-  #     - uses: pnpm/action-setup@v4
-  #     - uses: actions/setup-node@v4
-  #       with:
-  #         node-version: '20'
-  #         cache: 'pnpm'
-  #     - name: Get version
-  #       id: version
-  #       run: |
-  #         VERSION=$(node -p "require('./package.json').version")
-  #         SHORT_SHA=$(git rev-parse --short HEAD)
-  #         FULL_VERSION="${VERSION}-dev.${SHORT_SHA}"
-  #         echo "VERSION=${FULL_VERSION}" >> $GITHUB_OUTPUT
-  #         echo "📦 Version: ${FULL_VERSION}"
-  #     - name: Create dev tag
-  #       run: |
-  #         git config user.name "github-actions[bot]"
-  #         git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-  #         git tag "v${{ steps.version.outputs.VERSION }}"
-  #         git push origin "v${{ steps.version.outputs.VERSION }}"
+  version-develop:
+    needs: [checks, translations]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/develop'
+    permissions:
+      contents: write
+    outputs:
+      version: ${{ steps.version.outputs.VERSION }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+      - name: Get version
+        id: version
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          SHORT_SHA=$(git rev-parse --short HEAD)
+          FULL_VERSION="${VERSION}-dev.${SHORT_SHA}"
+          echo "VERSION=${FULL_VERSION}" >> $GITHUB_OUTPUT
+          echo "📦 Version: ${FULL_VERSION}"
+      - name: Create dev tag
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git tag "v${{ steps.version.outputs.VERSION }}"
+          git push origin "v${{ steps.version.outputs.VERSION }}"
 
-  # deploy-develop:
-  #   needs: [version-develop]
-  #   runs-on: ubuntu-latest
-  #   if: github.ref == 'refs/heads/develop'
-  #   environment:
-  #     name: Development
-  #     url: ${{ steps.deploy.outputs.url }}
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #     - uses: pnpm/action-setup@v4
-  #     - uses: actions/setup-node@v4
-  #       with:
-  #         node-version: '20'
-  #         cache: 'pnpm'
-  #     - name: Install Vercel CLI
-  #       run: npm install --global vercel@latest
-  #     - name: Pull Vercel Environment Information
-  #       run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
-  #       env:
-  #         VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-  #         VERCEL_PROJECT_ID: ${{ secrets.VERCEL_LUDORA_DEV_PROJECT_ID }}
-  #     - name: Build Project Artifacts
-  #       run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
-  #       env:
-  #         VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-  #         VERCEL_PROJECT_ID: ${{ secrets.VERCEL_LUDORA_DEV_PROJECT_ID }}
-  #         NEXT_PUBLIC_APP_VERSION: ${{ needs.version-develop.outputs.version }}
-  #         NEXT_PUBLIC_ENV: development
-  #     - name: Deploy Project Artifacts to Vercel
-  #       id: deploy
-  #       run: |
-  #         URL=$(vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }})
-  #         echo "url=$URL" >> $GITHUB_OUTPUT
-  #         echo "🚀 Deployed v${{ needs.version-develop.outputs.version }} to $URL"
-  #       env:
-  #         VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-  #         VERCEL_PROJECT_ID: ${{ secrets.VERCEL_LUDORA_DEV_PROJECT_ID }}
+  deploy-develop:
+    needs: [version-develop]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/develop'
+    environment:
+      name: Development
+      url: ${{ steps.deploy.outputs.url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+      - name: Pull Vercel Environment Information
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_LUDORA_DEV_PROJECT_ID }}
+      - name: Build Project Artifacts
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_LUDORA_DEV_PROJECT_ID }}
+          NEXT_PUBLIC_APP_VERSION: ${{ needs.version-develop.outputs.version }}
+          NEXT_PUBLIC_ENV: development
+      - name: Deploy Project Artifacts to Vercel
+        id: deploy
+        run: |
+          URL=$(vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }})
+          echo "url=$URL" >> $GITHUB_OUTPUT
+          echo "🚀 Deployed v${{ needs.version-develop.outputs.version }} to $URL"
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_LUDORA_DEV_PROJECT_ID }}
 
-  # version-staging:
-  #   needs: [checks, translations]
-  #   runs-on: ubuntu-latest
-  #   if: github.ref == 'refs/heads/staging'
-  #   permissions:
-  #     contents: write
-  #   outputs:
-  #     version: ${{ steps.version.outputs.VERSION }}
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #       with:
-  #         fetch-depth: 0
-  #     - uses: pnpm/action-setup@v4
-  #     - uses: actions/setup-node@v4
-  #       with:
-  #         node-version: '20'
-  #         cache: 'pnpm'
-  #     - name: Get version
-  #       id: version
-  #       run: |
-  #         VERSION=$(node -p "require('./package.json').version")
-  #         SHORT_SHA=$(git rev-parse --short HEAD)
-  #         FULL_VERSION="${VERSION}-staging.${SHORT_SHA}"
-  #         echo "VERSION=${FULL_VERSION}" >> $GITHUB_OUTPUT
-  #         echo "📦 Version: ${FULL_VERSION}"
-  #     - name: Create staging tag
-  #       run: |
-  #         git config user.name "github-actions[bot]"
-  #         git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-  #         git tag "v${{ steps.version.outputs.VERSION }}"
-  #         git push origin "v${{ steps.version.outputs.VERSION }}"
+  version-staging:
+    needs: [checks, translations]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/staging'
+    permissions:
+      contents: write
+    outputs:
+      version: ${{ steps.version.outputs.VERSION }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+      - name: Get version
+        id: version
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          SHORT_SHA=$(git rev-parse --short HEAD)
+          FULL_VERSION="${VERSION}-staging.${SHORT_SHA}"
+          echo "VERSION=${FULL_VERSION}" >> $GITHUB_OUTPUT
+          echo "📦 Version: ${FULL_VERSION}"
+      - name: Create staging tag
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git tag "v${{ steps.version.outputs.VERSION }}"
+          git push origin "v${{ steps.version.outputs.VERSION }}"
 
-  # deploy-staging:
-  #   needs: [version-staging]
-  #   runs-on: ubuntu-latest
-  #   if: github.ref == 'refs/heads/staging'
-  #   environment:
-  #     name: Staging
-  #     url: ${{ steps.deploy.outputs.url }}
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #     - uses: pnpm/action-setup@v4
-  #     - uses: actions/setup-node@v4
-  #       with:
-  #         node-version: '20'
-  #         cache: 'pnpm'
-  #     - name: Install Vercel CLI
-  #       run: npm install --global vercel@latest
-  #     - name: Pull Vercel Environment Information
-  #       run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
-  #       env:
-  #         VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-  #         VERCEL_PROJECT_ID: ${{ secrets.VERCEL_LUDORA_STAGING_PROJECT_ID }}
-  #     - name: Build Project Artifacts
-  #       run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
-  #       env:
-  #         VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-  #         VERCEL_PROJECT_ID: ${{ secrets.VERCEL_LUDORA_STAGING_PROJECT_ID }}
-  #         NEXT_PUBLIC_APP_VERSION: ${{ needs.version-staging.outputs.version }}
-  #         NEXT_PUBLIC_ENV: staging
-  #     - name: Deploy Project Artifacts to Vercel
-  #       id: deploy
-  #       run: |
-  #         URL=$(vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }})
-  #         echo "url=$URL" >> $GITHUB_OUTPUT
-  #         echo "🚀 Deployed v${{ needs.version-staging.outputs.version }} to $URL"
-  #       env:
-  #         VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-  #         VERCEL_PROJECT_ID: ${{ secrets.VERCEL_LUDORA_STAGING_PROJECT_ID }}
+  deploy-staging:
+    needs: [version-staging]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/staging'
+    environment:
+      name: Staging
+      url: ${{ steps.deploy.outputs.url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+      - name: Pull Vercel Environment Information
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_LUDORA_STAGING_PROJECT_ID }}
+      - name: Build Project Artifacts
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_LUDORA_STAGING_PROJECT_ID }}
+          NEXT_PUBLIC_APP_VERSION: ${{ needs.version-staging.outputs.version }}
+          NEXT_PUBLIC_ENV: staging
+      - name: Deploy Project Artifacts to Vercel
+        id: deploy
+        run: |
+          URL=$(vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }})
+          echo "url=$URL" >> $GITHUB_OUTPUT
+          echo "🚀 Deployed v${{ needs.version-staging.outputs.version }} to $URL"
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_LUDORA_STAGING_PROJECT_ID }}
 
-  # sync-branches:
-  #   needs: [release]
-  #   runs-on: ubuntu-latest
-  #   if: github.ref == 'refs/heads/main'
-  #   permissions:
-  #     contents: write
-  #   continue-on-error: true
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #       with:
-  #         token: ${{ secrets.ADMIN_PAT }}
-  #         fetch-depth: 0
-  #     - name: Sync main → staging
-  #       run: |
-  #         git config user.name "github-actions[bot]"
-  #         git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-  #         git checkout staging
-  #         git merge main --no-edit || true
-  #         git push origin staging || true
-  #     - name: Sync staging → develop
-  #       run: |
-  #         git checkout develop
-  #         git merge staging --no-edit || true
-  #         git push origin develop || true
+  sync-branches:
+    needs: [release]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    permissions:
+      contents: write
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.ADMIN_PAT }}
+          fetch-depth: 0
+      - name: Sync main → staging
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout staging
+          git merge main --no-edit || true
+          git push origin staging || true
+      - name: Sync staging → develop
+        run: |
+          git checkout develop
+          git merge staging --no-edit || true
+          git push origin develop || true
 
-  # deploy-production:
-  #   needs: [release]
-  #   runs-on: ubuntu-latest
-  #   if: github.ref == 'refs/heads/main'
-  #   environment:
-  #     name: Production
-  #     url: ${{ steps.deploy.outputs.url }}
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #     - uses: pnpm/action-setup@v4
-  #     - uses: actions/setup-node@v4
-  #       with:
-  #         node-version: '20'
-  #         cache: 'pnpm'
-  #     - name: Install Vercel CLI
-  #       run: npm install --global vercel@latest
-  #     - name: Pull Vercel Environment Information
-  #       run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
-  #       env:
-  #         VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-  #         VERCEL_PROJECT_ID: ${{ secrets.VERCEL_LUDORA_PROD_PROJECT_ID }}
-  #     - name: Build Project Artifacts
-  #       run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
-  #       env:
-  #         VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-  #         VERCEL_PROJECT_ID: ${{ secrets.VERCEL_LUDORA_PROD_PROJECT_ID }}
-  #         NEXT_PUBLIC_APP_VERSION: ${{ needs.release.outputs.version }}
-  #         NEXT_PUBLIC_ENV: production
-  #     - name: Deploy Project Artifacts to Vercel
-  #       id: deploy
-  #       run: |
-  #         URL=$(vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }})
-  #         echo "url=$URL" >> $GITHUB_OUTPUT
-  #         echo "🚀 Deployed v${{ needs.release.outputs.version }} to $URL"
-  #       env:
-  #         VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-  #         VERCEL_PROJECT_ID: ${{ secrets.VERCEL_LUDORA_PROD_PROJECT_ID }}
+  deploy-production:
+    needs: [release]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    environment:
+      name: Production
+      url: ${{ steps.deploy.outputs.url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+      - name: Pull Vercel Environment Information
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_LUDORA_PROD_PROJECT_ID }}
+      - name: Build Project Artifacts
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_LUDORA_PROD_PROJECT_ID }}
+          NEXT_PUBLIC_APP_VERSION: ${{ needs.release.outputs.version }}
+          NEXT_PUBLIC_ENV: production
+      - name: Deploy Project Artifacts to Vercel
+        id: deploy
+        run: |
+          URL=$(vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }})
+          echo "url=$URL" >> $GITHUB_OUTPUT
+          echo "🚀 Deployed v${{ needs.release.outputs.version }} to $URL"
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_LUDORA_PROD_PROJECT_ID }}
