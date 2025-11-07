@@ -1,3 +1,10 @@
+## 1.1.0 (2025-11-07)
+
+* Merge pull request #27 from ludora-app/feat/change-color-parners-section-1 ([add6163](https://github.com/ludora-app/ludora-website/commit/add6163)), closes [#27](https://github.com/ludora-app/ludora-website/issues/27)
+* Merge pull request #28 from ludora-app/develop ([c3b8c50](https://github.com/ludora-app/ludora-website/commit/c3b8c50)), closes [#28](https://github.com/ludora-app/ludora-website/issues/28)
+* Merge pull request #29 from ludora-app/staging ([f79c2ed](https://github.com/ludora-app/ludora-website/commit/f79c2ed)), closes [#29](https://github.com/ludora-app/ludora-website/issues/29)
+* feat(parners-section-1): changing the color of the section 1 partners page ([80e60d3](https://github.com/ludora-app/ludora-website/commit/80e60d3))
+
 ## 1.0.0 (2025-11-07)
 
 * hotfix(ci/cd): fix the ci/cd on main ([5ab2607](https://github.com/ludora-app/ludora-website/commit/5ab2607))
