@@ -10,7 +10,7 @@ const useIsMobile = () => {
       setIsMobile(window.innerWidth <= BREAKPOINT);
     };
 
-    // Exécute une fois au montage
+    // Exécute une fois au
     checkScreenSize();
 
     // Mets à jour à chaque resize
