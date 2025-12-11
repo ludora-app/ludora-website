@@ -3,8 +3,8 @@
   "version": "1.1.0",
   "private": true,
   "scripts": {
-    "dev": "cross-env DOPPLER_TOKEN=$(grep DOPPLER_TOKEN .env.local | cut -d '=' -f2) doppler run -- next dev --turbopack --port 4050",
-    "build:local": "cross-env DOPPLER_TOKEN=$(grep DOPPLER_TOKEN .env.local | cut -d '=' -f2) doppler run -- next build",
+    "dev": "pnpm inject:env next dev --turbopack --port 4050",
+    "build:local": "pnpm inject:env next build",
     "build": "next build",
     "start": "next start",
     "generate:icons": "node tools/svg-2-obj/index.js",
@@ -12,9 +12,10 @@
     "lint:fix": "eslint --fix .",
     "format": "prettier --write .",
     "ts:check": "tsc --noEmit",
-    "load:translations:local": "cross-env DOPPLER_TOKEN=$(grep DOPPLER_TOKEN .env.local | cut -d '=' -f2) doppler run -- node tools/tolgee-translation/index.mjs",
+    "load:translations:local": "pnpm inject:env node tools/tolgee-translation/index.mjs",
     "load:translations": "node tools/tolgee-translation/index.mjs",
-    "check:next": "pnpm dlx fix-react2shell-next"
+    "check:next": "pnpm dlx fix-react2shell-next",
+    "inject:env": "bash tools/vault/inject-env.sh"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
