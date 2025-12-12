@@ -37,7 +37,7 @@
     "embla-carousel-react": "^8.6.0",
     "ky": "^1.14.1",
     "lucide-react": "^0.548.0",
-    "next": "16.0.8",
+    "next": "16.0.10",
     "next-plausible": "^3.12.5",
     "next-themes": "^0.4.6",
     "radash": "^12.1.1",
