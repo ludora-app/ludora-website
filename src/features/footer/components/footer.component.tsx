@@ -36,16 +36,16 @@ const links = [
 
 const legalLinks = [
   {
-    href: ROUTES.TERMS_OF_SERVICE,
-    label: "Conditions d'utilisation",
-  },
-  {
     href: ROUTES.PRIVACY_POLICY,
     label: 'Politique de confidentialité',
   },
   {
-    href: ROUTES.LEGAL_NOTICE,
-    label: 'Mentions légales',
+    href: ROUTES.CGV,
+    label: 'Conditions générales de vente',
+  },
+  {
+    href: ROUTES.TERMS_OF_SERVICE,
+    label: 'CGU et Mentions légales',
   },
 ];
 

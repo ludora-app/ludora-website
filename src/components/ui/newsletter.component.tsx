@@ -25,7 +25,6 @@ import { z } from 'zod';
 
 import { useAddCrmPerson } from '@/api/hooks/twenty-crm.hook';
 import { ROUTES } from '@/constants/ROUTES';
-import { useEventTracking } from '@/hooks/usePlausible';
 
 const formSchemaImpl = (t: TolgeeInstance['t']) =>
   z.object({
@@ -41,7 +40,7 @@ const formSchemaImpl = (t: TolgeeInstance['t']) =>
 
 export default function NewsletterComponent() {
   const { t } = useTranslate();
-  const { trackEvent } = useEventTracking();
+
   const formSchema = formSchemaImpl(t);
   const form = useForm<z.infer<typeof formSchema>>({
     defaultValues: {
@@ -64,13 +63,6 @@ export default function NewsletterComponent() {
       await addCrmPerson({
         email: data.email,
         name: data.name,
-      });
-      trackEvent({
-        action: 'form-submit',
-        buttonId: 'newsletter-subscribe-button',
-        category: 'newsletter',
-        eventName: 'newsletterSubscription',
-        source: 'newsletter-section-form',
       });
       toast.success(t('newsletter_success_message'));
       form.reset();
