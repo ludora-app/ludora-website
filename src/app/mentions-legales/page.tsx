@@ -1,3 +1,7 @@
-import LegalNoticeScreen from '@/features/legal-notice';
+import { redirect } from 'next/navigation';
 
-export default LegalNoticeScreen;
+import { ROUTES } from '@/constants/ROUTES';
+
+export default function MentionsLegalesPage() {
+  redirect(ROUTES.TERMS_OF_SERVICE);
+}

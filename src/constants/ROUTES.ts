@@ -1,5 +1,6 @@
 export const ROUTES = {
   ABOUT: '/a-propos',
+  CGV: '/conditions-generales-vente',
   CONTACT: '/contact',
   DOWNLOAD: '/telecharger',
   FEATURES: '/fonctionnalites',

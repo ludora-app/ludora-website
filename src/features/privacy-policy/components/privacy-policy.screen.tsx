@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { ROUTES } from '@/constants/ROUTES';
 
 export default function PrivacyPolicyScreen() {
-  const lastUpdated = '15 avril 2024';
+  const lastUpdated = '25/02/2026';
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -30,363 +30,444 @@ export default function PrivacyPolicyScreen() {
           <div className="mb-12">
             <h1 className="mb-4 text-3xl font-bold md:text-4xl">Politique de confidentialité</h1>
             <p className="text-gray-600">
-              Dernière mise à jour : <span className="font-medium">{lastUpdated}</span>
+              Application Ludora – En vigueur au <span className="font-medium">{lastUpdated}</span>
             </p>
           </div>
 
-          {/* Introduction */}
-          <div className="prose prose-lg mb-12 max-w-none">
-            <p>
-              Chez Ludora, nous accordons une grande importance à la protection de vos données personnelles. Cette
-              politique de confidentialité explique comment nous collectons, utilisons, partageons et protégeons vos
-              informations lorsque vous utilisez notre application mobile et notre site web (collectivement, les
-              &apos;Services&apos;).
-            </p>
-            <p>
-              En utilisant nos Services, vous acceptez les pratiques décrites dans cette politique de confidentialité.
-              Si vous n&apos;acceptez pas cette politique, veuillez ne pas utiliser nos Services.
-            </p>
-          </div>
+          {/* Mentions Légales – Éditeur */}
+          <section id="section-1" className="mb-12">
+            <h2 className="mb-4 text-2xl font-bold">Mentions Légales – Éditeur du site</h2>
+            <div className="prose prose-lg max-w-none">
+              <p>Le présent site web est édité par Ludora.</p>
+              <div className="rounded-xl border border-orange-100 bg-linear-to-br from-orange-50 to-rose-50 p-4">
+                <ul className="space-y-2">
+                  <li>
+                    <strong>Nom de l&apos;Entreprise :</strong> MEBERBECHE Hichem Amir Fouad
+                  </li>
+                  <li>
+                    <strong>Enseigne commerciale :</strong> Ludora
+                  </li>
+                  <li>
+                    <strong>Siège social :</strong> 8 impasse André le Notre, 94000 Créteil
+                  </li>
+                  <li>
+                    <strong>SIRET :</strong> 931 604 102 00018
+                  </li>
+                  <li>
+                    <strong>Directeur de la publication :</strong> Meberbeche Hichem Amir Fouad
+                  </li>
+                  <li>
+                    <strong>Contact :</strong> 06 01 77 08 14 / contact@ludora.fr
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
 
-          {/* Table of Contents */}
-          <div className="mb-12 rounded-xl bg-linear-to-br from-orange-50 to-rose-50 p-6">
-            <h2 className="mb-4 text-xl font-bold">Sommaire</h2>
-            <ul className="space-y-2">
-              {[
-                'Informations que nous collectons',
-                'Comment nous utilisons vos informations',
-                'Partage de vos informations',
-                'Conservation des données',
-                'Vos droits',
-                'Sécurité des données',
-                'Modifications de cette politique',
-                'Nous contacter',
-                'Cookies et outils d’analyse',
-              ].map((item, index) => (
-                <li key={index}>
-                  <a
-                    href={`#section-${index + 1}`}
-                    className="flex items-center text-gray-700 transition-colors hover:text-orange-500"
-                  >
-                    <span className="mr-3 flex size-6 items-center justify-center rounded-full border border-orange-100 bg-white text-sm font-medium text-orange-500">
-                      {index + 1}
-                    </span>
-                    {item}
-                  </a>
+          {/* Hébergeur */}
+          <section id="section-2" className="mb-12">
+            <h2 className="mb-4 text-2xl font-bold">Hébergeur</h2>
+            <div className="prose prose-lg max-w-none">
+              <p>Le présent site web est hébergé par :</p>
+              <div className="rounded-xl border border-orange-100 bg-linear-to-br from-orange-50 to-rose-50 p-4">
+                <p className="font-semibold">OVH</p>
+                <p>Siège social : 2 rue Kellermann – 59100 Roubaix, France</p>
+                <p>Tél. +33 (0)8 99 70 17 61</p>
+              </div>
+            </div>
+          </section>
+
+          {/* Politique de confidentialité – intro */}
+          <section id="section-3" className="mb-12">
+            <h2 className="mb-4 text-2xl font-bold">Politique de confidentialité</h2>
+            <div className="prose prose-lg max-w-none">
+              <p>
+                Cette politique de confidentialité a pour objectif de vous expliquer pourquoi nous recueillons vos
+                données et comment nous nous engageons à les protéger.
+              </p>
+              <p>Ludora s&apos;engage en faveur de la protection de vos données personnelles et de votre vie privée.</p>
+              <p>
+                À ce titre, et en application du Règlement Général de Protection des Données (ci-après dénommé
+                &quot;RGPD&quot;), nous vous communiquons ci-après les conditions dans lesquelles vos données
+                personnelles sont appelées à être traitées par nos soins.
+              </p>
+            </div>
+          </section>
+
+          {/* Quelles données personnelles traitons-nous ? */}
+          <section id="section-4" className="mb-12">
+            <h2 className="mb-4 text-2xl font-bold">Quelles données personnelles traitons-nous ?</h2>
+            <div className="prose prose-lg max-w-none">
+              <p className="font-semibold">Finalités :</p>
+              <p>
+                Nous sommes susceptibles de recueillir et de conserver vos données à caractère personnel, notamment pour
+                :
+              </p>
+              <ul>
+                <li>Traiter et répondre à vos messages</li>
+                <li>Créer et gérer l&apos;accès à vos comptes</li>
+                <li>Gérer vos inscriptions à nos newsletters</li>
+                <li>Etablir et assurer le suivi de la relation commerciale pouvant découler de vos messages</li>
+                <li>Rédiger un avis/commentaire publié sur le site</li>
+                <li>Percevoir votre paiement</li>
+                <li>Assurer la comptabilité et la gestion</li>
+                <li>Améliorer notre suivi et service client</li>
+                <li>Gérer le bon fonctionnement et la personnalisation des services</li>
+                <li>Vous envoyer des informations commerciales et publicitaires en fonction de vos préférences</li>
+                <li>Détection d&apos;attaques et recours contentieux contre la fraude</li>
+                <li>Mémoriser vos choix quant à l&apos;utilisation des cookies</li>
+                <li>Traiter et répondre à vos demandes d&apos;exercice de droits</li>
+                <li>Pour répondre aux exigences réglementaires en vigueur ou en cours d&apos;adoption</li>
+              </ul>
+
+              <p className="mt-6 font-semibold">Catégories des données :</p>
+              <ul>
+                <li>Des coordonnées (par exemple nom, prénom, numéro de téléphone, email)</li>
+                <li>
+                  Des informations personnelles (par exemple date de naissance, nationalité, vie maritale, profession)
                 </li>
-              ))}
-            </ul>
-          </div>
+                <li>Vos préférences</li>
+                <li>
+                  Des informations techniques et de localisation générées dans le cadre de l&apos;utilisation de nos
+                  services
+                </li>
+              </ul>
 
-          {/* Content Sections */}
-          <div className="space-y-12">
-            {/* Section 1 */}
-            <section id="section-1">
-              <h2 className="mb-4 text-2xl font-bold">1. Informations que nous collectons</h2>
-              <div className="prose prose-lg max-w-none">
-                <p>Nous collectons plusieurs types d&apos;informations vous concernant, notamment :</p>
+              <p className="mt-6 font-semibold">Fondement juridiques des traitements</p>
+              <p>Les traitements de données à caractère personnel mis en œuvre sont fondés :</p>
+              <ul>
+                <li>
+                  Soit sur le consentement de la personne concernée (Article 6.1.a du RGPD) pour tous les traitements
+                  qui nécessitent le recueil préalable du consentement. Dans les formulaires en ligne, les champs
+                  obligatoires sont marqués d&apos;un astérisque. A défaut de réponse aux questions obligatoires, nous
+                  ne serons pas en mesure de vous fournir les services demandés.
+                </li>
+                <li>Soit pour l&apos;exécution d&apos;un contrat ou l&apos;exécution de mesures précontractuelles</li>
+                <li>Soit pour la poursuite d&apos;un intérêt légitime (Article 6.1.e du RGPD)</li>
+                <li>Soit pour le respect d&apos;une obligation légale ou règlementaire</li>
+              </ul>
+            </div>
+          </section>
 
-                <h3 className="mt-6 mb-3 text-xl font-semibold">1.1 Informations que vous nous fournissez</h3>
-                <ul>
-                  <li>
-                    <strong>Informations de compte :</strong> Lorsque vous créez un compte, nous collectons votre nom,
-                    adresse e-mail, mot de passe, date de naissance et photo de profil.
-                  </li>
-                  <li>
-                    <strong>Informations de profil :</strong> Les sports que vous pratiquez, votre niveau, vos
-                    disponibilités et vos préférences sportives.
-                  </li>
-                  <li>
-                    <strong>Communications :</strong> Lorsque vous nous contactez, nous conservons les messages et les
-                    informations que vous partagez.
-                  </li>
-                </ul>
+          {/* Durée de conservation */}
+          <section id="section-5" className="mb-12">
+            <h2 className="mb-4 text-2xl font-bold">Durée de conservation</h2>
+            <div className="prose prose-lg max-w-none">
+              <p>
+                Vos données sont conservées pour la durée nécessaire à l&apos;accomplissement des finalités mentionnées
+                ci-dessus.
+              </p>
+              <p>
+                La durée de conservation des données personnelles des Clients dépend de la finalité concernée. Dans ce
+                cadre, les données personnelles des Clients sont conservées le temps nécessaire à l&apos;accomplissement
+                de leur requête. A défaut d&apos;une quelconque réalisation, les données personnelles sont supprimées
+                dans les délais recommandés par la Commission Nationale Informatique et Libertés (CNIL), au terme
+                d&apos;un délai de trois ans à compter de leur collecte, sous réserve : des possibilités et obligations
+                légales en matière d&apos;archivage, des obligations de conservation de certaines données à des fins
+                probatoires, et/ou d&apos;anonymisation de celles-ci.
+              </p>
+              <p>
+                Les données personnelles du Client collectées et traitées, pour les besoins d&apos;exécution des offres,
+                sont conservées pour la durée nécessaire à la gestion de la relation contractuelle.
+              </p>
+              <p>
+                Par dérogation, les données personnelles requises pour l&apos;établissement de la preuve d&apos;un droit
+                ou d&apos;un contrat sont archivées conformément aux dispositions légales (5 ou 10 ans après la fin de
+                la relation commerciale selon le cas).
+              </p>
+            </div>
+          </section>
 
-                <h3 className="mt-6 mb-3 text-xl font-semibold">1.2 Informations collectées automatiquement</h3>
-                <ul>
-                  <li>
-                    <strong>Données d&apos;utilisation :</strong> Nous collectons des informations sur votre interaction
-                    avec nos Services, comme les pages visitées, les fonctionnalités utilisées et le temps passé sur
-                    l&apos;application.
-                  </li>
-                  <li>
-                    <strong>Informations de l&apos;appareil :</strong> Type d&apos;appareil, système
-                    d&apos;exploitation, identifiants uniques, paramètres de langue et informations de réseau.
-                  </li>
-                  <li>
-                    <strong>Données de localisation :</strong> Avec votre permission, nous collectons des données de
-                    géolocalisation pour vous montrer les matchs et joueurs à proximité.
-                  </li>
-                </ul>
+          {/* Destinataires des données */}
+          <section id="section-6" className="mb-12">
+            <h2 className="mb-4 text-2xl font-bold">Quels sont les destinataires de vos données ?</h2>
+            <div className="prose prose-lg max-w-none">
+              <p>Vos données personnelles sont destinées à Ludora.</p>
+              <ul>
+                <li>
+                  <strong>Nos services internes :</strong> Elles sont traitées par le personnel de nos différents
+                  services tel que le service commercial ou le service en charge de la sécurité informatique.
+                </li>
+                <li>
+                  <strong>Des entreprises ou personnes de confiance :</strong> Ils traitent vos informations pour nous
+                  aux fins énoncées ci-dessus, conformément à nos instructions telles qu&apos;elles sont décrites dans
+                  notre Politique de confidentialité et à tous autres cas d&apos;usage approprié en termes de
+                  confidentialité et de sécurité.
+                </li>
+                <li>
+                  <strong>Des sous-traitants techniques :</strong> Les données personnelles vous concernant peuvent être
+                  transférées à nos sous-traitants techniques (au sens de l&apos;article 4.8 du RGPD) de façon encadrée
+                  strictement. En cas de transfert, nous nous assurons que les sous-traitants respectent le RGPD et
+                  prennent des mesures techniques et organisationnelles pour garantir la protection des données (art. 28
+                  du RGPD).
+                </li>
+              </ul>
+              <ul>
+                <li>Analyse de trafic (comme Google Analytics)</li>
+                <li>Prestataire de paiement (comme Stripe)</li>
+                <li>Service de CDN (comme Cloudflare)</li>
+              </ul>
+              <p>
+                Nous devons parfois permettre à nos partenaires de traiter, en notre nom, les informations personnelles
+                que nous détenons sur vous aux fins énoncées dans cette politique ou pour toute autre raison requise par
+                la loi.
+              </p>
+              <p>Les données personnelles des Clients collectées sont hébergées en France.</p>
+              <p>
+                Dans le cas du recours à un prestataire situé en dehors de l&apos;Union européenne, nous nous engageons
+                à vérifier que des mesures appropriées ont été mises en place afin que les données personnelles
+                bénéficient d&apos;un niveau de protection adéquat.
+              </p>
+            </div>
+          </section>
 
-                <h3 className="mt-6 mb-3 text-xl font-semibold">1.3 Informations provenant de tiers</h3>
-                <ul>
+          {/* Sécurité des données */}
+          <section id="section-7" className="mb-12">
+            <h2 className="mb-4 text-2xl font-bold">Comment Ludora préserve la sécurité de vos données ?</h2>
+            <div className="prose prose-lg max-w-none">
+              <p>
+                Nous mettons en place toutes les mesures organisationnelles et techniques permettant d&apos;assurer un
+                niveau approprié de sécurité à vos données personnelles, et notamment d&apos;éviter toute perte de
+                confidentialité, d&apos;intégrité ou d&apos;accessibilité.
+              </p>
+              <ul>
+                <li>Nous effectuons fréquemment la sauvegarde des données</li>
+                <li>Nous procédons au cryptage de vos données pour les protéger durant leur transfert</li>
+                <li>
+                  Dans la mesure du possible, nous limitons l&apos;accès aux informations personnelles aux seules
+                  personnes qui ont besoin de les traiter
+                </li>
+                <li>
+                  Mise en place de mesures techniques et organisationnelles pour assurer que la conservation des données
+                  personnelles des Clients est sécurisée, pendant la durée nécessaire à l&apos;exercice des finalités
+                  poursuivies
+                </li>
+                <li>Formation RGPD de nos équipes</li>
+              </ul>
+            </div>
+          </section>
+
+          {/* Droits sur les données */}
+          <section id="section-8" className="mb-12">
+            <h2 className="mb-4 text-2xl font-bold">Quels sont vos droits sur vos données personnelles ?</h2>
+            <div className="prose prose-lg max-w-none">
+              <p>Conformément à la Réglementation Applicable, vous disposez des droits suivants :</p>
+              <ul>
+                <li>
+                  <strong>Un droit de rectification :</strong> vous avez le droit d&apos;obtenir la rectification des
+                  données inexactes vous concernant. Vous avez également le droit de compléter les données incomplètes
+                  vous concernant, en fournissant une déclaration complémentaire. En cas d&apos;exercice de ce droit,
+                  nous nous engageons à communiquer toute rectification à l&apos;ensemble des destinataires de vos
+                  données.
+                </li>
+                <li>
+                  <strong>Un droit d&apos;effacement :</strong> dans certains cas, vous avez le droit d&apos;obtenir
+                  l&apos;effacement de vos données. Cependant, ceci n&apos;est pas un droit absolu et nous pouvons pour
+                  des raisons légales ou légitimes conserver ces données.
+                </li>
+                <li>
+                  <strong>Un droit à la limitation du traitement :</strong> dans certains cas, vous avez le droit
+                  d&apos;obtenir la limitation du traitement sur vos données.
+                </li>
+                <li>
+                  <strong>Un droit à la portabilité des données :</strong> vous avez le droit de recevoir vos données
+                  que vous nous avez fournies, dans un format structuré, couramment utilisé et lisible par une machine,
+                  pour votre usage personnel ou pour les transmettre à un tiers de votre choix. Ce droit ne
+                  s&apos;applique que lorsque le traitement de vos données est basé sur votre consentement, sur un
+                  contrat ou que ce traitement est effectué par des moyens automatisés.
+                </li>
+                <li>
+                  <strong>Un droit d&apos;opposition au traitement :</strong> vous avez le droit de vous opposer à tout
+                  moment au traitement de vos données pour les traitements basés sur notre intérêt légitime, une mission
+                  d&apos;intérêt public et ceux à des fins de prospection commerciale. Ceci n&apos;est pas un droit
+                  absolu et nous pouvons pour des raisons légales ou légitimes refuser votre demande d&apos;opposition.
+                </li>
+                <li>
+                  <strong>Le droit de retirer votre consentement à tout moment :</strong> vous pouvez retirer votre
+                  consentement au traitement de vos données lorsque le traitement est basé sur votre consentement. Le
+                  retrait du consentement ne compromet pas la licéité du traitement fondé sur le consentement effectué
+                  avant ce retrait.
+                </li>
+                <li>
+                  <strong>Le droit de déposer une plainte auprès d&apos;une autorité de contrôle :</strong> vous avez le
+                  droit de contacter votre autorité de protection des données pour vous plaindre de nos pratiques de
+                  protection des données personnelles.
+                </li>
+              </ul>
+              <p>
+                En application du RGPD, les conditions d&apos;exercice de ces droits peuvent varier selon la base de
+                licéité du traitement mentionné dans le premier paragraphe.
+              </p>
+              <p>
+                Nous donnerons suite à tout exercice de droit dans les meilleurs délais et en tout état de cause dans un
+                délai de 30 jours à compter de la réception de la demande.
+              </p>
+              <p>Nous nous réservons le droit :</p>
+              <ul>
+                <li>
+                  De demander une preuve de l&apos;identité du demandeur en cas de doute raisonnable sur cette dernière
+                  et ce afin de respecter son obligation de confidentialité
+                </li>
+                <li>
+                  De prolonger le délai de réponse de deux mois, informant alors le demandeur de cette prolongation et
+                  des motifs du report dans un délai d&apos;un mois à compter de la réception de la demande
+                </li>
+                <li>
+                  De refuser de répondre à un exercice de droit si celui-ci était considéré comme abusif (au vu de leur
+                  nombre, de leur caractère répétitif ou systématique)
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          {/* Contact RGPD */}
+          <section id="section-9" className="mb-12">
+            <h2 className="mb-4 text-2xl font-bold">Qui contacter pour toutes les demandes liées au RGPD ?</h2>
+            <div className="prose prose-lg max-w-none">
+              <p>Pour exercer vos droits, vous pouvez nous contacter :</p>
+              <div className="rounded-xl border border-orange-100 bg-linear-to-br from-orange-50 to-rose-50 p-4">
+                <p className="font-semibold">Ludora</p>
+                <ul className="mt-2 space-y-1">
                   <li>
-                    <strong>Réseaux sociaux :</strong> Si vous vous connectez via un réseau social, nous pouvons
-                    recevoir des informations de ce service, conformément à leurs politiques de confidentialité.
+                    <strong>Nom de l&apos;Entreprise :</strong> MEBERBECHE Hichem Amir Fouad (Auto-entrepreneur)
                   </li>
                   <li>
-                    <strong>Partenaires :</strong> Nous pouvons recevoir des informations de nos partenaires
-                    commerciaux, comme des informations sur les terrains de sport ou les événements.
-                  </li>
-                </ul>
-                <h3 className="mt-6 mb-3 text-xl font-semibold">1.4 Informations collectées via nos formulaires</h3>
-                <ul>
-                  <li>
-                    <strong>Formulaire de contact :</strong> Nous collectons votre nom, votre adresse e-mail et le
-                    contenu de votre message afin de répondre à votre demande.
+                    <strong>Enseigne commerciale :</strong> Ludora
                   </li>
                   <li>
-                    <strong>Newsletter :</strong> Lors de votre inscription, nous collectons uniquement votre adresse
-                    e-mail avec votre consentement explicite. Vous pouvez vous désabonner à tout moment via le lien
-                    présent dans chaque e-mail.
+                    <strong>Siège social :</strong> 8 impasse André le Notre, 94000 Créteil
+                  </li>
+                  <li>
+                    <strong>SIRET :</strong> 931 604 102 00018
+                  </li>
+                  <li>
+                    <strong>Directeur de la publication :</strong> Meberbeche Hichem Amir Fouad
+                  </li>
+                  <li>
+                    <strong>Contact :</strong> 06 01 77 08 14 / contact@ludora.fr
                   </li>
                 </ul>
               </div>
-            </section>
+              <p>
+                Si, en dépit de nos efforts et de nos engagements, vous estimiez que vos droits concernant vos données
+                personnelles n&apos;étaient pas respectés, vous pouvez adresser une réclamation auprès de la Commission
+                Nationale Informatique et Libertés : CNIL 3 Place de Fontenoy TSA 80715 75334 Paris Cedex 07.
+              </p>
+            </div>
+          </section>
 
-            {/* Section 2 */}
-            <section id="section-2">
-              <h2 className="mb-4 text-2xl font-bold">2. Comment nous utilisons vos informations</h2>
-              <div className="prose prose-lg max-w-none">
-                <p>Nous utilisons vos informations pour les finalités suivantes :</p>
+          {/* Réserve de modification */}
+          <section id="section-10" className="mb-12">
+            <h2 className="mb-4 text-2xl font-bold">
+              Réserve de modification de la Politique de protection des données
+            </h2>
+            <div className="prose prose-lg max-w-none">
+              <p>
+                La présente Politique de protection des données personnelles peut être amenée à évoluer. Elles ont été
+                élaborées à partir d&apos;un modèle libre qui peut être téléchargé sur le site https://donnees.net.
+                Comme nous développons constamment nos services, nous nous réservons le droit de modifier cette
+                Politique de confidentialité, conformément aux dispositions légales en vigueur. Toute modification est
+                publiée sur ce document en temps opportun. Nous vous conseillons de consulter régulièrement cette page
+                pour prendre connaissance des éventuelles modifications ou mises à jour apportées à notre politique de
+                confidentialité.
+              </p>
+            </div>
+          </section>
 
-                <ul>
-                  <li>
-                    <strong>Fournir nos Services :</strong> Créer et gérer votre compte, vous permettre de trouver des
-                    partenaires de jeu, organiser des matchs et créer des équipes équilibrées.
-                  </li>
-                  <li>
-                    <strong>Personnalisation :</strong> Adapter notre contenu et nos recommandations à vos préférences
-                    et à votre niveau sportif.
-                  </li>
-                  <li>
-                    <strong>Communication :</strong> Vous envoyer des notifications, des confirmations de matchs, des
-                    rappels et des informations importantes concernant nos Services.
-                  </li>
-                  <li>
-                    <strong>Amélioration :</strong> Analyser l&apos;utilisation de nos Services pour les améliorer et
-                    développer de nouvelles fonctionnalités.
-                  </li>
-                  <li>
-                    <strong>Sécurité :</strong> Détecter, prévenir et résoudre les problèmes techniques, les fraudes ou
-                    les activités illégales.
-                  </li>
-                  <li>
-                    <strong>Marketing :</strong> Avec votre consentement, vous envoyer des informations sur nos
-                    Services, des offres spéciales et des événements sportifs qui pourraient vous intéresser.
-                  </li>
-                </ul>
-              </div>
-            </section>
+          {/* Cookies */}
+          <section id="section-11" className="mb-12">
+            <h2 className="mb-4 text-2xl font-bold">Qu&apos;est-ce qu&apos;un &quot;cookie&quot; ?</h2>
+            <div className="prose prose-lg max-w-none">
+              <p>
+                Les cookies sont de petits fichiers texte qu&apos;un site web enregistre sur votre ordinateur ou votre
+                appareil mobile lorsque vous visitez le site.
+              </p>
+              <p>
+                Ils facilitent votre expérience en ligne en sauvegardant les informations de navigation. Grâce aux
+                cookies, les sites peuvent vous garder connecté, se souvenir de vos préférences de site et vous proposer
+                un contenu personnalisé. Les cookies peuvent également être utilisés pour établir des statistiques sur
+                l&apos;expérience de navigation et pour montrer des publicités ciblées.
+              </p>
+              <p>En général, les cookies peuvent être classés par :</p>
+              <p className="font-semibold">Domaine :</p>
+              <ul>
+                <li>
+                  Les cookies de première partie sont émis par un site web qu&apos;un utilisateur consulte directement.
+                </li>
+                <li>
+                  Les cookies tiers ne sont pas créés par le site web consulté, mais par un tiers comme Google
+                  Analytics, DoubleClick, Facebook, Twitter, LinkedIn, Youtube, Vimeo, etc.
+                </li>
+              </ul>
+              <p className="mt-4 font-semibold">Objectif :</p>
+              <ul>
+                <li>Les cookies strictement nécessaires sont requis pour que le site web fonctionne correctement.</li>
+                <li>
+                  Les cookies de préférences permettent à un site web de se souvenir des choix que vous avez faits dans
+                  le passé.
+                </li>
+                <li>
+                  Les cookies de statistiques aident le propriétaire du site web à collecter des données statistiques et
+                  à comprendre comment les visiteurs interagissent avec le site web.
+                </li>
+                <li>
+                  Les cookies marketing suivent l&apos;activité en ligne de l&apos;utilisateur pour aider les annonceurs
+                  à diffuser des publicités plus pertinentes.
+                </li>
+              </ul>
+              <p className="mt-4 font-semibold">Durée :</p>
+              <ul>
+                <li>Les cookies de session qui sont effacés lorsque l&apos;utilisateur ferme le navigateur.</li>
+                <li>
+                  Les cookies persistants qui restent sur le dispositif de l&apos;utilisateur pendant une certaine
+                  période de temps.
+                </li>
+              </ul>
+            </div>
+          </section>
 
-            {/* Section 3 */}
-            <section id="section-3">
-              <h2 className="mb-4 text-2xl font-bold">3. Partage de vos informations</h2>
-              <div className="prose prose-lg max-w-none">
-                <p>Nous pouvons partager vos informations dans les circonstances suivantes :</p>
+          <section id="section-12" className="mb-12">
+            <h2 className="mb-4 text-2xl font-bold">Quels sont les cookies et traceurs que nous utilisons ?</h2>
+            <div className="prose prose-lg max-w-none">
+              <p>
+                L&apos;application Ludora et son site vitrine utilisent exclusivement des cookies techniques et
+                fonctionnels nécessaires au bon fonctionnement du service.
+              </p>
+              <p>Cookies utilisés :</p>
+              <ul>
+                <li>
+                  <strong>Cookies de session / Authentification :</strong> Ces cookies (ou jetons de stockage local)
+                  permettent de vous identifier et de maintenir votre connexion à votre espace client. Ils sont
+                  indispensables à l&apos;utilisation de l&apos;application.
+                </li>
+                <li>
+                  <strong>Cookies de sécurité :</strong> Utilisés par notre infrastructure Cloudflare pour protéger nos
+                  serveurs contre les attaques malveillantes (DDoS, bots).
+                </li>
+                <li>
+                  <strong>Cookies de préférences :</strong> Permettent de mémoriser vos choix d&apos;utilisation (ex:
+                  langue, acceptation de la politique de confidentialité).
+                </li>
+              </ul>
+              <p>
+                Note : Nous n&apos;utilisons aucun cookie de ciblage publicitaire ni de cookie tiers à des fins de
+                profilage commercial.
+              </p>
+            </div>
+          </section>
 
-                <h3 className="mt-6 mb-3 text-xl font-semibold">3.1 Avec d&apos;autres utilisateurs</h3>
-                <p>
-                  Certaines informations de votre profil (nom, photo, sports pratiqués, niveau) sont visibles par les
-                  autres utilisateurs pour faciliter la mise en relation. Vous pouvez ajuster vos paramètres de
-                  confidentialité pour contrôler les informations partagées.
-                </p>
-
-                <h3 className="mt-6 mb-3 text-xl font-semibold">3.2 Avec nos prestataires de services</h3>
-                <p>
-                  Nous partageons des informations avec des tiers qui nous aident à exploiter, fournir, améliorer et
-                  promouvoir nos Services (hébergement, analyse de données, traitement des paiements, service client).
-                  Ces prestataires sont tenus de protéger vos informations.
-                </p>
-
-                <h3 className="mt-6 mb-3 text-xl font-semibold">3.3 Pour des raisons légales</h3>
-                <p>
-                  Nous pouvons divulguer vos informations si nous estimons de bonne foi que cette divulgation est
-                  nécessaire pour :
-                </p>
-                <ul>
-                  <li>Se conformer à la loi ou à une procédure judiciaire</li>
-                  <li>Protéger nos droits, notre propriété ou notre sécurité, ainsi que ceux de nos utilisateurs</li>
-                  <li>Enquêter sur des fraudes ou des violations de nos conditions d&apos;utilisation</li>
-                </ul>
-
-                <h3 className="mt-6 mb-3 text-xl font-semibold">3.4 En cas de transfert d&apos;entreprise</h3>
-                <p>
-                  Si Ludora est impliqué dans une fusion, acquisition ou vente d&apos;actifs, vos informations
-                  pourraient être transférées. Nous vous informerons avant que vos informations ne soient transférées et
-                  soumises à une politique de confidentialité différente.
-                </p>
-
-                <h3 className="mt-6 mb-3 text-xl font-semibold">3.5 Avec votre consentement</h3>
-                <p>
-                  Nous pouvons partager vos informations dans d&apos;autres contextes avec votre consentement explicite.
-                </p>
-              </div>
-            </section>
-
-            {/* Section 4 */}
-            <section id="section-4">
-              <h2 className="mb-4 text-2xl font-bold">4. Conservation des données</h2>
-              <div className="prose prose-lg max-w-none">
-                <p>
-                  Nous conservons vos informations aussi longtemps que nécessaire pour fournir nos Services et aux fins
-                  décrites dans cette politique de confidentialité. Si vous supprimez votre compte, nous supprimerons
-                  vos informations personnelles dans un délai raisonnable, sauf si la conservation est nécessaire pour:
-                </p>
-                <ul>
-                  <li>Respecter des obligations légales</li>
-                  <li>Résoudre des litiges</li>
-                  <li>Prévenir la fraude et les abus</li>
-                  <li>Faire respecter nos accords</li>
-                </ul>
-                <p>
-                  Certaines informations peuvent être conservées sous forme anonymisée à des fins d&apos;analyse et
-                  d&apos;amélioration de nos Services.
-                </p>
-              </div>
-            </section>
-
-            {/* Section 5 */}
-            <section id="section-5">
-              <h2 className="mb-4 text-2xl font-bold">5. Vos droits</h2>
-              <div className="prose prose-lg max-w-none">
-                <p>
-                  Selon votre lieu de résidence, vous pouvez disposer de certains droits concernant vos informations
-                  personnelles :
-                </p>
-                <ul>
-                  <li>
-                    <strong>Accès :</strong> Vous pouvez demander une copie des informations personnelles que nous
-                    détenons à votre sujet.
-                  </li>
-                  <li>
-                    <strong>Rectification :</strong> Vous pouvez mettre à jour ou corriger vos informations
-                    personnelles.
-                  </li>
-                  <li>
-                    <strong>Suppression :</strong> Vous pouvez demander la suppression de vos informations personnelles
-                    dans certaines circonstances.
-                  </li>
-                  <li>
-                    <strong>Restriction :</strong> Vous pouvez demander que nous limitions le traitement de vos
-                    informations personnelles.
-                  </li>
-                  <li>
-                    <strong>Portabilité :</strong> Vous pouvez demander une copie de vos informations personnelles dans
-                    un format structuré et lisible par machine.
-                  </li>
-                  <li>
-                    <strong>Opposition :</strong> Vous pouvez vous opposer au traitement de vos informations
-                    personnelles dans certaines circonstances.
-                  </li>
-                  <li>
-                    <strong>Retrait du consentement :</strong> Si nous traitons vos informations sur la base de votre
-                    consentement, vous pouvez retirer ce consentement à tout moment.
-                  </li>
-                </ul>
-                <p>
-                  Pour exercer ces droits, veuillez nous contacter à{' '}
-                  <a href="mailto:privacy@ludora.fr" className="text-orange-500 hover:underline">
-                    privacy@ludora.fr
-                  </a>
-                  . Nous répondrons à votre demande dans les délais prévus par la loi applicable.
-                </p>
-              </div>
-            </section>
-
-            {/* Section 6 */}
-            <section id="section-6">
-              <h2 className="mb-4 text-2xl font-bold">6. Sécurité des données</h2>
-              <div className="prose prose-lg max-w-none">
-                <p>
-                  Nous prenons la sécurité de vos informations au sérieux et mettons en œuvre des mesures techniques et
-                  organisationnelles appropriées pour protéger vos informations contre la perte, l&apos;accès non
-                  autorisé, la divulgation, l&apos;altération et la destruction. Ces mesures comprennent :
-                </p>
-                <ul>
-                  <li>Le chiffrement des données sensibles</li>
-                  <li>Des contrôles d&apos;accès stricts pour nos employés</li>
-                  <li>Des audits de sécurité réguliers</li>
-                  <li>La formation de notre personnel aux pratiques de sécurité</li>
-                </ul>
-                <p>
-                  Cependant, aucune méthode de transmission sur Internet ou de stockage électronique n&apos;est
-                  totalement sécurisée. Nous ne pouvons donc pas garantir une sécurité absolue. Si vous avez des raisons
-                  de croire que votre interaction avec nous n&apos;est plus sécurisée, veuillez nous contacter
-                  immédiatement.
-                </p>
-              </div>
-            </section>
-
-            {/* Section 7 */}
-            <section id="section-7">
-              <h2 className="mb-4 text-2xl font-bold">7. Modifications de cette politique</h2>
-              <div className="prose prose-lg max-w-none">
-                <p>
-                  Nous pouvons mettre à jour cette politique de confidentialité de temps à autre pour refléter les
-                  changements dans nos pratiques ou pour d&apos;autres raisons opérationnelles, légales ou
-                  réglementaires. La version la plus récente sera toujours disponible sur notre site web avec la date de
-                  la dernière mise à jour.
-                </p>
-                <p>
-                  Nous vous encourageons à consulter régulièrement cette politique pour rester informé de la façon dont
-                  nous protégeons vos informations. Si nous apportons des modifications importantes, nous vous en
-                  informerons par e-mail ou par une notification dans l&apos;application avant que les modifications ne
-                  prennent effet.
-                </p>
-              </div>
-            </section>
-
-            {/* Section 8 */}
-            <section id="section-8">
-              <h2 className="mb-4 text-2xl font-bold">8. Nous contacter</h2>
-              <div className="prose prose-lg max-w-none">
-                <p>
-                  Si vous avez des questions, des préoccupations ou des demandes concernant cette politique de
-                  confidentialité ou le traitement de vos informations personnelles, veuillez nous contacter :
-                </p>
-                <ul>
-                  <li>
-                    <strong>Par e-mail :</strong>{' '}
-                    <a href="mailto:contact@ludora.fr" className="text-orange-500 hover:underline">
-                      contact@ludora.fr
-                    </a>
-                  </li>
-                  <li>
-                    <strong>Par courrier :</strong> Ludora SAS, 123 Avenue des Sports, 75000 Paris, France
-                  </li>
-                  <li>
-                    <strong>Via notre formulaire de contact :</strong>{' '}
-                    <Link href={ROUTES.CONTACT} className="text-orange-500 hover:underline">
-                      www.ludora.fr/contact
-                    </Link>
-                  </li>
-                </ul>
-                <p>
-                  Si vous résidez dans l&apos;Union européenne, vous avez également le droit de déposer une plainte
-                  auprès d&apos;une autorité de protection des données concernant notre collecte et notre utilisation de
-                  vos informations personnelles.
-                </p>
-              </div>
-            </section>
-            {/* Section 9 */}
-            <section id="section-9">
-              <h2 className="mb-4 text-2xl font-bold">9. Cookies et outils d’analyse</h2>
-              <div className="prose prose-lg max-w-none">
-                <p>
-                  Nous utilisons <strong>Plausible Analytics</strong> pour mesurer l’audience de notre site de manière
-                  anonyme et respectueuse de la vie privée. Plausible ne dépose <strong>aucun cookie</strong> et ne
-                  collecte aucune donnée personnelle. Les statistiques recueillies servent uniquement à améliorer notre
-                  site.
-                </p>
-                <p>
-                  Par conséquent, aucune bannière de consentement n’est requise. Les données collectées sont agrégées et
-                  anonymisées, exclusivement à des fins statistiques.
-                </p>
-              </div>
-            </section>
-          </div>
+          <section id="section-13" className="mb-12">
+            <h2 className="mb-4 text-2xl font-bold">Vos préférences concernant les cookies</h2>
+            <div className="prose prose-lg max-w-none">
+              <p>
+                Quand vous arrivez pour la première fois sur l&apos;application mobile, un bandeau cookie vous propose
+                d&apos;accepter ou de refuser les Cookies qui ne sont pas essentiels au fonctionnement de
+                l&apos;application mobile. Vous pouvez refuser ou désactiver les Cookies à tout moment, à
+                l&apos;exception des Cookies nécessaires au fonctionnement stable de l&apos;application mobile. Vous
+                avez la possibilité de modifier à tout moment vos préférences relatives à la gestion des cookies.
+              </p>
+            </div>
+          </section>
 
           {/* Footer CTA */}
           <div className="mt-16 rounded-xl border border-orange-100 bg-linear-to-br from-orange-50 to-rose-50 p-8">
