@@ -9,13 +9,6 @@ const BASIC_AUTH_PASSWORD = process.env.BASIC_AUTH_PASSWORD;
 const isBasicAuthEnabled = BASIC_AUTH_ENABLED === 'true';
 
 export function proxy(req: NextRequest) {
-  // Gestion des requêtes Plausible
-  if (req.nextUrl.pathname.startsWith('/js/') || req.nextUrl.pathname.startsWith('/api/event')) {
-    const headers = new Headers(req.headers);
-    headers.delete('cookie');
-    return NextResponse.next({ request: { headers } });
-  }
-
   // Gestion du Basic Auth existant
   if (!isBasicAuthEnabled) return NextResponse.next();
 
@@ -33,5 +26,5 @@ export function proxy(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/', '/js/(.*)', '/api/event(.*)'],
+  matcher: ['/'],
 };
