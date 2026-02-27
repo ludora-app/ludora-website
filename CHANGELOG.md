@@ -1,3 +1,10 @@
+## <small>1.2.1 (2026-02-27)</small>
+
+* Merge pull request #43 from ludora-app/fix/app-link-config ([f281ae0](https://github.com/ludora-app/ludora-website/commit/f281ae0)), closes [#43](https://github.com/ludora-app/ludora-website/issues/43)
+* Merge pull request #44 from ludora-app/develop ([806f067](https://github.com/ludora-app/ludora-website/commit/806f067)), closes [#44](https://github.com/ludora-app/ludora-website/issues/44)
+* Merge pull request #45 from ludora-app/staging ([c8c533b](https://github.com/ludora-app/ludora-website/commit/c8c533b)), closes [#45](https://github.com/ludora-app/ludora-website/issues/45)
+* fix(assetlinks): add assetlinks.json for Android app integration ([68ec7dc](https://github.com/ludora-app/ludora-website/commit/68ec7dc))
+
 ## 1.2.0 (2026-02-27)
 
 * Merge pull request #30 from ludora-app/deps/upgrade-packages-and-react ([2ad2d58](https://github.com/ludora-app/ludora-website/commit/2ad2d58)), closes [#30](https://github.com/ludora-app/ludora-website/issues/30)
