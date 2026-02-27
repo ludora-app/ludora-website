@@ -3,6 +3,7 @@ export const ROUTES = {
   CGV: '/conditions-generales-vente',
   CONTACT: '/contact',
   DOWNLOAD: '/telecharger',
+  EMAIL_VERIFIED: '/email-verified',
   FEATURES: '/fonctionnalites',
   HOME: '/',
   LEGAL_NOTICE: '/mentions-legales',

@@ -1,0 +1,11 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.ludora",
+      "sha256_cert_fingerprints":
+        ["92:D6:15:1F:A4:5C:85:15:D5:A3:BD:C1:A3:53:67:A1:4C:D0:4E:B4:F7:8D:05:CD:6B:41:49:B5:87:5A:45:0B"]
+    }
+  }
+]
