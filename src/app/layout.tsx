@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 import './globals.css';
 
-import { Footer, Header } from '@/features';
+import { ConditionalShell } from '@/components/layout/conditional-shell.component';
 import MainProvider from '@/providers/main.provider';
 
 export const metadata: Metadata = {
@@ -21,9 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <MainProvider>
-      <Header />
-      <main>{children}</main>
-      <Footer />
+      <ConditionalShell>{children}</ConditionalShell>
     </MainProvider>
   );
 }
