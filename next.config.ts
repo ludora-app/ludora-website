@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
       },
       {
         destination: 'https://eu.i.posthog.com/:path*',
-        source: '/joyca/:path*',
+        source: '/ingest/:path*',
       },
     ];
   },
