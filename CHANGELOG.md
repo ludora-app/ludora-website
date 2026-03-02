@@ -1,3 +1,10 @@
+## 1.3.0 (2026-03-02)
+
+* Merge pull request #46 from ludora-app/feat/SCRUM-454 ([9bb4445](https://github.com/ludora-app/ludora-website/commit/9bb4445)), closes [#46](https://github.com/ludora-app/ludora-website/issues/46)
+* Merge pull request #47 from ludora-app/develop ([0364b9d](https://github.com/ludora-app/ludora-website/commit/0364b9d)), closes [#47](https://github.com/ludora-app/ludora-website/issues/47)
+* Merge pull request #48 from ludora-app/staging ([1ab56fd](https://github.com/ludora-app/ludora-website/commit/1ab56fd)), closes [#48](https://github.com/ludora-app/ludora-website/issues/48)
+* feat(SCRUM-454): update email verification screen, change app images and add posthog proxy ([32fd276](https://github.com/ludora-app/ludora-website/commit/32fd276))
+
 ## <small>1.2.1 (2026-02-27)</small>
 
 * Merge pull request #43 from ludora-app/fix/app-link-config ([f281ae0](https://github.com/ludora-app/ludora-website/commit/f281ae0)), closes [#43](https://github.com/ludora-app/ludora-website/issues/43)
