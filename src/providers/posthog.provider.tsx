@@ -10,6 +10,7 @@ export function PostHogProvider({ children }: PropsWithChildren) {
       api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
       defaults: '2026-01-30',
       enable_heatmaps: true,
+      ui_host: 'https://eu.posthog.com',
     });
   }, []);
 
