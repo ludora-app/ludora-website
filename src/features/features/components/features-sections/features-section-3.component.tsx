@@ -1,7 +1,7 @@
 import { Heading, Image, Tabs, TabsContent, TabsList, TabsTrigger, Typography } from '@chillUi';
 import { CheckCircle } from 'lucide-react';
 
-import { HomeScreenAppImg, SessionCreateScreenImg, SessionScreenAppImg } from '@/assets';
+import { CreateSessionAppImg, HomeScreenAppImg, SessionDetailScreenAppImg } from '@/assets';
 
 export default function FeaturesSection3() {
   return (
@@ -84,7 +84,7 @@ export default function FeaturesSection3() {
                 </ul>
               </div>
               <div className="flex justify-center md:justify-end">
-                <Image src={SessionCreateScreenImg} alt="Organisation de matchs" />
+                <Image src={CreateSessionAppImg} alt="Organisation de matchs" />
               </div>
             </div>
           </TabsContent>
@@ -117,7 +117,7 @@ export default function FeaturesSection3() {
               </div>
 
               <div className="flex justify-center md:justify-end">
-                <Image src={SessionScreenAppImg} alt="Création d'équipes" />
+                <Image src={SessionDetailScreenAppImg} alt="Création d'équipes" />
               </div>
             </div>
           </TabsContent>

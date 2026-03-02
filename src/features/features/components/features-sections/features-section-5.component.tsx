@@ -1,6 +1,6 @@
 import { Badge, Heading, Image, Typography } from '@chillUi';
 
-import { ModifyProfilScreenImg, NoteScreenAppImg, SessionCreateScreenImg } from '@/assets';
+import { CreateSessionAppImg, JoinedSessionScreenAppImg, ProfileScreenAppImg } from '@/assets';
 
 export default function FeaturesSection4() {
   return (
@@ -33,13 +33,13 @@ export default function FeaturesSection4() {
               </Typography>
             </div>
             <div className="relative order-1 md:order-2">
-              <Image src={ModifyProfilScreenImg} alt="Création de profil" className="mx-auto" />
+              <Image src={ProfileScreenAppImg} alt="Création de profil" className="mx-auto" />
             </div>
           </div>
 
           <div className="mb-16 grid items-center gap-12 md:grid-cols-2">
             <div className="relative">
-              <Image src={SessionCreateScreenImg} alt="Recherche de matchs" className="mx-auto" />
+              <Image src={CreateSessionAppImg} alt="Recherche de matchs" className="mx-auto" />
             </div>
             <div>
               <Badge className="mb-1 p-1" variant="light">
@@ -61,15 +61,14 @@ export default function FeaturesSection4() {
                 <span className="bg-primary rounded-lg px-2 py-0.5 text-xs font-medium text-white">Étape 3</span>
               </Badge>
               <Heading as="h3" variant="title-4" className="mb-4">
-                Jouez et évaluez
+                Rejoignez et jouez
               </Heading>
               <Typography variant="body-1" color="gray" className="mb-6">
-                Participez à votre match et profitez de l&apos;expérience ! Après le match, évaluez les autres joueurs
-                pour aider notre algorithme à créer des équipes encore plus équilibrées à l&apos;avenir.
+                Rejoignez le match de votre choix et profitez de l&apos;expérience !
               </Typography>
             </div>
             <div className="relative order-1 md:order-2">
-              <Image src={NoteScreenAppImg} alt="Évaluation après match" className="mx-auto" />
+              <Image src={JoinedSessionScreenAppImg} alt="Évaluation après match" className="mx-auto" />
             </div>
           </div>
         </div>

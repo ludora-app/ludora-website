@@ -14,12 +14,12 @@ import Autoplay from 'embla-carousel-autoplay';
 import Image from 'next/image';
 
 import {
+  FilterSessionsAppImg,
   HomeScreenAppImg,
-  MatchScreenAppImg,
+  JoinedSessionAppImg,
   MessageScreenAppImg,
   ProfileScreenAppImg,
-  SessionCreateScreenImg,
-  SessionScreenAppImg,
+  SessionDetailScreenAppImg,
 } from '@/assets';
 const carouselItems = [
   {
@@ -27,15 +27,15 @@ const carouselItems = [
     title: 'Recherche de sessions',
   },
   {
-    image: SessionCreateScreenImg,
+    image: FilterSessionsAppImg,
     title: 'Filtres de recherche',
   },
   {
-    image: SessionScreenAppImg,
+    image: SessionDetailScreenAppImg,
     title: 'Détail de la session',
   },
   {
-    image: MatchScreenAppImg,
+    image: JoinedSessionAppImg,
     title: 'Rejoindre une session',
   },
   {
