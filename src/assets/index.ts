@@ -1,17 +1,17 @@
-export { default as CarteInteractiveAppImg } from './images/carte-interactive-app.png';
 export { default as ConnectSportImg } from './images/connect-sport.png';
-export { default as FavorisScreenAppImg } from './images/favoris-screen-app.png';
+export { default as CreateSessionAppImg } from './images/create-session-app.png';
+export { default as DashboardScreenAppImg } from './images/dashboard-screen-app.png';
+export { default as FilterSessionsAppImg } from './images/filter-sessions-app.png';
 export { default as HomeScreenAppImg } from './images/home-screen-app.png';
 export { default as homeSection1Img } from './images/home-section-1.png';
+export { default as JoinedSessionAppImg } from './images/joined-session-app.png';
+export { default as JoinedSessionScreenAppImg } from './images/joined-session-screen-app.png';
 export { default as LandingPageAndroidImg } from './images/landing-page-android.png';
 export { default as LandingPageIosImg } from './images/landing-page-ios.png';
-export { default as MatchScreenAppImg } from './images/match-screen-app.png';
 export { default as MessageScreenAppImg } from './images/message-screen-app.png';
-export { default as ModifyProfilScreenImg } from './images/modify-profil-screen.png';
-export { default as NoteScreenAppImg } from './images/note-screen-app.png';
 export { default as ProfileScreenAppImg } from './images/profil-screen-app.png';
-export { default as SessionCreateScreenImg } from './images/session-create-screen.png';
-export { default as SessionScreenAppImg } from './images/session-screen-app.png';
+export { default as SessionDetailScreenAppImg } from './images/session-detail-screen-app.png';
+
 export { default as AmirImg } from './team/amir-img.png';
 export { default as GanaImg } from './team/gana-img.png';
 export { default as KaylineImg } from './team/kayline-img.jpeg';

@@ -1,6 +1,6 @@
 import { Badge, Heading, Image, Typography } from '@chillUi';
 
-import { CarteInteractiveAppImg, MatchScreenAppImg, ProfileScreenAppImg } from '@/assets';
+import { DashboardScreenAppImg, FilterSessionsAppImg, ProfileScreenAppImg } from '@/assets';
 
 const featuresSection4 = [
   {
@@ -10,12 +10,12 @@ const featuresSection4 = [
   },
   {
     description: 'Visualisez vos prochains matchs, vos statistiques et les recommandations personnalisées.',
-    image: MatchScreenAppImg,
+    image: DashboardScreenAppImg,
     title: 'Tableau de bord',
   },
   {
     description: 'Découvrez les terrains et les matchs à proximité grâce à notre carte interactive détaillée.',
-    image: CarteInteractiveAppImg,
+    image: FilterSessionsAppImg,
     title: 'Carte interactive',
   },
 ];
