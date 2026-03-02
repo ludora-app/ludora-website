@@ -1,3 +1,9 @@
+## <small>1.3.1 (2026-03-02)</small>
+
+* Merge pull request #50 from ludora-app/fix/SCRUM-469 ([7b0af30](https://github.com/ludora-app/ludora-website/commit/7b0af30)), closes [#50](https://github.com/ludora-app/ludora-website/issues/50)
+* Merge pull request #51 from ludora-app/staging ([05b5700](https://github.com/ludora-app/ludora-website/commit/05b5700)), closes [#51](https://github.com/ludora-app/ludora-website/issues/51)
+* fix(SCRUM-469): add PostHog UI host configuration and update ingestion rewrite source path ([4f80024](https://github.com/ludora-app/ludora-website/commit/4f80024))
+
 ## 1.3.0 (2026-03-02)
 
 * Merge pull request #46 from ludora-app/feat/SCRUM-454 ([9bb4445](https://github.com/ludora-app/ludora-website/commit/9bb4445)), closes [#46](https://github.com/ludora-app/ludora-website/issues/46)
