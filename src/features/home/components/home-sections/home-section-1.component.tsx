@@ -30,7 +30,7 @@ export default async function HomeSection1() {
         </div>
 
         <div className="flex justify-end">
-          <Image src={homeSection1Img} alt="Application Ludora" width={450} />
+          <Image src={homeSection1Img} alt="Application Ludora" width={500} />
         </div>
       </div>
     </section>

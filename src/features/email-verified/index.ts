@@ -1,1 +1,1 @@
-export { default } from './components/email-verified.screen';
+export { default } from './screens/email-verified.screen';
