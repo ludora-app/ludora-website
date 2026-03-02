@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, Image } from '@chillUi';
 
-import { HomeScreenAppImg, MatchScreenAppImg } from '@/assets';
+import { CreateSessionAppImg, HomeScreenAppImg } from '@/assets';
 
 export default function HomeSection2() {
   return (
@@ -33,7 +33,7 @@ export default function HomeSection2() {
         </div>
         {/* right column */}
         <div className="flex flex-1 flex-col gap-5">
-          <Card className="bg-gradient flex flex-grow lg:flex-row">
+          <Card className="bg-gradient flex grow lg:flex-row">
             <CardHeader className="flex flex-1 flex-col justify-center lg:gap-5">
               <CardTitle color="dark">
                 Organiser rapidement des <span className="text-gradient">matchs</span>
@@ -44,10 +44,10 @@ export default function HomeSection2() {
               </CardDescription>
             </CardHeader>
             <CardContent className="flex flex-1 justify-center">
-              <Image src={MatchScreenAppImg} alt="Organize matches" />
+              <Image src={CreateSessionAppImg} alt="Organize matches" />
             </CardContent>
           </Card>
-          <Card className="bg-gradient flex flex-grow justify-center">
+          <Card className="bg-gradient flex grow justify-center">
             <CardHeader>
               <CardTitle color="dark">
                 Créer des équipes selon ton <span className="text-gradient">niveau</span>
