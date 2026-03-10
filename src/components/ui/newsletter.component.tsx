@@ -24,7 +24,9 @@ import { toast } from 'sonner';
 import { z } from 'zod';
 
 import { useAddCrmPerson } from '@/api/hooks/twenty-crm.hook';
+import { ANALYTICS_EVENTS } from '@/constants/analytics-events.constants';
 import { ROUTES } from '@/constants/ROUTES';
+import { useAnalytics } from '@/hooks/analytics-trackers.hook';
 
 const formSchemaImpl = (t: TolgeeInstance['t']) =>
   z.object({
@@ -40,6 +42,7 @@ const formSchemaImpl = (t: TolgeeInstance['t']) =>
 
 export default function NewsletterComponent() {
   const { t } = useTranslate();
+  const { trackError, trackEvent } = useAnalytics();
 
   const formSchema = formSchemaImpl(t);
   const form = useForm<z.infer<typeof formSchema>>({
@@ -60,6 +63,7 @@ export default function NewsletterComponent() {
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
+      trackEvent({ eventName: ANALYTICS_EVENTS.FORMS.NEWSLETTER });
       await addCrmPerson({
         email: data.email,
         name: data.name,
@@ -77,6 +81,7 @@ export default function NewsletterComponent() {
         toast.error(t('newsletter_error_email_already_exists'));
         return;
       }
+      trackError({ error });
       toast.error(t('newsletter_common_error'));
     }
   };
