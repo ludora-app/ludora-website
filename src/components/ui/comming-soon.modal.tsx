@@ -51,7 +51,7 @@ export function ComingSoonModal({ children, isOpen }: ComingSoonModalProps) {
   const { t } = useTranslate();
   const { trackError, trackEvent } = useAnalytics();
 
-  const [isDialogOpen, setIsDialogOpen] = useState(isOpen);
+  const [isDialogOpen, setIsDialogOpen] = useState(isOpen ?? false);
   const { isPending: isAddCrmPersonPending, mutateAsync: addCrmPerson } = useAddCrmPerson();
 
   const formSchema = formSchemaImpl(t);
