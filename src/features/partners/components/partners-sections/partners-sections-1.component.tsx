@@ -21,6 +21,8 @@ import { z } from 'zod';
 
 import { useSendPartnershipEmail } from '@/api/hooks/send-email.hook';
 import { useAddCrmOpportunity } from '@/api/hooks/twenty-crm.hook';
+import { ANALYTICS_EVENTS } from '@/constants/analytics-events.constants';
+import { useAnalytics } from '@/hooks/analytics-trackers.hook';
 
 const formSchemaImpl = (t: TolgeeInstance['t']) =>
   z.object({
@@ -45,6 +47,7 @@ const formSchemaImpl = (t: TolgeeInstance['t']) =>
 export default function PartnersSections1() {
   const { t } = useTranslate();
   const formSchema = formSchemaImpl(t);
+  const { trackError, trackEvent } = useAnalytics();
   const { mutateAsync: addCrmOpportunity } = useAddCrmOpportunity();
   const { mutateAsync: sendPartnershipEmail } = useSendPartnershipEmail();
   const [isFormPending, setIsFormPending] = useState(false);
@@ -64,6 +67,7 @@ export default function PartnersSections1() {
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     setIsFormPending(true);
     try {
+      trackEvent({ eventName: ANALYTICS_EVENTS.FORMS.PARTNERSHIP });
       const opportunityData = {
         companyName: data.structure,
         email: data.email,
@@ -74,7 +78,8 @@ export default function PartnersSections1() {
       await addCrmOpportunity(opportunityData);
       toast.success(t('contact_sended_success_message'));
       form.reset();
-    } catch {
+    } catch (error) {
+      trackError({ error });
       toast.error(t('contact_sended_error_message'));
     } finally {
       setIsFormPending(false);

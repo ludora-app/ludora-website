@@ -18,15 +18,16 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { T, TolgeeInstance, useTranslate } from '@tolgee/react';
 import { Mail } from 'lucide-react';
 import Link from 'next/link';
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
 
 import { useSendContactEmail } from '@/api/hooks/send-email.hook';
 import { useSendCrmContactMessage } from '@/api/hooks/twenty-crm.hook';
+import { ANALYTICS_EVENTS } from '@/constants/analytics-events.constants';
 import { COLORS } from '@/constants/COLORS';
 import { TIcons } from '@/constants/ICONS';
+import { useAnalytics } from '@/hooks/analytics-trackers.hook';
 
 const contactInfo = [
   {
@@ -81,9 +82,10 @@ const socialLinks = [
 
 export default function ContactSection2() {
   const { t } = useTranslate();
-  const [isMessageContactPending, setIsMessageContactPending] = useState(false);
-  const { mutateAsync: sendEmail } = useSendContactEmail();
-  const { mutateAsync: sendCrmContactMessage } = useSendCrmContactMessage();
+  const { trackError, trackEvent } = useAnalytics();
+
+  const { isPending: isSendEmailPending, mutateAsync: sendEmail } = useSendContactEmail();
+  const { isPending: isCrmContactMessagePending, mutateAsync: sendCrmContactMessage } = useSendCrmContactMessage();
   const formSchema = formSchemaImpl(t);
   const form = useForm<z.infer<typeof formSchema>>({
     defaultValues: {
@@ -99,25 +101,29 @@ export default function ContactSection2() {
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
-      setIsMessageContactPending(true);
+      trackEvent({ eventName: ANALYTICS_EVENTS.FORMS.CONTACT });
       await sendCrmContactMessage({
         email: data.email,
         message: data.message,
         name: data.name,
+        source: 'WEB',
         subject: data.subject,
       });
-      await sendEmail({
-        email: data.email,
-        message: data.message,
-        name: data.name,
-        subject: data.subject,
-      });
+      try {
+        await sendEmail({
+          email: data.email,
+          message: data.message,
+          name: data.name,
+          subject: data.subject,
+        });
+      } catch (error) {
+        trackError({ error });
+      }
       toast.success(t('contact_sended_success_message'));
       form.reset();
-    } catch {
+    } catch (error) {
+      trackError({ error });
       toast.error(t('contact_sended_error_message'));
-    } finally {
-      setIsMessageContactPending(false);
     }
   };
 
@@ -199,8 +205,8 @@ export default function ContactSection2() {
                   variant="gradient"
                   size="lg"
                   className="mt-4 w-full self-center md:w-1/2"
-                  disabled={isMessageContactPending}
-                  isLoading={isMessageContactPending}
+                  disabled={isCrmContactMessagePending || isSendEmailPending}
+                  isLoading={isCrmContactMessagePending || isSendEmailPending}
                 >
                   {t('contact_form_submit_button')}
                 </Button>
