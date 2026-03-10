@@ -8,11 +8,12 @@ type createContactBody = {
   name: string;
   message: string;
   subject: string;
+  source: 'WEB';
 };
 
 export async function POST(request: Request) {
   const body = await request.json();
-  const { email, message, name, subject } = body;
+  const { email, message, name, source, subject } = body;
 
   if (!email || !message || !name || !subject) {
     return NextResponse.json({ error: 'Email, message, name and subject are required' }, { status: 400 });
@@ -22,6 +23,7 @@ export async function POST(request: Request) {
     email: { additionalEmails: [], primaryEmail: email },
     message,
     name,
+    source,
     subject,
   };
 
