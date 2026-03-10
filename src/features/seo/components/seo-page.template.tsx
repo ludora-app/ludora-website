@@ -37,7 +37,18 @@ export const SEOPageTemplate = ({ article }: SEOPageTemplateProps) => {
 
       {/* Main Content */}
       <div className="prose prose-lg mb-16 max-w-none leading-relaxed text-gray-700">
-        <p className="whitespace-pre-line">{article.content}</p>
+        <div className="whitespace-pre-line">
+          {article.content.split(/(\*\*.*?\*\*)/g).map((part, i) => {
+            if (part.startsWith('**') && part.endsWith('**')) {
+              return (
+                <strong key={i} className="font-bold text-gray-900">
+                  {part.slice(2, -2)}
+                </strong>
+              );
+            }
+            return part;
+          })}
+        </div>
       </div>
 
       {/* CTA Section */}
