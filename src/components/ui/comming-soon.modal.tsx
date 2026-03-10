@@ -30,7 +30,9 @@ import { toast } from 'sonner';
 import { z } from 'zod';
 
 import { useAddCrmPerson } from '@/api/hooks/twenty-crm.hook';
+import { ANALYTICS_EVENTS } from '@/constants/analytics-events.constants';
 import { ROUTES } from '@/constants/ROUTES';
+import { useAnalytics } from '@/hooks/analytics-trackers.hook';
 
 interface ComingSoonModalProps {
   children: React.ReactNode;
@@ -47,8 +49,9 @@ const formSchemaImpl = (t: TolgeeInstance['t']) =>
 
 export function ComingSoonModal({ children, isOpen }: ComingSoonModalProps) {
   const { t } = useTranslate();
+  const { trackError, trackEvent } = useAnalytics();
 
-  const [isDialogOpen, setIsDialogOpen] = useState(isOpen);
+  const [isDialogOpen, setIsDialogOpen] = useState(isOpen ?? false);
   const { isPending: isAddCrmPersonPending, mutateAsync: addCrmPerson } = useAddCrmPerson();
 
   const formSchema = formSchemaImpl(t);
@@ -65,6 +68,7 @@ export function ComingSoonModal({ children, isOpen }: ComingSoonModalProps) {
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
+      trackEvent({ eventName: ANALYTICS_EVENTS.FORMS.BE_INFORMED });
       await addCrmPerson({
         email: data.email,
       });
@@ -82,6 +86,7 @@ export function ComingSoonModal({ children, isOpen }: ComingSoonModalProps) {
         toast.error(t('newsletter_error_email_already_exists'));
         return;
       }
+      trackError({ error });
       toast.error(t('newsletter_common_error'));
     }
   };

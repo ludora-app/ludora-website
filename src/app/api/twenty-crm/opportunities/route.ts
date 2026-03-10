@@ -7,7 +7,7 @@ type createContactBody = {
   companyName: string;
   name: string;
   phoneNumber: string;
-  email: string;
+  email: { additionalEmails: string[]; primaryEmail: string };
 };
 
 export async function POST(request: Request) {
@@ -20,7 +20,7 @@ export async function POST(request: Request) {
 
   const twentyCrmBody: createContactBody = {
     companyName,
-    email,
+    email: { additionalEmails: [], primaryEmail: email },
     name,
     phoneNumber,
   };
