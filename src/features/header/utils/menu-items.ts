@@ -7,7 +7,7 @@ export const menuItems = [
     label: 'header_menu_features',
   },
   {
-    href: ROUTES.DOWNLOAD,
+    href: ROUTES.DOWNLOAD_APP,
     id: 'download',
     label: 'header_menu_download',
   },
