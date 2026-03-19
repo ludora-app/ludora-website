@@ -1,0 +1,17 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "829Y38V68J.com.ludora",
+        "paths": ["/profil/*", "/session/*"]
+      }
+    ]
+  },
+  "activitycontinuation": {
+    "apps": ["829Y38V68J.com.ludora"]
+  },
+  "webcredentials": {
+    "apps": ["829Y38V68J.com.ludora"]
+  }
+}
