@@ -1,3 +1,11 @@
+## [1.4.0](https://github.com/ludora-app/ludora-website/compare/v1.3.1...v1.4.0) (2026-03-19)
+
+### Features
+
+* **SCRUM-518:** Implement PostHog analytics and error tracking across the application, and fix all forms ([#55](https://github.com/ludora-app/ludora-website/issues/55)) ([8ca5a68](https://github.com/ludora-app/ludora-website/commit/8ca5a68fa6277dce41bdef48624662c1ce22967b))
+* **SCRUM-520:** add posthog proxy ([#58](https://github.com/ludora-app/ludora-website/issues/58)) ([a5bcf7e](https://github.com/ludora-app/ludora-website/commit/a5bcf7ef3626850eb5d39db3b09138343e5fc849))
+* **SCRUM-549:** Add Apple App Site Association file to enable universal links, activity continuation, and web credentials. ([8c26b18](https://github.com/ludora-app/ludora-website/commit/8c26b186f525554a19a19b09658fde840791b299))
+
 ## <small>1.3.1 (2026-03-02)</small>
 
 * Merge pull request #50 from ludora-app/fix/SCRUM-469 ([7b0af30](https://github.com/ludora-app/ludora-website/commit/7b0af30)), closes [#50](https://github.com/ludora-app/ludora-website/issues/50)
