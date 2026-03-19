@@ -122,8 +122,6 @@
   "create-session.step-3.button_title_create_session": "Create the match",
   "create-session.step-3.button_title_price": "Book for {price}€",
   "create-session.step-5.description": "Share it with your friends now or invite players to join you.",
-  "create-session.step-5.quote_part_1": "Now is the time: ",
-  "create-session.step-5.quote_part_2": "The more, the merrier!",
   "create-session.step-5.session_preview_title": "Your match is ready!",
   "create-session.step-5.subtitle": "Your match has been successfully created !",
   "create_session.step_2.public_availabilities.team_present": "Ludora Team Presents",
