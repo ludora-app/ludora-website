@@ -1,3 +1,9 @@
+## [1.5.0](https://github.com/ludora-app/ludora-website/compare/v1.4.0...v1.5.0) (2026-03-24)
+
+### Features
+
+* **SCRUM-586:** Remove .json extension from `apple-app-site-association` and `assetlinks` files for proper app association. ([#64](https://github.com/ludora-app/ludora-website/issues/64)) ([c9f86bc](https://github.com/ludora-app/ludora-website/commit/c9f86bc39a6de30352b867ea0ae7c7c7f82ed9f5))
+
 ## [1.4.0](https://github.com/ludora-app/ludora-website/compare/v1.3.1...v1.4.0) (2026-03-19)
 
 ### Features
