@@ -3,8 +3,7 @@ name: CI/CD Pipeline
 on:
   push:
     branches: [main, staging, develop]
-  pull_request:
-    branches: [main, staging, develop]
+
 
 jobs:
   checks:
@@ -41,15 +40,21 @@ jobs:
           node-version: '24'
           cache: 'pnpm'
 
-      - name: Install Doppler CLI
-        uses: dopplerhq/cli-action@v3
+      - name: 🔐 Install HashiCorp envconsul
+        run: |
+          sudo apt-get update && sudo apt-get install -y unzip
+          wget https://releases.hashicorp.com/envconsul/0.13.4/envconsul_0.13.4_linux_amd64.zip
+          unzip envconsul_0.13.4_linux_amd64.zip
+          sudo mv envconsul /usr/local/bin/
 
       - run: pnpm install --frozen-lockfile
 
-      - name: Load translations
-        run: doppler run -- pnpm load:translations
+      - name: Load translations (with Vault)
+        run: pnpm load:translations:local
         env:
-          DOPPLER_TOKEN: ${{ secrets.DOPPLER_TOKEN }}
+          VAULT_ADDR: ${{ secrets.VAULT_ADDR }}
+          VAULT_ROLE_ID: ${{ secrets.VAULT_ROLE_ID }}
+          VAULT_SECRET_ID: ${{ secrets.VAULT_SECRET_ID }}
 
       - name: Commit and push translations
         run: |
