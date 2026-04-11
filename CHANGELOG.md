@@ -1,3 +1,9 @@
+## [1.6.0](https://github.com/ludora-app/ludora-website/compare/v1.5.0...v1.6.0) (2026-04-11)
+
+### Features
+
+* **SCRUM-622:** implement store redirection route, update download buttons, and configure CI/CD for multi-branch releases ([#68](https://github.com/ludora-app/ludora-website/issues/68)) ([4040db1](https://github.com/ludora-app/ludora-website/commit/4040db11c38c3dd3fda7129b52f40a609eb87b25))
+
 ## [1.6.0-dev.1](https://github.com/ludora-app/ludora-website/compare/v1.5.0...v1.6.0-dev.1) (2026-04-11)
 
 ### Features
