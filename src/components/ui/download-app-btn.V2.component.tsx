@@ -27,9 +27,7 @@ export default function DownloadAppBtnV2() {
           <Button
             size="lg"
             variant="light"
-            onClick={() =>
-              trackEvent({ data: { page: pathname }, eventName: ANALYTICS_EVENTS.STORE.APP_STORE })
-            }
+            onClick={() => trackEvent({ data: { page: pathname }, eventName: ANALYTICS_EVENTS.STORE.APP_STORE })}
           >
             <Icon name="app-store-solid" color={COLORS.PRIMARY} />
             Télécharger sur l&apos;App Store
@@ -41,9 +39,7 @@ export default function DownloadAppBtnV2() {
           <Button
             size="lg"
             variant="light"
-            onClick={() =>
-              trackEvent({ data: { page: pathname }, eventName: ANALYTICS_EVENTS.STORE.GOOGLE_PLAY })
-            }
+            onClick={() => trackEvent({ data: { page: pathname }, eventName: ANALYTICS_EVENTS.STORE.GOOGLE_PLAY })}
           >
             <Icon name="google-play-solid" color={COLORS.PRIMARY} />
             Télécharger sur Google Play
