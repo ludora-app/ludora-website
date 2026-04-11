@@ -1,14 +1,15 @@
 'use client';
 
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
 import { ANALYTICS_EVENTS } from '@/constants/analytics-events.constants';
 import { COLORS } from '@/constants/COLORS';
+import { STORE_LINKS } from '@/constants/ROUTES';
 import { useAnalytics } from '@/hooks/analytics-trackers.hook';
 
 import { Button, Icon } from '../chill-ui';
-import { ComingSoonModal } from './comming-soon.modal';
 
 export default function DownloadAppBtnV2() {
   const pathname = usePathname();
@@ -22,28 +23,32 @@ export default function DownloadAppBtnV2() {
   return (
     <>
       {(platform === 'iOS' || platform === 'Autre') && (
-        <ComingSoonModal>
+        <Link href={STORE_LINKS.IOS} className="w-full sm:w-auto" target="_blank">
           <Button
             size="lg"
             variant="light"
-            onClick={() => trackEvent({ data: { page: pathname }, eventName: ANALYTICS_EVENTS.STORE.APP_STORE })}
+            onClick={() =>
+              trackEvent({ data: { page: pathname }, eventName: ANALYTICS_EVENTS.STORE.APP_STORE })
+            }
           >
             <Icon name="app-store-solid" color={COLORS.PRIMARY} />
             Télécharger sur l&apos;App Store
           </Button>
-        </ComingSoonModal>
+        </Link>
       )}
       {(platform === 'Android' || platform === 'Autre') && (
-        <ComingSoonModal>
+        <Link href={STORE_LINKS.ANDROID} className="w-full sm:w-auto" target="_blank">
           <Button
             size="lg"
             variant="light"
-            onClick={() => trackEvent({ data: { page: pathname }, eventName: ANALYTICS_EVENTS.STORE.GOOGLE_PLAY })}
+            onClick={() =>
+              trackEvent({ data: { page: pathname }, eventName: ANALYTICS_EVENTS.STORE.GOOGLE_PLAY })
+            }
           >
             <Icon name="google-play-solid" color={COLORS.PRIMARY} />
             Télécharger sur Google Play
           </Button>
-        </ComingSoonModal>
+        </Link>
       )}
     </>
   );
