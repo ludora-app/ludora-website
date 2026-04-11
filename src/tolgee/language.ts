@@ -1,7 +1,6 @@
 'use server';
 
-import { detectLanguageFromHeaders } from '@tolgee/react/server';
-import { cookies, headers } from 'next/headers';
+import { cookies } from 'next/headers';
 
 import { ALL_LANGUAGES, DEFAULT_LANGUAGE } from './shared';
 
@@ -21,7 +20,5 @@ export async function getLanguage() {
     return locale;
   }
 
-  // try to detect language from headers or use default
-  const detected = detectLanguageFromHeaders(await headers(), ALL_LANGUAGES);
-  return detected || DEFAULT_LANGUAGE;
+  return DEFAULT_LANGUAGE;
 }

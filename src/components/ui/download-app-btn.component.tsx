@@ -23,10 +23,7 @@ export default function DownloadAppBtn({ className }: { className?: string }) {
           <Button
             id="download-app-btn-ios"
             size="lg"
-            className={cn(
-              'flex w-full items-center gap-2 border-0 bg-black text-white hover:bg-gray-800',
-              className
-            )}
+            className={cn('flex w-full items-center gap-2 border-0 bg-black text-white hover:bg-gray-800', className)}
           >
             <Icon name="app-store-solid" className="size-4" color="#fff" />
             {t('download_app_btn_ios')}
@@ -38,10 +35,7 @@ export default function DownloadAppBtn({ className }: { className?: string }) {
           <Button
             id="download-app-btn-android"
             size="lg"
-            className={cn(
-              'flex w-full items-center gap-2 border-0 bg-black text-white hover:bg-gray-800',
-              className
-            )}
+            className={cn('flex w-full items-center gap-2 border-0 bg-black text-white hover:bg-gray-800', className)}
           >
             <Icon name="google-play-solid" className="size-4" color="#fff" />
             {t('download_app_btn_android')}
