@@ -1,3 +1,5 @@
+## [1.6.0-dev.2](https://github.com/ludora-app/ludora-website/compare/v1.6.0-dev.1...v1.6.0-dev.2) (2026-08-17)
+
 ## [1.6.0-dev.1](https://github.com/ludora-app/ludora-website/compare/v1.5.0...v1.6.0-dev.1) (2026-04-11)
 
 ### Features
