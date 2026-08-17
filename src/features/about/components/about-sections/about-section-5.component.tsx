@@ -1,6 +1,6 @@
 import { Badge, Card, CardContent, CardDescription, CardHeader, CardTitle, Heading, Image, Typography } from '@chillUi';
 
-import { AmirImg, GanaImg, KaylineImg, KenzaImg, MarionImg, MaximeImg } from '@/assets';
+import { AmirImg, GanaImg } from '@/assets';
 import { getTranslate, T } from '@/tolgee/server';
 
 const teamMembers = [
@@ -15,30 +15,6 @@ const teamMembers = [
     image: GanaImg,
     name: 'gana_fullname',
     role: 'gana_role',
-  },
-  {
-    bio: 'marion_bio',
-    image: MarionImg,
-    name: 'marion_fullname',
-    role: 'marion_role',
-  },
-  {
-    bio: 'maxime_bio',
-    image: MaximeImg,
-    name: 'maxime_fullname',
-    role: 'maxime_role',
-  },
-  {
-    bio: 'kenza_bio',
-    image: KenzaImg,
-    name: 'kenza_fullname',
-    role: 'kenza_role',
-  },
-  {
-    bio: 'kaylin_bio',
-    image: KaylineImg,
-    name: 'kaylin_fullname',
-    role: 'kaylin_role',
   },
 ];
 
