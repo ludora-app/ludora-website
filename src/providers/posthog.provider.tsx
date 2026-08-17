@@ -11,6 +11,7 @@ export function PostHogProvider({ children }: PropsWithChildren) {
 
   useEffect(() => {
     // if (process.env.NODE_ENV !== 'production') return;
+    if (posthog.__loaded) return;
 
     posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY as string, {
       api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST_PROXY,
